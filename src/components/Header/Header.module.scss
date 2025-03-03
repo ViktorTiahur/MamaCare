@@ -1,0 +1,150 @@
+@font-face {
+  font-family: "ElMessiri";
+  src: url("../../assets/fonts/ElMessiri-Regular.ttf") format("truetype"),
+    url("../../assets/fonts/ElMessiri-Regular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url("../../assets/fonts/Roboto-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  background-color: #f8f9fa;
+
+  .topBar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px 42px 8px;
+    border-bottom: 2px #66547f solid;
+
+    .logo {
+      font-family: "ElMessiri", sans-serif;
+      font-size: 32px;
+      color: #66547f;
+      margin-right: 48px;
+      // line-height: 50px;
+    }
+
+    .leftButtons {
+    
+      .about,
+      .pick,
+      .baby
+       {
+
+        margin-right: 48px;
+        
+      }
+    }
+
+    .rightButtons {
+      width: 292px;
+      padding: 0px 12px;
+      display: flex;
+      justify-content: space-between;
+      
+     }
+    .buttons {
+      display: flex;
+      font-family: "Roboto", sans-serif;
+      font-size: 18px;
+      // line-height: 22px;
+      color: #65558f;
+      border: none;
+
+
+      img {
+        width: 30px;
+        height: 30px;
+      }
+
+      .language {
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        font-family: inherit;
+        font-size: inherit;
+        line-height: inherit;
+        color: inherit;
+        border: inherit;
+        // margin-right: 42px;
+      }
+
+      button {
+        font-family: inherit;
+        font-size: inherit;
+        line-height: inherit;
+        color: inherit;
+        cursor: pointer;
+        transition: color 0.3s;
+
+        &:hover {
+          color: #007bff;
+        }
+      }
+    }
+  }
+}
+// @font-face {
+//   font-family: "ElMessiri";
+//   src: url("../../assets/fonts/ElMessiri-Regular.ttf") format("truetype"),
+//     url("../../assets/fonts/ElMessiri-Regular.otf") format("opentype");
+//   font-weight: 400;
+//   font-style: normal;
+// }
+
+// @font-face {
+//   font-family: "Roboto";
+//   src: url("../../assets/fonts/Roboto-Medium.ttf") format("truetype");
+//   font-weight: 500;
+//   font-style: normal;
+// }
+
+// .header {
+//   display: flex;
+//   flex-direction: column;
+//   background-color: #f8f9fa;
+//   padding: 10px 20px;
+
+//   .topBar {
+//     display: flex;
+//     justify-content: space-between;
+//     align-items: center;
+//     padding: 24px 42px 8px;
+//     border-bottom: 2px #66547f solid;
+
+//     .logo {
+//       font-family: "ElMessiri", sans-serif;
+//       font-size: 32px;
+//       color: #66547f;
+//       line-height: 50px;
+//     }
+
+//     .buttons {
+//       display: flex;
+
+//       button {
+//         font-family: "Roboto", sans-serif;
+//         background: none;
+//         border: none;
+//         cursor: pointer;
+//         font-size: 18px;
+//         line-height: 22px;
+//         color: #66547f;
+//         transition: color 0.3s;
+
+//         &:hover {
+//           color: #007bff;
+//         }
+//       }
+//     }
+//   }
+// }

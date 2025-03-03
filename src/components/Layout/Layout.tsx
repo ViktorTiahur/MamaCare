@@ -1,7 +1,7 @@
-// Layout.tsx
 import React, { ReactNode } from "react";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
+import styles from "./Layout.module.scss";
 
 interface LayoutProps {
   children: ReactNode;
@@ -9,7 +9,7 @@ interface LayoutProps {
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
   return (
-    <div>
+    <div className={styles.container}>
       <Header />
       <main>{children}</main>
       <Footer />
