@@ -11,11 +11,13 @@ const GlobalStyle = createGlobalStyle`
   }
 
   html, body {
-    width: 100%;
-    height: 100%;
+    /* width: 100%;
+    height: 100%; */
+    max-width: 100%;
+    max-height: 100%;
     font-family: Arial, sans-serif;
     background-color: #f8f8f8;
-    color: #333;
+    /* color: #333; */
   }
 
   a {

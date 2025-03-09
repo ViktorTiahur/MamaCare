@@ -1,0 +1,128 @@
+.footer {
+  background-color: #6b5b95;
+  color: #fff;
+  padding: 40px 20px;
+  max-height: 423px;
+}
+
+.container {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 30px;
+}
+
+.brandSection {
+  max-width: 325px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 20px;
+  gap: 20px;
+}
+
+.title {
+  font-family: "El Messiri", sans-serif;
+  font-weight: 400;
+  font-size: 48px;
+  margin-bottom: 30px;
+}
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 40px;
+}
+
+.navTop {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 20px;
+  font-weight: 500;
+  font-size: 20px;
+}
+
+.icon {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.socialIcons {
+  display: flex;
+  gap: 28px;
+}
+
+.button {
+  flex-shrink: 0;
+}
+
+.button:hover {
+  background-color: #f3f3f3;
+}
+
+.divider {
+  border: 1px solid #fff;
+  width: 100%;
+  max-width: 1124px;
+  margin: auto;
+}
+
+.footerBottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1124px;
+  margin: 10px auto 0;
+}
+
+@media (max-width: 600px) {
+  .footerBottom {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .navTop {
+    flex-direction: column;
+    gap: 30px;
+  }
+}
+
+.linkPrivacy {
+  font-weight: 400;
+  font-size: 13px;
+  text-decoration: underline;
+  text-decoration-skip-ink: none;
+  text-align: center;
+  color: #fef7ff;
+}
+.linkPrivacy:hover {
+  text-decoration: none;
+  color: #fef7ff;
+}
+.text {
+  font-weight: 400;
+  font-size: 13px;
+  text-align: center;
+  color: #eaddff;
+}
+.contactTitle {
+  font-weight: 500;
+  font-size: 24px;
+}
+.contactSection {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.contactItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 400;
+  font-size: 16px;
+}

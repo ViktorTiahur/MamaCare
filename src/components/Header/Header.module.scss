@@ -1,8 +1,7 @@
 @font-face {
   font-family: "ElMessiri";
-  src: url("../../assets/fonts/ElMessiri-Regular.ttf") format("truetype"),
-    url("../../assets/fonts/ElMessiri-Regular.otf") format("opentype");
-  font-weight: 400;
+  src: url("../../assets/fonts/ElMessiri-Bold.ttf") format("truetype");
+  font-weight: 700;
   font-style: normal;
 }
 
@@ -17,134 +16,193 @@
   display: flex;
   flex-direction: column;
   background-color: #f8f9fa;
+  font-family: "Roboto";
+  font-weight: 500;
+  color: #65558f;
+
+  .logo {
+    font-family: "ElMessiri", sans-serif;
+    font-size: 34px;
+    font-style: normal;
+    color: #a982e8;
+    margin-right: 68px;
+  }
 
   .topBar {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    padding: 24px 42px 8px;
-    border-bottom: 2px #66547f solid;
+    align-items: end;
+    padding: 24px 42px 0;
+    border-bottom: 2px solid #c7c2d6;
+    height: 86px;
 
-    .logo {
-      font-family: "ElMessiri", sans-serif;
-      font-size: 32px;
-      color: #66547f;
-      margin-right: 48px;
-      // line-height: 50px;
+    button {
+      color: #65558f;
     }
 
     .leftButtons {
-    
-      .about,
-      .pick,
-      .baby
-       {
+      display: flex;
+      height: 48px;
 
+      button {
         margin-right: 48px;
-        
+
+        &:hover {
+          border-bottom: 4px solid #a982e873;
+        }
+        &:active {
+          border-bottom: 4px solid #a982e8;
+        }
+        &:focus {
+          border-bottom: 4px solid #a982e8a6;
+        }
       }
     }
 
     .rightButtons {
       width: 292px;
-      padding: 0px 12px;
+      padding: 0 12px;
       display: flex;
       justify-content: space-between;
-      
-     }
-    .buttons {
-      display: flex;
-      font-family: "Roboto", sans-serif;
-      font-size: 18px;
-      // line-height: 22px;
-      color: #65558f;
-      border: none;
-
-
-      img {
-        width: 30px;
-        height: 30px;
-      }
-
-      .language {
-        appearance: none;
-        -webkit-appearance: none;
-        -moz-appearance: none;
-        font-family: inherit;
-        font-size: inherit;
-        line-height: inherit;
-        color: inherit;
-        border: inherit;
-        // margin-right: 42px;
-      }
 
       button {
-        font-family: inherit;
-        font-size: inherit;
-        line-height: inherit;
-        color: inherit;
-        cursor: pointer;
-        transition: color 0.3s;
+        width: 48px;
+        height: 48px;
+        border-radius: 8px;
 
         &:hover {
-          color: #007bff;
+          background-color: #f3f2f6;
         }
+        &:focus {
+          background-color: #eceaf1;
+        }
+        &:active {
+          background-color: #e5dfed;
+        }
+      }
+    }
+
+    .burgerMenu {
+      display: none;
+      width: 40px;
+      height: 40px;
+
+      img {
+        width: 32px;
+        height: 22px;
+      }
+    }
+
+    .buttons {
+      display: flex;
+      align-items: center;
+      border: none;
+
+      button {
+        font: inherit;
+        cursor: pointer;
+        transition: color 0.3s;
+      }
+    }
+  }
+
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 320px;
+    height: 100vh;
+    background: #fff;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-in-out;
+
+    &.open {
+      transform: translateX(0);
+    }
+
+    .sidebarHeader {
+      display: flex;
+      align-items: end;
+      height: 86px;
+      border-bottom: 2px solid #c7c2d6;
+      padding: 0 15px;
+      margin-bottom: 51px;
+
+      .burgerClose {
+        width: 48px;
+        height: 48px;
+
+        img {
+          width: 16px;
+          height: 16px;
+        }
+      }
+      .logo {
+        display: flex;
+        height: 48px;
+        align-items: center;
+      }
+    }
+
+    .sidebarNav {
+      display: flex;
+      flex-direction: column;
+      padding: 0px 15px;
+
+      .navItem,
+      button {
+        height: 48px;
+        font-family: "Roboto";
+        font-size: 18px;
+        font-weight: 500;
+        color: #65558f;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        // margin-bottom: 10px;
+      }
+    }
+  }
+
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 500;
+  }
+}
+
+@media (max-width: 1024px) {
+  .header {
+    .topBar {
+      padding: 39px 36px 0;
+      align-items: end;
+
+      .burgerMenu {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-right: 56px;
+        width: 48px;
+        height: 48px;
+      }
+
+      .leftButtons {
+        display: none;
       }
     }
   }
 }
-// @font-face {
-//   font-family: "ElMessiri";
-//   src: url("../../assets/fonts/ElMessiri-Regular.ttf") format("truetype"),
-//     url("../../assets/fonts/ElMessiri-Regular.otf") format("opentype");
-//   font-weight: 400;
-//   font-style: normal;
-// }
 
-// @font-face {
-//   font-family: "Roboto";
-//   src: url("../../assets/fonts/Roboto-Medium.ttf") format("truetype");
-//   font-weight: 500;
-//   font-style: normal;
-// }
-
-// .header {
-//   display: flex;
-//   flex-direction: column;
-//   background-color: #f8f9fa;
-//   padding: 10px 20px;
-
-//   .topBar {
-//     display: flex;
-//     justify-content: space-between;
-//     align-items: center;
-//     padding: 24px 42px 8px;
-//     border-bottom: 2px #66547f solid;
-
-//     .logo {
-//       font-family: "ElMessiri", sans-serif;
-//       font-size: 32px;
-//       color: #66547f;
-//       line-height: 50px;
-//     }
-
-//     .buttons {
-//       display: flex;
-
-//       button {
-//         font-family: "Roboto", sans-serif;
-//         background: none;
-//         border: none;
-//         cursor: pointer;
-//         font-size: 18px;
-//         line-height: 22px;
-//         color: #66547f;
-//         transition: color 0.3s;
-
-//         &:hover {
-//           color: #007bff;
-//         }
-//       }
-//     }
-//   }
-// }
+@media (max-width: 480px) {
+  .container {
+    font-size: 14px;
+  }
+}

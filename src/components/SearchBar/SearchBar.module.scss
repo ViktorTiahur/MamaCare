@@ -1,0 +1,46 @@
+.searchContainer {
+  position: relative; /* Відносне позиціонування контейнера */
+  display: flex;
+  align-items: center;
+  width: 40px; /* Початковий розмір для контейнера */
+}
+
+.searchInput {
+  position: absolute; /* Абсолютне позиціонування рядка */
+  top: 0;
+  right: 0; /* Фіксуємо правий край */
+  width: 40px; /* Початкова ширина пошукового рядка */
+  padding: 5px;
+  font-size: 16px;
+  opacity: 0;
+  transition: opacity 0.3s, width 0.3s ease-in-out; /* Плавний перехід для прозорості і ширини */
+  border: none;
+  outline: none;
+  background-color: white;
+  border-radius: 20px; /* Округлі кути */
+  padding-right: 40px; /* Відступ для кнопки пошуку */
+  box-sizing: border-box; /* Враховує відступи у ширину */
+  z-index: 1; /* Забезпечує, що поле перекриває інші елементи */
+}
+
+.searchContainer.expanded .searchInput {
+  height: 100%;
+  border: 1px solid #65558f;
+  color: #65558f;
+  font-size: 20px;
+  width: 220px; /* Розширюємо рядок до 200px */
+  opacity: 1; /* Зробити поле видимим, коли розширено */
+}
+
+.searchButton {
+  position: relative; /* Відносне позиціонування кнопки */
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+  z-index: 2; /* Забезпечує, що кнопка завжди видима */
+  img {
+    width: 24px;
+    height: 24px;
+  }
+}

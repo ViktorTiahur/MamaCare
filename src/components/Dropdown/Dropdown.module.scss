@@ -1,0 +1,47 @@
+.dropdown {
+  position: relative;
+  display: flex;
+}
+
+.dropdown-menu {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  position: absolute;
+  top: 35px;
+  left: -44px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 3px 3px #00000033;
+  z-index: 1000;
+  width: 124px;
+  height: 96px;
+  opacity: 0;
+  transition: background 0.2s;
+
+  .dropdown-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    cursor: pointer;
+  }
+}
+
+.dropdown-menu .dropdown-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.dropdown-menu .dropdown-item:hover {
+}
+
+/* Коли меню відкрите */
+.dropdown-menu.show {
+  opacity: 1;
+  transform: translateY(0);
+}

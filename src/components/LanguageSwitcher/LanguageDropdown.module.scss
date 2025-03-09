@@ -1,0 +1,40 @@
+.language-dropdown {
+  position: relative;
+  display: flex;
+  justify-content: center;
+
+  .dropdown-toggle {
+    cursor: pointer;
+  }
+
+  .dropdown-menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    position: absolute;
+    top: 35px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 3px 3px #00000033;
+    z-index: 1000;
+    width: 124px;
+    height: 96px;
+    margin: auto;
+
+    .dropdown-item {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      cursor: pointer;
+
+      &:hover {
+        // background: #f5f5f5;
+      }
+      &:first-child{
+        border-bottom: 1px solid #F7F4FF;
+      }
+    }
+  }
+}
