@@ -4,13 +4,18 @@ import styles from "./Dropdown.module.scss";
 interface DropdownItem {
   code: string;
   label: string;
+  icon?: string; // Іконка тепер необов'язкова
 }
 
 interface DropdownProps {
   items: DropdownItem[];
   selectedItem: string;
   onSelect: (item: string) => void;
-  className?: string;
+  className?: string; // Клас для загального контейнера
+  menuClassName?: string; // Додаємо новий пропс для меню
+  showIcons?: boolean;
+  showIcon?: boolean;
+  icon?: string;
 }
 
 const Dropdown: React.FC<DropdownProps> = ({
@@ -18,6 +23,10 @@ const Dropdown: React.FC<DropdownProps> = ({
   selectedItem,
   onSelect,
   className,
+  menuClassName,
+  showIcons = false, // Значення за замовчуванням - іконки не показуються у випадаючому списку
+  showIcon = false, // Значення за замовчуванням - іконка на кнопці не показується
+  icon, // Іконка на кнопці
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
@@ -45,7 +54,7 @@ const Dropdown: React.FC<DropdownProps> = ({
   };
 
   const selectedLabel =
-    items.find((item) => item.code === selectedItem)?.label || "Select";
+    items.find((item) => item.code === selectedItem)?.label || "";
 
   return (
     <div
@@ -53,21 +62,35 @@ const Dropdown: React.FC<DropdownProps> = ({
       ref={dropdownRef}
     >
       <button className={styles["dropdown-toggle"]} onClick={toggleDropdown}>
-        {selectedLabel}
+        {showIcon && icon && (
+          <img src={icon} alt="User Status" className={styles["icon"]} />
+        )}
+        {selectedLabel || (!showIcon && "Select")}
       </button>
-      <div className={`${styles["dropdown-menu"]} ${isOpen ? styles.show : ""}`}>
-
-          {items.map((item) => (
-            <div
-              key={item.code}
-              className={styles["dropdown-item"]}
-              onClick={() => handleSelect(item.code)}
-            >
-              {item.label}
-            </div>
-          ))}
-        </div>
-      
+      <div
+        className={`${styles["dropdown-menu"]} ${isOpen ? styles.show : ""} ${
+          menuClassName || ""
+        }`}
+      >
+        {items.map((item) => (
+          <div
+            key={item.code}
+            className={styles["dropdown-item"]}
+            onClick={() => handleSelect(item.code)}
+          >
+            {showIcons && item.icon && (
+              <div className={styles["item-icon"]}>
+                <img
+                  src={item.icon}
+                  alt={item.label}
+                  className={styles["icon"]}
+                />
+              </div>
+            )}
+            <div className={styles["item-text"]}>{item.label}</div>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };

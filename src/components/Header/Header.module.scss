@@ -177,6 +177,16 @@
     background: rgba(0, 0, 0, 0.5);
     z-index: 500;
   }
+
+  .userDropdownMenu {
+    width: 224px;
+    top: 50px;
+    left: -176px;
+  }
+  .langDropdownMenu {
+    top: 50px;
+    left: -45px;
+  }
 }
 
 @media (max-width: 1024px) {
@@ -204,5 +214,32 @@
 @media (max-width: 480px) {
   .container {
     font-size: 14px;
+  }
+}
+
+@media (max-width: 695px) {
+  .header {
+    .topBar {
+      padding: 39px 36px 0;
+      align-items: end;
+
+      .burgerMenu {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-right: 56px;
+        width: 48px;
+        height: 48px;
+      }
+
+      .leftButtons {
+        display: none;
+      }
+
+      .langDropdownMenu {
+        display: none;
+        background-color: #65558f;
+      }
+    }
   }
 }

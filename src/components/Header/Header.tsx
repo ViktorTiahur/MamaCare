@@ -2,29 +2,51 @@ import React, { useState } from "react";
 import styles from "./Header.module.scss";
 import BannerCarousel from "../BannerCarousel/BannerCarousel";
 import Button from "../Button/Button";
-import logoIcon from "../../assets/icons/logoIcon.svg";
 import searchIcon from "../../assets/icons/icon-search-states-56.svg";
 import cartIcon from "../../assets/icons/icon-cart-states-56.svg";
 import userIcon from "../../assets/icons/icon-account-states-56.svg";
 import burgerMenu from "../../assets/icons/icon-hamburger menu-states-56.svg";
 import burgerClose from "../../assets/icons/icon-burger-close.svg";
-import SearchBar from "../SearchBar/SearchBar";
+import userIconSmall from "../../assets/icons/icon-user-19.svg";
+import userLogin from "../../assets/icons/icon-log-in19.svg";
+import userLogOut from "../../assets/icons/icon-log-out19.svg";
+
 import NavLink from "../NavLink/Navlink";
-import LanguageDropdown from "../LanguageSwitcher/LanguageDropdown";
 import Dropdown from "../Dropdown/Dropdown";
 import arrowIcon from "../../assets/icons/icon-arrow.svg";
 
 const Header: React.FC = () => {
   const [selectedLang, setSelectedLang] = useState("en");
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(false); // Змінна для статусу авторизації
 
   const languages = [
-    { code: "ua", label: "UKR" },
     { code: "en", label: "ENG" },
+    { code: "ua", label: "UKR" },
+  ];
+
+  const authorizedItems = [
+    { code: "myProfil", label: "My Profil", icon: userIconSmall },
+    { code: "logOut", label: "Log out", icon: userLogOut },
+  ];
+
+  const unauthorizedItems = [
+    { code: "login", label: "Log in", icon: userLogin },
+    { code: "register", label: "Sign up", icon: userIconSmall },
   ];
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
+  };
+
+  const handleUserSelect = (item: string) => {
+    if (item === "logOut") {
+      // Логіка виходу користувача
+      setIsAuthenticated(false);
+    } else if (item === "login") {
+      // Логіка авторизації користувача
+      setIsAuthenticated(true);
+    }
   };
 
   return (
@@ -48,6 +70,8 @@ const Header: React.FC = () => {
             items={languages}
             selectedItem={selectedLang}
             onSelect={setSelectedLang}
+            menuClassName={styles.langDropdownMenu}
+
           />
           <Button className={styles.search}>
             <img src={searchIcon} alt="Search" />
@@ -55,9 +79,16 @@ const Header: React.FC = () => {
           <Button className={styles.cart}>
             <img src={cartIcon} alt="Cart" />
           </Button>
-          <Button className={styles.user}>
-            <img src={userIcon} alt="User" />
-          </Button>
+
+          <Dropdown
+            items={isAuthenticated ? authorizedItems : unauthorizedItems}
+            selectedItem=""
+            onSelect={handleUserSelect}
+            showIcons={true} // Відображаємо іконки у випадаючому списку
+            showIcon={true} // Відображаємо іконку на кнопці
+            icon={userIcon} // Використовуємо іконку користувача
+            menuClassName={styles.userDropdownMenu}
+          />
         </div>
       </div>
       <div className={styles.bottomBar}>
@@ -69,6 +100,7 @@ const Header: React.FC = () => {
           <Button className={styles.burgerClose} onClick={toggleSidebar}>
             <img src={burgerClose} alt="burgerCloseMenu" />
           </Button>
+          
           <div className={styles.logo}>MamaCare</div>
         </div>
 
