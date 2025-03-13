@@ -1,9 +1,10 @@
 import React from "react";
 import "./Input.module.scss";
+import { FC } from "react";
 
 interface InputProps {
   type: string;
-  placeholder: string;
+  placeholder?: string;
   value: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }

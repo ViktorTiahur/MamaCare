@@ -10,8 +10,7 @@ import burgerClose from "../../assets/icons/icon-burger-close.svg";
 import userIconSmall from "../../assets/icons/icon-user-19.svg";
 import userLogin from "../../assets/icons/icon-log-in19.svg";
 import userLogOut from "../../assets/icons/icon-log-out19.svg";
-
-import NavLink from "../NavLink/Navlink";
+// import NavLink from "../NavLink/Navlink";
 import Dropdown from "../Dropdown/Dropdown";
 import arrowIcon from "../../assets/icons/icon-arrow.svg";
 

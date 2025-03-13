@@ -1,23 +1,31 @@
 .footer {
   background-color: #6b5b95;
   color: #fff;
-  padding: 40px 20px;
-  max-height: 423px;
+  padding: 40px;
+}
+
+.upperFooter {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
 }
 
 .container {
   display: flex;
-  justify-content: space-around;
-  margin-bottom: 30px;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin: 30px 10px 30px;
 }
 
 .brandSection {
-  max-width: 325px;
   display: flex;
-  flex-direction: column;
+  width: 55%;
   align-items: flex-start;
   margin-bottom: 20px;
-  gap: 20px;
+  justify-content: space-between;
 }
 
 .title {
@@ -36,8 +44,6 @@
 
 .navTop {
   display: flex;
-  justify-content: center;
-  align-items: flex-start;
   flex-direction: column;
   gap: 20px;
   font-weight: 500;
@@ -66,53 +72,40 @@
 .divider {
   border: 1px solid #fff;
   width: 100%;
-  max-width: 1124px;
-  margin: auto;
 }
 
 .footerBottom {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  max-width: 1124px;
-  margin: 10px auto 0;
-}
-
-@media (max-width: 600px) {
-  .footerBottom {
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-  }
-
-  .navTop {
-    flex-direction: column;
-    gap: 30px;
-  }
+  margin-top: 10px;
+  padding: 0 10px;
 }
 
 .linkPrivacy {
   font-weight: 400;
   font-size: 13px;
   text-decoration: underline;
-  text-decoration-skip-ink: none;
   text-align: center;
   color: #fef7ff;
 }
+
 .linkPrivacy:hover {
   text-decoration: none;
-  color: #fef7ff;
 }
+
 .text {
   font-weight: 400;
   font-size: 13px;
   text-align: center;
   color: #eaddff;
 }
+
 .contactTitle {
   font-weight: 500;
   font-size: 24px;
 }
+
 .contactSection {
   display: flex;
   flex-direction: column;
@@ -125,4 +118,115 @@
   gap: 8px;
   font-weight: 400;
   font-size: 16px;
+  line-height: 137%;
+  letter-spacing: 0.01em;
+}
+
+@media (max-width: 1024px) {
+  .container,
+  .divider,
+  .footerBottom {
+    max-width: 870px;
+  }
+}
+
+@media (max-width: 918px) {
+  .container,
+  .divider,
+  .footerBottom {
+    max-width: 820px;
+  }
+}
+
+@media (max-width: 820px) {
+  .container,
+  .divider,
+  .footerBottom {
+    max-width: 720px;
+  }
+}
+
+@media (max-width: 768px) {
+  .container,
+  .divider,
+  .footerBottom {
+    max-width: 668px;
+  }
+}
+
+@media (max-width: 695px) {
+  .container,
+  .divider,
+  .footerBottom {
+    max-width: 595px;
+  }
+  .container {
+    flex-direction: column;
+  }
+  .subSection {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+  .brandSection {
+    flex-direction: row;
+    gap: 50%;
+  }
+  .nav {
+    min-width: 140px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container,
+  .divider,
+  .footerBottom {
+    max-width: 380px;
+  }
+  .container {
+    flex-direction: column;
+  }
+  .subSection {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+  .brandSection {
+    flex-direction: row;
+    gap: 30%;
+  }
+}
+
+@media (max-width: 320px) {
+  .container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    max-width: 260px;
+  }
+  .brandSection {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+  }
+  .nav {
+    align-items: center;
+  }
+  .socialIcons {
+    justify-content: center;
+  }
+  .contactSection {
+    align-items: center;
+    text-align: center;
+  }
+  .divider,
+  .footerBottom {
+    max-width: 260px;
+  }
+  .footerBottom {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
 }

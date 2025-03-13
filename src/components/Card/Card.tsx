@@ -1,5 +1,5 @@
 import React from "react";
-import "./Card.module.scss";
+import styles from "./Card.module.scss";
 
 interface CardProps {
   title: string;
@@ -12,16 +12,16 @@ interface CardProps {
 
 const Card: React.FC<CardProps> = ({
   title,
-  desriprion,
+  description,
   price,
   brend,
   color,
   age,
 }) => {
   return (
-    <div className="card">
+    <div className={styles["card"]}>
       <h2>{title}</h2>
-      <p>{desriprion}</p>
+      <p>{description}</p>
       <p>{price}</p>
       <p>{brend}</p>
       <p>{color}</p>
