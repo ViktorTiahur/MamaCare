@@ -64,7 +64,6 @@
       height: 22px;
       font-family: "Roboto", sans-serif;
       font-weight: 500;
-      font-size: 18px;
       line-height: 130%;
     }
   }
@@ -88,4 +87,10 @@
 .user-dropdown-menu {
   background-color: black;
   left: -130px;
+}
+
+@media (max-width: 480px) {
+  .dropdown-item {
+    padding: 0px;
+  }
 }

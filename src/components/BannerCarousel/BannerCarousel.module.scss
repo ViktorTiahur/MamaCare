@@ -10,6 +10,31 @@
   width: 100%;
   height: 540px;
   overflow: hidden;
+
+  .slide {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    transition: opacity 0.5s ease-in-out;
+    z-index: 1;
+  }
+
+  .slide-0 {
+    background-image: url("../../assets/backgrounds/header-bg-1-desktop.png");
+  }
+
+  .slide-1 {
+    background-image: url("../../assets/backgrounds/header-bg-2-desktop.png");
+  }
+  .slide-2 {
+    background-image: url("../../assets/backgrounds/header-bg-3-desktop.png");
+  }
 }
 
 .inscription {
@@ -19,19 +44,6 @@
   height: 100%;
   position: absolute;
   inset: 0;
-}
-
-.slide {
-  background-size: cover;
-  background-position: center;
-  width: 100%;
-  height: 100%;
-  display: none;
-  justify-content: center;
-  align-items: center;
-  position: absolute;
-  transition: opacity 0.5s ease-in-out;
-  z-index: 1;
 }
 
 .slide.active {
@@ -50,13 +62,12 @@
   font-family: "RobotoLight", sans-serif;
   font-size: 48px;
   text-align: start;
-  // margin-bottom: 20px;
 }
 
 .bannerText {
-  margin-top: 40px;
-  margin-left: 156px;
+  // margin-left: 112px;
   height: 242px;
+  padding: 0px 156px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -76,7 +87,7 @@
 .dot {
   width: 13px;
   height: 13px;
-  background: #fff; 
+  background: #fff;
   border-radius: 50%;
   margin-right: 24px;
   cursor: pointer;
@@ -111,5 +122,92 @@
   &:active {
     background-color: #8275a5;
     color: #fff;
+  }
+}
+
+@media (max-width: 1024px) {
+  .bannerText {
+    padding: 0px 112px;
+    .legend {
+      max-width: 480px;
+    }
+  }
+  .bannerCarousel {
+    .slide-0 {
+      background-image: url("../../assets/backgrounds/header-bg-1-tablet.png");
+    }
+    .slide-1 {
+      background-image: url("../../assets/backgrounds/header-bg-2-tablet.png");
+    }
+    .slide-2 {
+      background-image: url("../../assets/backgrounds/header-bg-3-tablet.png");
+    }
+  }
+}
+
+@media (max-width: 918px) {
+  .bannerCarousel {
+    .slide-0 {
+      background-image: url("../../assets/backgrounds/header-bg-1-tablet.png");
+    }
+    .slide-1 {
+      background-image: url("../../assets/backgrounds/header-bg-2-tablet.png");
+    }
+    .slide-2 {
+      background-image: url("../../assets/backgrounds/header-bg-3-tablet.png");
+    }
+  }
+}
+
+@media (max-width: 800px) {
+  .bannerCarousel {
+    .slide-0 {
+      background-image: url("../../assets/backgrounds/header-bg-1-tablet.png");
+    }
+    .slide-1 {
+      background-image: url("../../assets/backgrounds/header-bg-2-tablet.png");
+    }
+    .slide-2 {
+      background-image: url("../../assets/backgrounds/header-bg-3-tablet.png");
+    }
+  }
+}
+
+@media (max-width: 695px) {
+
+  
+  .bannerText {
+    height: 160px;
+    padding: 0px 24px;
+    .legend {
+      max-width: 484px;
+      font-size: 36px;
+    }
+  }
+
+  .bannerCarousel {
+    .slide-0 {
+      background-image: url("../../assets/backgrounds/header-tablet-1-695.png");
+    }
+    .slide-1 {
+      background-image: url("../../assets/backgrounds/header-tablet-2-695.png");
+    }
+    .slide-2 {
+      background-image: url("../../assets/backgrounds/header-tablet-3-695.png");
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .bannerCarousel {
+    .slide-0 {
+      background-image: url("../../assets/backgrounds/header-bg-1-mobile.png");
+    }
+    .slide-1 {
+      background-image: url("../../assets/backgrounds/header-bg-2-mobile.png");
+    }
+    .slide-2 {
+      background-image: url("../../assets/backgrounds/header-bg-3-mobile.png");
+    }
   }
 }

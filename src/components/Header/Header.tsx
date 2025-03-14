@@ -66,6 +66,7 @@ const Header: React.FC = () => {
         </div>
         <div className={`${styles.buttons} ${styles.rightButtons}`}>
           <Dropdown
+          className={styles.langDropdown}
             items={languages}
             selectedItem={selectedLang}
             onSelect={setSelectedLang}

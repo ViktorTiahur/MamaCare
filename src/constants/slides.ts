@@ -1,6 +1,6 @@
-import headerBg1 from "../assets/backgrounds/header-bg-1.png";
-import headerBg2 from "../assets/backgrounds/header-bg-2.png";
-import headerBg3 from "../assets/backgrounds/header-bg-3.png";
+import headerBg1 from "../assets/backgrounds/header-bg-1-desktop.png";
+import headerBg2 from "../assets/backgrounds/header-bg-2-desktop.png";
+import headerBg3 from "../assets/backgrounds/header-bg-3-desktop.png";
 
 export const slides = [
   {

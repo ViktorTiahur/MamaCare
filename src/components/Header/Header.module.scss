@@ -35,6 +35,7 @@
     padding: 24px 42px 0;
     border-bottom: 2px solid #c7c2d6;
     height: 86px;
+    font-size: 18px;
 
     button {
       color: #65558f;
@@ -46,6 +47,7 @@
 
       button {
         margin-right: 48px;
+        white-space: nowrap;
 
         &:hover {
           border-bottom: 4px solid #a982e873;
@@ -61,7 +63,6 @@
 
     .rightButtons {
       width: 292px;
-      padding: 0 12px;
       display: flex;
       justify-content: space-between;
 
@@ -84,8 +85,11 @@
 
     .burgerMenu {
       display: none;
-      width: 40px;
-      height: 40px;
+      justify-content: center;
+      align-items: center;
+      margin-right: 44px;
+      width: 48px;
+      height: 48px;
 
       img {
         width: 32px;
@@ -110,7 +114,8 @@
     position: fixed;
     top: 0;
     left: 0;
-    width: 320px;
+    max-width: 380px;
+    width: 100%;
     height: 100vh;
     background: #fff;
     z-index: 1000;
@@ -128,12 +133,13 @@
       align-items: end;
       height: 86px;
       border-bottom: 2px solid #c7c2d6;
-      padding: 0 15px;
+      padding: 0 15px 15px;
       margin-bottom: 51px;
+      position: relative;
 
       .burgerClose {
-        width: 48px;
-        height: 48px;
+        width: 40px;
+        height: 40px;
 
         img {
           width: 16px;
@@ -142,8 +148,10 @@
       }
       .logo {
         display: flex;
-        height: 48px;
         align-items: center;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
       }
     }
 
@@ -189,19 +197,24 @@
   }
 }
 
+@media (max-width: 1130px) {
+  .header {
+    .topBar {
+      .leftButtons {
+        font-size: 16px;
+      }
+    }
+  }
+}
+
 @media (max-width: 1024px) {
   .header {
     .topBar {
-      padding: 39px 36px 0;
+      padding: 39px 24px 0;
       align-items: end;
 
       .burgerMenu {
         display: flex;
-        justify-content: center;
-        align-items: center;
-        margin-right: 56px;
-        width: 48px;
-        height: 48px;
       }
 
       .leftButtons {
@@ -211,34 +224,111 @@
   }
 }
 
-@media (max-width: 480px) {
-  .container {
-    font-size: 14px;
-  }
-}
-
 @media (max-width: 695px) {
   .header {
     .topBar {
-      padding: 39px 36px 0;
+      padding: 0px 8px;
       align-items: end;
+      position: relative;
+      height: 58px;
+      .rightButtons {
+        justify-content: end;
+
+        button {
+          width: 40px;
+          height: 40px;
+          img {
+            width: 19px;
+          }
+        }
+
+        .search {
+          position: absolute;
+          left: 48px;
+        }
+
+        .userDropdownMenu {
+          width: 175px;
+          top: 42px;
+          left: -144px;
+          padding: 16px;
+          gap: 0px;
+        }
+      }
+
+      .langDropdown {
+        display: none;
+      }
+
+      .logo {
+        font-size: 24px;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+      }
 
       .burgerMenu {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin-right: 56px;
-        width: 48px;
-        height: 48px;
+        width: 40px;
+        height: 40px;
+        img {
+          width: 18px;
+        }
       }
 
       .leftButtons {
         display: none;
       }
+    }
+    .sidebar {
+      .sidebarHeader {
+        height: 58px;
+        padding: 8px 7px;
 
-      .langDropdownMenu {
-        display: none;
-        background-color: #65558f;
+        .burgerClose {
+        }
+        .logo {
+        }
+      }
+
+      .sidebarNav {
+        .navItem,
+        button {
+        }
+      }
+    }
+  }
+}
+@media (max-width: 480px) {
+  .header {
+    .topBar {
+      .rightButtons {
+        font-size: 16px;
+        button {
+          img {
+            width: 18px;
+          }
+        }
+
+     
+      }
+
+      .logo {
+       
+      }
+    }
+    .sidebar {
+      .sidebarHeader {
+        .burgerClose {
+        }
+        .logo {
+          font-size: 24px;
+        }
+      }
+
+      .sidebarNav {
+        .navItem,
+        button {
+        }
       }
     }
   }

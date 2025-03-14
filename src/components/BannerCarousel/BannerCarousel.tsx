@@ -17,7 +17,7 @@ const BannerCarousel: React.FC = () => {
 
   return (
     <div className={styles.bannerCarousel}>
-      {slides.map((slide, index) => (
+      {/* {slides.map((slide, index) => (
         <div key={index} className={styles.inscription}>
           <div
             style={{ backgroundImage: slide.backgroundImage }}
@@ -37,7 +37,29 @@ const BannerCarousel: React.FC = () => {
             </div>
           </div>
         </div>
+      ))} */}
+
+      {slides.map((slide, index) => (
+        <div key={index} className={styles.inscription}>
+          <div
+            className={`${styles.slide} ${styles[`slide-${index}`]} ${
+              index === currentSlide ? styles.active : ""
+            }`}
+          >
+            <div className={styles.bannerText}>
+              <p className={styles.legend}>{slide.legendText}</p>
+              <Button
+                as="a"
+                className={styles.bannerButton}
+                href={slide.buttonLink}
+              >
+                {slide.buttonText}
+              </Button>
+            </div>
+          </div>
+        </div>
       ))}
+
       <div className={styles.dots}>
         {slides.map((_, index) => (
           <span

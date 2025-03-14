@@ -1,7 +1,36 @@
 .container {
   max-width: 1440px;
+  width: 100%;
   margin: 0 auto;
-  min-width: 1150px;
+  transition: all 0.3s ease-in-out;
+  // min-width: 1150px;
+}
+
+@media screen and (max-width: 1440px) {
+  .container {
+    max-width: 1270px;
+  }
+}
+@media screen and (max-width: 1270px) {
+  .container {
+    max-width: 1105px;
+  }
+}
+@media screen and (max-width: 1120px) {
+  .container {
+    max-width: 1020px;
+  }
+}
+@media screen and (max-width: 1024px) {
+  .container {
+    max-width: 900px;
+  }
+}
+
+@media screen and (max-width: 920px) {
+  .container {
+    // max-width: 800px;
+  }
 }
 
 // html,
