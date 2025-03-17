@@ -1,0 +1,61 @@
+.card {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    width: 300px;
+    padding: 16px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+  
+    &__image {
+      width: 100%;
+      height: auto;
+      border-radius: 8px 8px 0 0;
+    }
+  
+    &__header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 8px;
+    }
+  
+    &__title {
+      font-size: 18px;
+      font-weight: bold;
+    }
+  
+    &__rating {
+      color: gold;
+      font-size: 14px;
+    }
+  
+    &__description {
+      margin: 12px 0;
+      color: #555;
+    }
+  
+    &__footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+  
+      &-price {
+        font-size: 16px;
+        font-weight: bold;
+      }
+  
+      &-cart-button {
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        padding: 8px 12px;
+        border-radius: 4px;
+        cursor: pointer;
+  
+        &:hover {
+          background-color: #0056b3;
+        }
+      }
+    }
+  }
+  

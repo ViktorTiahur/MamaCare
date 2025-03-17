@@ -16,6 +16,7 @@ interface DropdownProps {
   showIcons?: boolean;
   showIcon?: boolean;
   icon?: string;
+  onToggle?: (isOpen: boolean) => void; // Додали подію для відкриття/закриття
 }
 
 const Dropdown: React.FC<DropdownProps> = ({
@@ -27,6 +28,7 @@ const Dropdown: React.FC<DropdownProps> = ({
   showIcons = false, // Значення за замовчуванням - іконки не показуються у випадаючому списку
   showIcon = false, // Значення за замовчуванням - іконка на кнопці не показується
   icon, // Іконка на кнопці
+  onToggle, // Нова подія
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
@@ -38,19 +40,31 @@ const Dropdown: React.FC<DropdownProps> = ({
         !dropdownRef.current.contains(event.target as Node)
       ) {
         setIsOpen(false);
+        if (onToggle) {
+          onToggle(false); // Викликаємо onToggle при закритті
+        }
       }
     };
     document.addEventListener("mousedown", handleClickOutside);
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, []);
+  }, [onToggle]);
 
-  const toggleDropdown = () => setIsOpen(!isOpen);
+  const toggleDropdown = () => {
+    const newIsOpen = !isOpen;
+    setIsOpen(newIsOpen);
+    if (onToggle) {
+      onToggle(newIsOpen); // Викликаємо onToggle при зміні стану
+    }
+  };
 
   const handleSelect = (item: string) => {
     onSelect(item);
     setIsOpen(false);
+    if (onToggle) {
+      onToggle(false); // Викликаємо onToggle при закритті після вибору
+    }
   };
 
   const selectedLabel =

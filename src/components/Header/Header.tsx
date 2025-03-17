@@ -13,11 +13,14 @@ import userLogOut from "../../assets/icons/icon-log-out19.svg";
 // import NavLink from "../NavLink/Navlink";
 import Dropdown from "../Dropdown/Dropdown";
 import arrowIcon from "../../assets/icons/icon-arrow.svg";
+import SearchModal from "../SearchModal/SearchModal";
 
 const Header: React.FC = () => {
   const [selectedLang, setSelectedLang] = useState("en");
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isAuthenticated, setIsAuthenticated] = useState(false); // Змінна для статусу авторизації
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [isLangDropdownActive, setIsLangDropdownActive] = useState(false);
 
   const languages = [
     { code: "en", label: "ENG" },
@@ -36,6 +39,10 @@ const Header: React.FC = () => {
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
+  };
+
+  const handleLangDropdownToggle = (isOpen: boolean) => {
+    setIsLangDropdownActive(isOpen); // Оновлюємо стан
   };
 
   const handleUserSelect = (item: string) => {
@@ -66,16 +73,23 @@ const Header: React.FC = () => {
         </div>
         <div className={`${styles.buttons} ${styles.rightButtons}`}>
           <Dropdown
-          className={styles.langDropdown}
+            className={styles.langDropdown}
             items={languages}
             selectedItem={selectedLang}
             onSelect={setSelectedLang}
             menuClassName={styles.langDropdownMenu}
-
           />
-          <Button className={styles.search}>
+          <Button
+            className={styles.search}
+            onClick={() => setIsSearchOpen(true)}
+          >
             <img src={searchIcon} alt="Search" />
           </Button>
+
+          {isSearchOpen && (
+            <SearchModal onClose={() => setIsSearchOpen(false)} />
+          )}
+
           <Button className={styles.cart}>
             <img src={cartIcon} alt="Cart" />
           </Button>
@@ -100,7 +114,7 @@ const Header: React.FC = () => {
           <Button className={styles.burgerClose} onClick={toggleSidebar}>
             <img src={burgerClose} alt="burgerCloseMenu" />
           </Button>
-          
+
           <div className={styles.logo}>MamaCare</div>
         </div>
 
@@ -121,11 +135,30 @@ const Header: React.FC = () => {
             <Button className={styles.navButton}>About Us</Button>
             <img src={arrowIcon} alt="Arrow" className={styles.arrowIcon} />
           </div>
+
+          <Dropdown
+            className={styles.langDropdown}
+            items={languages}
+            selectedItem={selectedLang}
+            onSelect={setSelectedLang}
+            onToggle={handleLangDropdownToggle}
+            menuClassName={styles.langDropdownMenu}
+          />
         </nav>
+
+        <div
+          className={`${styles.sidebarOverlay} ${
+            isSidebarOpen ? styles.open : ""
+          } ${isLangDropdownActive ? styles.langDropdownActive : ""}`}
+        ></div>
       </div>
 
       {isSidebarOpen && (
-        <div className={styles.overlay} onClick={toggleSidebar}></div>
+        <div
+          className={`${styles.overlay} ${isSidebarOpen ? styles.open : ""} ${
+            isLangDropdownActive ? styles.langDropdownActive : ""
+          }`}
+        ></div>
       )}
     </header>
   );
