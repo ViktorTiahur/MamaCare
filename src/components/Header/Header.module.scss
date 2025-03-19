@@ -124,8 +124,9 @@
     position: fixed;
     top: 0;
     left: 0;
-    width: 380px;
+    max-width: 380px;
 
+    width: 100%;
     height: 100vh;
     background: #fff;
     z-index: 1100;
@@ -202,7 +203,7 @@
         }
       }
       .langDropdown {
-        // display: none;
+        display: none;
         position: relative;
         z-index: 1100;
         margin-top: 47px;
@@ -211,8 +212,8 @@
           width: 128px;
           height: 140px;
           position: fixed;
-          top: 50%;
-          left: 50%;
+          top: 40%;
+          right: 47%;
           transform: translate(50%, -50%);
           z-index: 5555;
           font-size: 18px;

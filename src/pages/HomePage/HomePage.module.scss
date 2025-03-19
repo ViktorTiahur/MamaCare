@@ -1,24 +1,106 @@
+@font-face {
+  font-family: "RobotoLight";
+  src: url("../../assets/fonts/Roboto-Light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url("../../assets/fonts/Roboto-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+}
+
 .homePage {
   width: 100%;
   max-width: 1440px;
-  height: 500px;
   margin: 0 auto;
   background-color: #eaddff;
-  padding: 20px;
 
-  @media (max-width: 1440px) {
-    padding: 15px;
+  .title {
+    font-family: "RobotoLight", sans-serif;
+    font-size: 44px;
+    color: #65558f;
+    margin-bottom: 32px;
+  }
+
+  button {
+    display: flex;
+    color: #fff;
+    justify-content: center;
+    align-items: center;
+    background-color: #65558f;
+    border-radius: 100px;
+    height: 48px;
+    width: 202px;
+    margin: auto;
+    font-family: "Roboto", sans-serif;
+    font-size: 18px;
+  }
+  .containerBabyBoxed,
+  .containerPick,
+  .containerReview {
+    display: flex;
+    flex-direction: column;
+    padding: 84px 156px;
+    background-color: #fff;
+
+    .babyBoxedList {
+      display: grid;
+      grid-template-rows: repeat(1, 1fr);
+      grid-template-columns: repeat(3, minmax(170px, 1fr));
+      margin-bottom: 64px;
+      gap: 24px;
+      width: 100%;
+    }
+    .pickList {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(150px, 1fr));
+      grid-template-rows: repeat(2, 1fr);
+      margin-bottom: 64px;
+      gap: 24px;
+      width: 100%;
+    }
+  }
+
+  .containerPick {
+    background-color: #f7f4ff;
+  }
+
+  @media (max-width: 1200px) {
+    .containerBabyBoxed,
+    .containerPick,
+    .containerReview {
+      padding: 74px 110px;
+    }
   }
 
   @media (max-width: 1024px) {
-    padding: 10px;
+    .containerBabyBoxed,
+    .containerPick,
+    .containerReview {
+      padding: 64px 24px;
+    }
   }
 
-  @media (max-width: 768px) {
-    padding: 5px;
+  @media (max-width: 920px) {
+    .pickList {
+      grid-template-columns: repeat(3, minmax(150px, 1fr)) !important;
+      grid-template-rows: repeat(3, 1fr);
+    }
+  }
+  @media (max-width: 695px) {
+    .babyBoxedList {
+      grid-template-columns: repeat(2, minmax(170px, 1fr)) !important;
+      grid-template-rows: repeat(2, 1fr) !important;
+    }
+    .pickList {
+      grid-template-columns: repeat(2, minmax(150px, 1fr)) !important;
+      grid-template-rows: repeat(4, 1fr);
+    }
   }
 
   @media (max-width: 480px) {
-    padding: 2px;
   }
 }

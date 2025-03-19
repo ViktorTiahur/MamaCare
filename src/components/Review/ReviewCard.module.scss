@@ -1,0 +1,65 @@
+@font-face {
+  font-family: "Roboto";
+  src: url("../../assets/fonts/Roboto-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+}
+
+.reviewCard {
+  max-width: 360px;
+  height: auto;
+  border-radius: 12px;
+  padding: 16px 16px 32px;
+  border-width: 1px;
+  border: 1px solid #c7c2d6;
+  gap: 24px;
+  box-shadow: 0px 1px 3px 1px rgba(102, 84, 127, 0.15),
+    0px 1px 2px 0px rgba(102, 84, 127, 0.2);
+  flex: 1 1 30%;
+  img {
+    width: 100%;
+  }
+}
+
+.name {
+  display: flex;
+  justify-content: space-between;
+  color: #65558f;
+  font-family: "Roboto", sans-serif;
+  font-size: 24px;
+  margin: 24px 0px;
+}
+
+.rating {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.star {
+  width: 24px;
+  height: 24px;
+}
+
+.text {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+}
+
+@media (max-width: 920px) {
+  .name {
+    flex-direction: column;
+    .rating {
+      height: 24px;
+      justify-content: flex-start;
+      img {
+        width: 20px;
+      }
+    }
+  }
+}
+@media (max-width: 695px) {
+}
+@media (max-width: 480px) {
+}
