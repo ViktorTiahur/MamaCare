@@ -27,6 +27,7 @@
   color: #65558f;
   font-family: "Roboto", sans-serif;
   font-size: 24px;
+  font-weight: 500;
   margin: 24px 0px;
 }
 
@@ -37,14 +38,15 @@
 }
 
 .star {
-  width: 24px;
-  height: 24px;
+  // width: 24px;
+  // height: 24px;
 }
 
 .text {
   font-family: "Roboto", sans-serif;
   font-weight: 400;
   font-size: 20px;
+  line-height: 130%;
 }
 
 @media (max-width: 920px) {

@@ -35,7 +35,7 @@ const HomePage: React.FC = () => {
           itemsToShow={itemsCount.babyBoxItems}
         ></ProductList>
         <div className={styles.button}>
-          <Button>Переглянути всі коробки подарунків</Button>
+          <Button>View all Gift Boxes</Button>
         </div>
       </div>
 
@@ -46,7 +46,7 @@ const HomePage: React.FC = () => {
           itemsToShow={itemsCount.pickItems}
         ></ProductList>
         <div className={styles.button}>
-          <Button>Переглянути всі продукти</Button>
+          <Button>View all Products</Button>
         </div>
       </div>
 
