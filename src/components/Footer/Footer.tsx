@@ -1,13 +1,4 @@
 import { FC } from "react";
-import {
-  Facebook,
-  LinkedIn,
-  YouTube,
-  Instagram,
-  Email,
-  Phone,
-  LocationOn,
-} from "@mui/icons-material";
 import NavLink from "../NavLink/Navlink";
 import styles from "./Footer.module.scss";
 import face from "../../assets/icons/face.png";
