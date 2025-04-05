@@ -64,4 +64,7 @@
 @media (max-width: 695px) {
 }
 @media (max-width: 480px) {
+  .reviewCard {
+    min-width: 0;
+  }
 }

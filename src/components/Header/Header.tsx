@@ -67,7 +67,7 @@ const Header: React.FC = () => {
           <nav className={styles.leftButtons}>
             <Button className={styles.baby}>Baby Box</Button>
             <Button className={styles.pick}>Pick & Buy</Button>
-            <Button className={styles.home}>How It Works</Button>
+            <Button className={styles.home}>FAQ</Button>
             <Button className={styles.about}>About Us</Button>
           </nav>
         </div>
@@ -95,6 +95,7 @@ const Header: React.FC = () => {
           </Button>
 
           <Dropdown
+            className={styles.userDropdown}
             items={isAuthenticated ? authorizedItems : unauthorizedItems}
             selectedItem=""
             onSelect={handleUserSelect}
@@ -102,6 +103,7 @@ const Header: React.FC = () => {
             showIcon={true} // Відображаємо іконку на кнопці
             icon={userIcon} // Використовуємо іконку користувача
             menuClassName={styles.userDropdownMenu}
+            itemClassName={styles.userDropdownItem}
           />
         </div>
       </div>

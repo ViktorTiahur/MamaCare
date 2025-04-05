@@ -17,6 +17,7 @@ interface DropdownProps {
   showIcon?: boolean;
   icon?: string;
   onToggle?: (isOpen: boolean) => void; // Додали подію для відкриття/закриття
+  itemClassName?: string;
 }
 
 const Dropdown: React.FC<DropdownProps> = ({
@@ -29,6 +30,7 @@ const Dropdown: React.FC<DropdownProps> = ({
   showIcon = false, // Значення за замовчуванням - іконка на кнопці не показується
   icon, // Іконка на кнопці
   onToggle, // Нова подія
+  itemClassName,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
@@ -89,7 +91,7 @@ const Dropdown: React.FC<DropdownProps> = ({
         {items.map((item) => (
           <div
             key={item.code}
-            className={styles["dropdown-item"]}
+            className={`${styles["dropdown-item"]} ${itemClassName || ""}`}
             onClick={() => handleSelect(item.code)}
           >
             {showIcons && item.icon && (

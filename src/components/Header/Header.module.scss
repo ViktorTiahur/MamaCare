@@ -31,7 +31,7 @@
   .topBar {
     display: flex;
     justify-content: space-between;
-    align-items: end;
+    // align-items: end;
     padding: 24px 42px 0;
     border-bottom: 2px solid #c7c2d6;
     height: 86px;
@@ -43,7 +43,7 @@
 
     .leftButtons {
       display: flex;
-      height: 48px;
+      height: 100%;
 
       button {
         margin-right: 48px;
@@ -84,11 +84,16 @@
 
       .userDropdownMenu {
         width: 224px;
-        top: 50px;
+        top: 56px;
         left: -176px;
+        .userDropdownItem {
+          margin: 0;
+          padding: 10px 10px;
+          justify-content: flex-start;
+        }
       }
       .langDropdownMenu {
-        top: 50px;
+        top: 56px;
         left: -45px;
       }
     }
