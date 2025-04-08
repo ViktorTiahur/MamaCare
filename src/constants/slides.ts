@@ -6,12 +6,12 @@ export const slides = [
   {
     backgroundImage: `url(${headerBg1})`,
     legendText: "Unique and thoughtful baby gift boxes",
-    buttonText: "View All Gift Boxes",
+    buttonText: "View All Baby Boxes",
     buttonLink: "/gift-box-1",
   },
   {
     backgroundImage: `url(${headerBg2})`,
-    legendText: "Get a discount on your order with code MamaCare",
+    legendText: "Save with code MamaCare",
     buttonText: "Pick & Buy",
     buttonLink: "/gift-box-2",
   },

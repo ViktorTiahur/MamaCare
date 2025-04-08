@@ -14,7 +14,7 @@
 .footer {
   background-color: #6b5b95;
   color: #fff;
-  padding: 60px 160px;
+  padding: 66px 160px;
   font-family: "Roboto-Regular", sans-serif;
   font-size: 24px;
 }
@@ -32,7 +32,8 @@
   align-items: flex-start;
   justify-content: space-between;
   flex-wrap: wrap;
-  margin: 30px 10px 30px;
+  padding-bottom: 37px;
+  // margin: 30px 10px 30px;
 }
 
 .brandSection {
@@ -49,16 +50,25 @@
   font-size: 48px;
   height: 75px;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
 }
 
-.nav {
-  font-family: "Roboto-Medium", sans-serif;
-  font-weight: 500;
+.nav,
+.contactSection {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   gap: 16px;
+  padding-top: 16px;
+  font-size: 18px;
+  line-height: 22px;
+  * {
+    border-bottom: 2px solid transparent;
+  }
+
+  > *:hover {
+    border-bottom: 2px solid #fff;
+  }
 }
 
 .subSection {
@@ -123,19 +133,16 @@
   font-size: 13px;
   text-align: center;
   color: #fef7ff;
+  // border: none;
 }
 
 .contactTitle {
-  font-family: "Roboto-Medium", sans-serif;
   font-weight: 500;
-  font-size: 24px;
+  font-size: 18px;
   line-height: 130%;
-}
+  pointer-events: none;
 
-.contactSection {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
+ 
 }
 
 .contactItem {
@@ -159,6 +166,17 @@
     &:hover {
       color: inherit;
     }
+  }
+
+  &:last-child {
+    align-items: flex-start;
+  }
+
+  .img {
+    width: 20px;
+    height: 20px;
+    justify-content: center;
+    align-items: center;
   }
 }
 

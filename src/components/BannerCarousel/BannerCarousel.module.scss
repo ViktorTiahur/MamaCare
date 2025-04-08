@@ -1,9 +1,9 @@
-@font-face {
-  font-family: "RobotoLight";
-  src: url("../../assets/fonts/Roboto-Light.ttf") format("truetype");
-  font-weight: 300;
-  font-style: normal;
-}
+// @font-face {
+//   font-family: "RobotoLight";
+//   src: url("../../assets/fonts/Roboto-Light.ttf") format("truetype");
+//   font-weight: 300;
+//   font-style: normal;
+// }
 
 .bannerCarousel {
   position: relative;
@@ -72,6 +72,7 @@
 .bannerText {
   // margin-left: 112px;
   // height: 242px;
+  
   padding: 0px 160px;
   display: flex;
   justify-content: flex-end;
@@ -105,7 +106,7 @@
 }
 
 .bannerButton {
-  font-family: "Roboto", sans-serif;
+  // font-family: "Roboto-Medium", sans-serif;
   font-size: 26px;
   background-color: #65558f;
   color: #fff;
@@ -179,17 +180,24 @@
 }
 
 @media (max-width: 695px) {
-  .bannerText {
-    padding: 0px 24px;
-    .legend {
-      font-size: 36px;
-    }
-    .bannerButton {
-      font-size: 16px;
-      height: 48px;
+  .slide.active {
+    justify-content: flex-start;
+    padding-top: 100px;
+
+    .bannerText {
+      padding: 0px 24px;
+      .legend {
+        font-size: 36px;
+        max-width: 400px;
+        line-height: 100%;
+      }
+      .bannerButton {
+        font-size: 16px;
+        height: 48px;
+        padding: 10px 24px;
+      }
     }
   }
-
   .bannerCarousel {
     .slide-0 {
       background-image: url("../../assets/backgrounds/header-tablet-1-695.png");
@@ -204,6 +212,12 @@
 }
 
 @media (max-width: 480px) {
+  .slide.active {
+    justify-content: flex-start;
+    padding-top: 60px;
+
+  }
+  
   .bannerCarousel {
     .slide-0 {
       background-image: url("../../assets/backgrounds/header-bg-1-mobile.png");

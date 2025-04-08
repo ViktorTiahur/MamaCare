@@ -26,8 +26,8 @@
   }
 
   .dropdown-item {
-    display: flex;
-    flex-direction: row;
+    width:max-content;
+    display: inline-flex;
     border-radius: 37px;
     margin: 0px auto;
     gap: 8px;
@@ -58,6 +58,7 @@
       img {
         width: 19px;
         height: 19px;
+        color: #65558f;
       }
     }
     .item-text {

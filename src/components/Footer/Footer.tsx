@@ -38,20 +38,25 @@ const Footer: FC = () => {
           <NavLink href="#" text="About us" />
           <NavLink href="#" text="FAQ" />
         </nav>
-        {/* </div> */}
 
         <div className={styles.contactSection}>
-          <h3 className={styles.contactTitle}>Contact us</h3>
+          <h3 className={styles.contactTitle}>Contact Us</h3>
           <Button className={styles.contactItem}>
-            <img src={mail} alt="mail" />
+            <div className="img">
+              <img src={mail} alt="mail" />
+            </div>
             <a href="mailto:">mamacareboxes@gmail.org</a>
           </Button>
           <Button className={styles.contactItem}>
-            <img src={phone} alt="phone" />
+            <div className="img">
+              <img src={phone} alt="phone" />
+            </div>
             <a href="tel:+0 00 000 00 00">+0 00 000 00 00</a>
           </Button>
           <Button className={styles.contactItem}>
-            <img src={map} alt="map" />
+            <div className="img">
+              <img src={map} alt="map" />
+            </div>
             <a href="https://maps.app.goo.gl/mwspnZrCT77iaPJU6" target="_blank">
               Apt. 843 6979 Leroy Streets, <br /> West Sofia, MI 73437
             </a>

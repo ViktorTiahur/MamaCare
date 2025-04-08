@@ -3,7 +3,7 @@ import reviews from "../../data/review.json";
 import styles from "./ReviewCarousel.module.scss";
 import ReviewCard from "../Review/ReviewCard";
 import leftArrow from "../../assets/icons/icon-arrov-left.svg";
-import rightArrow from "../../assets/icons/icon-arrov-right.png";
+import rightArrow from "../../assets/icons/icon-arrov-right.svg";
 
 const ReviewCarousel: React.FC = () => {
   const [index, setIndex] = useState(0);
