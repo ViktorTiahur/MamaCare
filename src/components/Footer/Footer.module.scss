@@ -60,7 +60,7 @@
   align-items: flex-start;
   gap: 16px;
   padding-top: 16px;
-  font-size: 18px;
+  font-size: 18px !important;
   line-height: 22px;
   * {
     border-bottom: 2px solid transparent;
@@ -68,6 +68,10 @@
 
   > *:hover {
     border-bottom: 2px solid #fff;
+  }
+
+  .link {
+    font-size: 18px;
   }
 }
 
@@ -141,8 +145,6 @@
   font-size: 18px;
   line-height: 130%;
   pointer-events: none;
-
- 
 }
 
 .contactItem {
