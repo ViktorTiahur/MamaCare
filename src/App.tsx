@@ -9,6 +9,7 @@ import SignUpPage from "./pages/SignUpPage/SignUpPage";
 import CartPage from "./pages/CartPage/CartPage";
 import ProductPage from "./pages/ProductPage/ProductPage";
 import Layout from "./components/Layout/Layout";
+import FAQPage from "./pages/FAQPage/FAQPage";
 
 const App: React.FC = () => {
   return (
@@ -52,6 +53,14 @@ const App: React.FC = () => {
           element={
             <Layout>
               <ProductPage />
+            </Layout>
+          }
+        />
+        <Route
+          path="/faq"
+          element={
+            <Layout>
+              <FAQPage />
             </Layout>
           }
         />

@@ -66,13 +66,13 @@
   font-family: "RobotoLight", sans-serif;
   font-size: 48px;
   // text-align: start;
-  margin-bottom: 24px;
+  margin-bottom: 54px;
 }
 
 .bannerText {
   // margin-left: 112px;
   // height: 242px;
-  
+
   padding: 0px 160px;
   display: flex;
   justify-content: flex-end;
@@ -163,6 +163,16 @@
       background-image: url("../../assets/backgrounds/header-bg-3-tablet.png");
     }
   }
+  .legend {
+    margin-bottom: 34px;
+    font-size: 36px;
+  }
+  .bannerButton {
+    font-size: 16px;
+    font-weight: 600;
+    height: 48px;
+    padding: 10px 24px;
+  }
 }
 
 @media (max-width: 800px) {
@@ -191,11 +201,6 @@
         max-width: 400px;
         line-height: 100%;
       }
-      .bannerButton {
-        font-size: 16px;
-        height: 48px;
-        padding: 10px 24px;
-      }
     }
   }
   .bannerCarousel {
@@ -215,9 +220,8 @@
   .slide.active {
     justify-content: flex-start;
     padding-top: 60px;
-
   }
-  
+
   .bannerCarousel {
     .slide-0 {
       background-image: url("../../assets/backgrounds/header-bg-1-mobile.png");

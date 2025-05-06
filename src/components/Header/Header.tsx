@@ -14,6 +14,8 @@ import userLogOut from "../../assets/icons/icon-log-out19.svg";
 import Dropdown from "../Dropdown/Dropdown";
 import arrowIcon from "../../assets/icons/icon-arrow.svg";
 import SearchModal from "../SearchModal/SearchModal";
+import { Link } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 const Header: React.FC = () => {
   const [selectedLang, setSelectedLang] = useState("en");
@@ -62,13 +64,28 @@ const Header: React.FC = () => {
           <Button className={styles.burgerMenu} onClick={toggleSidebar}>
             <img src={burgerMenu} alt="burgerMenu" />
           </Button>
-          <div className={styles.logo}>MamaCare</div>
+          <Link to="/">
+            <div className={styles.logo}>MamaCare</div>
+          </Link>
 
           <nav className={styles.leftButtons}>
-            <Button className={styles.baby}>Baby Box</Button>
+            {/* <Button className={styles.baby}>Baby Box</Button>
             <Button className={styles.pick}>Pick & Buy</Button>
-            <Button className={styles.home}>FAQ</Button>
-            <Button className={styles.about}>About Us</Button>
+            <Button className={styles.home}>FAQ</Button> */}
+            {/* <Button className={styles.about}>About Us</Button> */}
+
+            <Link to="/product/1" className={styles.link}>
+              Baby Box
+            </Link>
+            <Link to="/cart" className={styles.link}>
+              Pick & Buy
+            </Link>
+            <Link to="/faq" className={styles.link}>
+              FAQ
+            </Link>
+            <Link to="/signup" className={styles.link}>
+              About Us
+            </Link>
           </nav>
         </div>
         <div className={`${styles.buttons} ${styles.rightButtons}`}>
@@ -107,9 +124,12 @@ const Header: React.FC = () => {
           />
         </div>
       </div>
-      <div className={styles.bottomBar}>
-        <BannerCarousel />
-      </div>
+
+      {location.pathname === "/" && (
+        <div className={styles.bottomBar}>
+          <BannerCarousel />
+        </div>
+      )}
 
       <div className={`${styles.sidebar} ${isSidebarOpen ? styles.open : ""}`}>
         <div className={styles.sidebarHeader}>
