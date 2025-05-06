@@ -15,7 +15,7 @@ import Dropdown from "../Dropdown/Dropdown";
 import arrowIcon from "../../assets/icons/icon-arrow.svg";
 import SearchModal from "../SearchModal/SearchModal";
 import { Link } from "react-router-dom";
-import { useLocation } from "react-router-dom";
+// import { useLocation } from "react-router-dom";
 
 const Header: React.FC = () => {
   const [selectedLang, setSelectedLang] = useState("en");
