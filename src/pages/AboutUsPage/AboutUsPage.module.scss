@@ -1,0 +1,274 @@
+.aboutUs {
+  padding: 84px 156px;
+  margin: 0 auto;
+  background: #fff;
+
+  &__container {
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__title {
+    font-size: 48px;
+    font-weight: 300;
+    line-height: 100%;
+    text-align: left;
+    margin-bottom: 64px;
+    color: #65558f;
+  }
+
+  &__section_first {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(250px, 1fr);
+
+    column-gap: 48px;
+  }
+  &__section_second {
+    width: 100%;
+  }
+
+  &__wrapper {
+    margin-right: 48px;
+    flex: 1 1 50%;
+  }
+  &__content {
+    margin-bottom: 80px;
+  }
+
+  .our_mission,
+  .welcome {
+    grid-column: 1;
+    grid-row: 1;
+  }
+  .our_mission {
+    padding-top: 440px;
+  }
+
+  &__image {
+    width: 100%;
+    max-width: 100%;
+    grid-column: 2;
+    grid-row: 1;
+    img {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+    }
+  }
+
+  &__heading {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    height: 40px;
+    padding: 0 14px;
+    margin-bottom: 32px;
+  }
+
+  &__icon {
+    color: #6a5acd;
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
+    stroke-width: 2px;
+  }
+
+  &__subtitle {
+    font-size: 24px;
+    color: #65558f;
+    font-weight: 500;
+  }
+
+  &__text {
+    font-size: 20px;
+    line-height: 30px;
+    color: #1a1a1a;
+    margin-bottom: 25px;
+    font-weight: 400;
+  }
+
+  &__boxes {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(130px, 290px));
+
+    gap: 16px;
+    // margin-top: 30px;
+  }
+
+  &__box {
+    width: 100%;
+    max-width: 370px;
+    min-height: 120px;
+    background-color: #f7f4ff;
+    border-radius: 12px;
+    padding: 12px;
+    gap: 30px;
+    border: 1px solid #c7c2d6;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+  }
+
+  &__boxTitle {
+    font-size: 18px;
+    color: #65558f;
+    line-height: 22px;
+    font-weight: 500;
+    letter-spacing: 0.1px;
+  }
+
+  &__boxText {
+    font-size: 16px;
+    line-height: 22px;
+    font-weight: 400;
+    height: 50%;
+  }
+
+  // Media queries from large to small
+  @media (max-width: 1200px) {
+    .our_mission {
+      grid-row: 2;
+      grid-column: span 2;
+      padding: 0;
+    }
+
+    &__boxes {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  @media (max-width: 1024px) {
+    padding: 64px 24px;
+
+    &__title {
+      font-size: 48px;
+      // margin-bottom: 35px;
+    }
+
+    &__subtitle {
+      font-size: 24px;
+    }
+
+    &__image {
+      img {
+        max-width: 350px;
+      }
+    }
+
+    &__boxes {
+      // grid-template-columns: repeat(2, 1fr);
+    }
+
+    &__heading {
+      padding: 0;
+      img {
+        width: 32px;
+      }
+    }
+  }
+
+  @media (max-width: 695px) {
+    p {
+      margin-bottom: 0;
+    }
+    &__section_first {
+      grid-template-columns: 1fr;
+    }
+
+    .our_mission {
+      grid-column: 1;
+      grid-row: 3;
+    }
+    .welcome {
+      margin-bottom: 23px;
+      p {
+        margin-bottom: 20px;
+      }
+    }
+
+    &__title {
+      font-size: 32px;
+      margin-bottom: 40px;
+    }
+
+    &__image {
+      grid-column: 1;
+      grid-row: 2;
+      margin-bottom: 80px;
+      width: 100%;
+
+      img {
+        max-width: 100%;
+        height: auto;
+      }
+    }
+
+    &__subtitle {
+      font-size: 20px;
+    }
+
+    &__text {
+      // font-size: 15px;
+    }
+
+    &__boxes {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    &__boxTitle {
+      text-align: start;
+    }
+
+    &__heading {
+      img {
+        width: 25px;
+      }
+    }
+  }
+
+  @media (max-width: 480px) {
+    padding: 40px 16px;
+
+    &__content {
+      margin-bottom: 48px;
+    }
+
+    &__title {
+      line-height: 130%;
+      margin-bottom: 20px;
+    }
+
+    &__heading {
+      margin-bottom: 20px;
+    }
+
+    &__text {
+      font-size: 16px;
+      line-height: 130%;
+    }
+
+    &__boxes {
+      // grid-template-columns: 1fr;
+      gap: 15px;
+    }
+
+    &__box {
+      padding: 15px;
+    }
+
+    &__boxTitle {
+      font-size: 16px;
+    }
+
+    &__boxText {
+      font-size: 13px;
+    }
+  }
+}

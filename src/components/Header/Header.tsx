@@ -83,7 +83,7 @@ const Header: React.FC = () => {
             <Link to="/faq" className={styles.link}>
               FAQ
             </Link>
-            <Link to="/signup" className={styles.link}>
+            <Link to="/about" className={styles.link}>
               About Us
             </Link>
           </nav>
@@ -142,19 +142,28 @@ const Header: React.FC = () => {
 
         <nav className={styles.sidebarNav}>
           <div className={styles.navItem}>
-            <Button className={styles.navButton}>Baby Box</Button>
+            {/* <Button className={styles.navButton}>Baby Boxes</Button> */}
+            <Link to="/product/1" className={styles.navButton}>
+              Baby Box
+            </Link>
             <img src={arrowIcon} alt="Arrow" className={styles.arrowIcon} />
           </div>
           <div className={styles.navItem}>
-            <Button className={styles.navButton}>Pick & Buy</Button>
+            <Link to="/cart" className={styles.navButton}>
+              Pick & Buy
+            </Link>
             <img src={arrowIcon} alt="Arrow" className={styles.arrowIcon} />
           </div>
           <div className={styles.navItem}>
-            <Button className={styles.navButton}>How It Works</Button>
+            <Link to="/faq" className={styles.navButton}>
+              FAQ
+            </Link>
             <img src={arrowIcon} alt="Arrow" className={styles.arrowIcon} />
           </div>
           <div className={styles.navItem}>
-            <Button className={styles.navButton}>About Us</Button>
+            <Link to="/signup" className={styles.navButton}>
+              About Us
+            </Link>
             <img src={arrowIcon} alt="Arrow" className={styles.arrowIcon} />
           </div>
 

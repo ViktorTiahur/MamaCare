@@ -1,17 +1,3 @@
-@font-face {
-  font-family: "RobotoLight";
-  src: url("../../assets/fonts/Roboto-Light.ttf") format("truetype");
-  font-weight: 300;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "Roboto";
-  src: url("../../assets/fonts/Roboto-Medium.ttf") format("truetype");
-  font-weight: 500;
-  font-style: normal;
-}
-
 .babyBoxedList {
   background-color: #65558f;
 
@@ -32,7 +18,6 @@
   }
 
   .title {
-    font-family: "RobotoLight", sans-serif;
     font-size: 44px;
     color: #65558f;
     margin-bottom: 32px;
@@ -64,7 +49,13 @@
   /* Стилі для повних карток */
 }
 
-@media (max-width: 768px) {
-  .productList {
+@media (max-width: 480px) {
+  .cardList {
+    gap: 15px;
+  }
+}
+@media (max-width: 480px) {
+  .babyBoxedList {
+    grid-template-columns: 1fr;
   }
 }

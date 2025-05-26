@@ -3,7 +3,8 @@ import styles from "./HomePage.module.scss";
 import ProductList from "../../components/ProductList/ProductList";
 import Button from "../../components/Button/Button";
 import ReviewCarousel from "../../components/ReviewCarousel/ReviewCarousel";
-
+import BabyBoxSection from "../../components/BabyBoxSection/BabyBoxSection";
+import arrow from "../../assets/icons/icon-arrow.svg";
 const HomePage: React.FC = () => {
   const [itemsCount, setItemsCount] = useState({
     babyBoxItems: 3,
@@ -12,7 +13,10 @@ const HomePage: React.FC = () => {
 
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth < 695) {
+        if (window.innerWidth < 480) {
+        setItemsCount({ babyBoxItems: 2, pickItems: 2 });
+      }
+      else if (window.innerWidth < 695) {
         setItemsCount({ babyBoxItems: 4, pickItems: 8 });
       } else if (window.innerWidth < 920) {
         setItemsCount({ babyBoxItems: 3, pickItems: 9 });
@@ -28,19 +32,20 @@ const HomePage: React.FC = () => {
 
   return (
     <div className={styles.homePage}>
+ 
       <div className={styles.containerBabyBoxed}>
-        <h2 className={styles.title}>Baby Boxes</h2>
-        <ProductList
-          customClass={styles.babyBoxedList}
+        <BabyBoxSection
+          title="Baby Boxes"
           itemsToShow={itemsCount.babyBoxItems}
-        ></ProductList>
-        <div className={styles.button}>
-          <Button>View all Gift Boxes</Button>
-        </div>
+        />
       </div>
 
       <div className={styles.containerPick}>
-        <h2 className={styles.title}>Pick & Buy</h2>
+          <a href="#" className={styles.title}>
+            <h2>Pick & Buy</h2>
+            <img src={arrow} className={styles.arrow} alt="arrow link" />
+          </a>
+
         <ProductList
           customClass={styles.pickList}
           itemsToShow={itemsCount.pickItems}

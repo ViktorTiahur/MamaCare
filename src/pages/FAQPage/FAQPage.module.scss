@@ -1,6 +1,7 @@
 .faq {
-  padding: 84px 156px 0;
+  padding: 84px 156px 120px;
   margin: 0 auto;
+  background: #fff;
 
   &__title {
     font-size: 44px;
@@ -93,6 +94,7 @@
     }
   }
 }
+
 
 // Media queries from large to small
 @media (max-width: 1024px) {

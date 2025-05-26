@@ -28,7 +28,9 @@ const ReviewCarousel: React.FC = () => {
   // Оновлюємо кількість карток в залежності від ширини екрану
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth < 800) {
+      if (window.innerWidth < 400) {
+        setItemsPerPage(1);
+      } else if (window.innerWidth < 800) {
         setItemsPerPage(2);
       } else {
         setItemsPerPage(3);

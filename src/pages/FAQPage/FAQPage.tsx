@@ -1,10 +1,11 @@
 "use client";
 
 import type React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styles from "./FAQPage.module.scss";
 import plusIcon from "../../assets/icons/Icons-add-24.svg";
 import minusIcon from "../../assets/icons/icon-close-18.svg";
+import BabyBoxSection from "../../components/BabyBoxSection/BabyBoxSection";
 
 interface FAQItem {
   question: string;
@@ -84,31 +85,53 @@ const FAQPage: React.FC = () => {
     );
   };
 
+  const [boxCount, setBoxCount] = useState(3);
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 695) {
+        setBoxCount(2);
+      } else {
+        setBoxCount(3);
+      }
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   return (
     <div className={styles.faq}>
-      <h1 className={styles.faq__title}>FAQ</h1>
-      <div className={styles.faq__container}>
-        {faqItems.map((item, index) => (
-          <div
-            key={index}
-            className={`${styles.faq__item} ${
-              item.isOpen ? styles["faq__item--open"] : ""
-            }`}
-          >
+      <div className="faq__wrapper">
+        <h1 className={styles.faq__title}>FAQ</h1>
+        <div className={styles.faq__container}>
+          {faqItems.map((item, index) => (
             <div
-              className={styles.faq__question}
-              onClick={() => toggleFAQ(index)}
+              key={index}
+              className={`${styles.faq__item} ${
+                item.isOpen ? styles["faq__item--open"] : ""
+              }`}
             >
-              {item.question}
-              <span className={styles.faq__icon}>
-                <img src={item.isOpen ? minusIcon : plusIcon} alt="" />
-              </span>
+              <div
+                className={styles.faq__question}
+                onClick={() => toggleFAQ(index)}
+              >
+                {item.question}
+                <span className={styles.faq__icon}>
+                  <img src={item.isOpen ? minusIcon : plusIcon} alt="" />
+                </span>
+              </div>
+              {item.isOpen && (
+                <div className={styles.faq__answer}>{item.answer}</div>
+              )}
             </div>
-            {item.isOpen && (
-              <div className={styles.faq__answer}>{item.answer}</div>
-            )}
-          </div>
-        ))}
+          ))}
+        </div>
+        <BabyBoxSection
+          title="Keep shopping for BabyBoxes"
+          itemsToShow={boxCount}
+        />
       </div>
     </div>
   );

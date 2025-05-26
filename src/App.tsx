@@ -10,6 +10,7 @@ import CartPage from "./pages/CartPage/CartPage";
 import ProductPage from "./pages/ProductPage/ProductPage";
 import Layout from "./components/Layout/Layout";
 import FAQPage from "./pages/FAQPage/FAQPage";
+import AboutUsPage from "./pages/AboutUsPage/AboutUsPage";
 
 const App: React.FC = () => {
   return (
@@ -64,6 +65,16 @@ const App: React.FC = () => {
             </Layout>
           }
         />
+        <Route
+          path="/about"
+          element={
+            <Layout>
+              <AboutUsPage />
+            </Layout>
+          }
+        />
+
+     
       </Routes>
     </Router>
   );
