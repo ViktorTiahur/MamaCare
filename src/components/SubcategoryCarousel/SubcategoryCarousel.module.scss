@@ -1,0 +1,29 @@
+.wrapper {
+  .controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .arrow img {
+    width: 100%;
+    height: auto;
+    display: block;
+    display: none;
+  }
+
+  @media (max-width: 1280px) {
+    .controls {
+      gap: 10px;
+    }
+    .arrow img {
+      display: block;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .arrow img {
+      display: none;
+    }
+  }
+}

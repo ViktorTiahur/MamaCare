@@ -16,11 +16,11 @@ const Button: React.FC<ButtonProps> = ({
   onClick,
   href,
 }) => {
-  const Component = as === "a" ? "a" : "button";
+  const Component: React.ElementType = as === "a" ? "a" : "button";
 
   return (
     <Component
-      className={`${styles.button} ${className || ""}`}
+      className={[styles.button, className].filter(Boolean).join(" ")}
       onClick={as === "button" ? onClick : undefined}
       href={as === "a" ? href : undefined}
     >

@@ -7,9 +7,7 @@ const GlobalStyle = createGlobalStyle`
 
   @font-face {
     font-family: 'Roboto';
-    src:
-      url('/fonts/Roboto-Light.woff2') format('woff2'),
-      url('/fonts/Roboto-Light.ttf') format('truetype');
+    src: url('/fonts/Roboto-Light.ttf') format('truetype');
     font-weight: 300;
     font-style: normal;
     font-display: swap;
@@ -17,9 +15,7 @@ const GlobalStyle = createGlobalStyle`
 
     @font-face {
     font-family: 'Roboto';
-    src:
-      url('/fonts/Roboto-Medium.woff2') format('woff2'),
-      url('/fonts/Roboto-Medium.ttf') format('truetype');
+    src: url('/fonts/Roboto-Medium.ttf') format('truetype');
     font-weight: 500;
     font-style: normal;
     font-display: swap;
@@ -27,9 +23,7 @@ const GlobalStyle = createGlobalStyle`
 
     @font-face {
     font-family: 'Roboto';
-    src:
-      url('/fonts/Roboto-Regular.woff2') format('woff2'),
-      url('/fonts/Roboto-Regular.ttf') format('truetype');
+    src: url('/fonts/Roboto-Regular.ttf') format('truetype');
     font-weight: 400;
     font-style: normal;
     font-display: swap;

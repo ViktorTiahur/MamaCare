@@ -11,6 +11,7 @@ import ProductPage from "./pages/ProductPage/ProductPage";
 import Layout from "./components/Layout/Layout";
 import FAQPage from "./pages/FAQPage/FAQPage";
 import AboutUsPage from "./pages/AboutUsPage/AboutUsPage";
+import PickAndBuy from "./pages/PickAndChoosePage/PickAndChoosePage";
 
 const App: React.FC = () => {
   return (
@@ -70,6 +71,15 @@ const App: React.FC = () => {
           element={
             <Layout>
               <AboutUsPage />
+            </Layout>
+          }
+        />
+
+          <Route
+          path="/pickandbuy"
+          element={
+            <Layout>
+              <PickAndBuy />
             </Layout>
           }
         />

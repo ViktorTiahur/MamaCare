@@ -1,0 +1,45 @@
+.list {
+  display: flex;
+  white-space: nowrap;
+  overflow-x: auto;
+  justify-content: space-between;
+  gap: 5px;
+  width: 100%;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  .card {
+    min-width: 120px;
+    background: #f7f4ff;
+    border-radius: 12px;
+    padding: 14px 14px 4px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s;
+    color: #65558f;
+
+    border: 1px solid rgba(199, 194, 214, 1);
+    box-shadow: 0px 1px 2px 0px rgba(102, 84, 127, 0.2);
+
+    display: flex;
+    flex-direction: column;
+
+    img {
+      width: 100%;
+    }
+
+    .active {
+      border-color: #6c63ff;
+      background: #f1f0ff;
+    }
+
+    span {
+      font-size: 18px;
+      font-weight: 500;
+      line-height: 22px;
+      padding: 10px 0 12px;
+    }
+  }
+}

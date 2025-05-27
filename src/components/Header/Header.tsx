@@ -69,15 +69,10 @@ const Header: React.FC = () => {
           </Link>
 
           <nav className={styles.leftButtons}>
-            {/* <Button className={styles.baby}>Baby Box</Button>
-            <Button className={styles.pick}>Pick & Buy</Button>
-            <Button className={styles.home}>FAQ</Button> */}
-            {/* <Button className={styles.about}>About Us</Button> */}
-
             <Link to="/product/1" className={styles.link}>
               Baby Box
             </Link>
-            <Link to="/cart" className={styles.link}>
+            <Link to="/pickandbuy" className={styles.link}>
               Pick & Buy
             </Link>
             <Link to="/faq" className={styles.link}>

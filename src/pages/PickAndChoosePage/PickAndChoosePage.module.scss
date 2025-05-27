@@ -1,0 +1,25 @@
+.wrapper {
+  //   max-width: 1440px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 84px 156px;
+
+  .title {
+    font-size: 44px;
+    line-height: 100%;
+    color: #65558f;
+    margin-bottom: 34px;
+  }
+
+  .someword {
+    font-family: "ElMessiri";
+    font-size: 60px;
+    line-height: 1;
+    vertical-align: middle;
+  }
+
+  @media (max-width: 1024px) {
+    padding: 64px 24px;
+  }
+}
