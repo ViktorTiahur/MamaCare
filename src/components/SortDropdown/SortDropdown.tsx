@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import styles from "./SortDropdown.module.scss";
 import icon from "../../assets/icons/sort.svg";
 
@@ -33,7 +33,7 @@ const SortDropdown: React.FC<SortDropdownProps> = ({
   return (
     <div className={styles.relative}>
       <button onClick={() => setIsOpen(!isOpen)} className={styles.sort_button}>
-        <img src={icon} alt='sorting button' />
+        <img src={icon} alt="sorting button" />
         <span>Sort By</span>
       </button>
 
