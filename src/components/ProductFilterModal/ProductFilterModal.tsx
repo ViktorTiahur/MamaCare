@@ -18,7 +18,7 @@ const ProductFilterModal = ({
   matchCount?: number;
   selectedFilters: Record<string, string[]>;
   onChange: (updated: Record<string, string[]>) => void;
-  triggerRef?: React.RefObject<HTMLElement>;
+  triggerRef?: React.RefObject<HTMLButtonElement | null>;
 }) => {
   const [expandedFilter, setExpandedFilter] = useState<string | null>(null);
   const modalRef = useRef<HTMLDivElement>(null);
