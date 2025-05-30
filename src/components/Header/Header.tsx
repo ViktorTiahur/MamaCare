@@ -75,11 +75,11 @@ const Header: React.FC = () => {
             <Link to="/pickandbuy" className={styles.link}>
               Pick & Buy
             </Link>
-            <Link to="/faq" className={styles.link}>
-              FAQ
-            </Link>
             <Link to="/about" className={styles.link}>
               About Us
+            </Link>
+            <Link to="/faq" className={styles.link}>
+              FAQ
             </Link>
           </nav>
         </div>

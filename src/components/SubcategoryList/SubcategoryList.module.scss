@@ -42,4 +42,13 @@
       padding: 10px 0 12px;
     }
   }
+
+  @media (max-width: 695px) {
+    .card {
+      min-width: 115px;
+      span {
+        font-size: 16px;
+      }
+    }
+  }
 }

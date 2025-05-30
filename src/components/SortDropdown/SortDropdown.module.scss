@@ -1,0 +1,122 @@
+.relative {
+  position: relative;
+  z-index: 5000;
+  animation: fadeIn 0.3s ease;
+
+  .sort_button {
+    display: flex;
+    gap: 8px;
+    border-radius: 100px;
+    border: 1px solid #65558f;
+    width: 132px;
+    height: 46px;
+    padding: 10px 20px;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    z-index: 9999;
+    background: #fff;
+
+    span {
+      font-size: 18px;
+      font-weight: 500;
+      line-height: 22px;
+      letter-spacing: 0.1px;
+      color: #65558f;
+    }
+  }
+
+  input[type="radio"] {
+    accent-color: #65558f;
+  }
+
+  input[type="radio"]:checked {
+    background-color: #300864;
+  }
+  .sort_menu {
+    width: 334px;
+    height: 392px;
+    padding: 28px 28px 34px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+
+    border-radius: 12px;
+    border: 1px solid #65558f;
+
+    position: absolute;
+    z-index: 9999;
+    top: 79px;
+    background-color: #ffffff;
+
+    animation: fadeIn 0.3s ease;
+
+    span {
+      font-weight: 500;
+      font-size: 18px;
+      letter-spacing: 0.1px;
+      line-height: 22px;
+    }
+
+    .option {
+      height: 56px;
+      display: flex;
+      align-items: center;
+
+      .radio {
+        display: none;
+      }
+      .radioWrapper {
+        position: relative;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: transparent;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: background-color 0.2s;
+        margin-right: 20px;
+      }
+
+      .customRadio {
+        width: 20px;
+        height: 20px;
+        border: 2px solid #6e4ca3;
+        border-radius: 50%;
+        position: relative;
+      }
+
+      .radio:checked + .radioWrapper {
+        background-color: #e5dfed;
+      }
+
+      .radio:checked + .radioWrapper .customRadio {
+        border-color: #6e4ca3;
+      }
+
+      .radio:checked + .radioWrapper .customRadio::after {
+        content: "";
+        position: absolute;
+        top: 4px;
+        left: 4px;
+        width: 8px;
+        height: 8px;
+        background-color: #6e4ca3;
+        border-radius: 50%;
+      }
+    }
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
