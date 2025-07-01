@@ -1,208 +1,136 @@
-import React, { useState, useMemo, useEffect, useRef } from "react";
-import styles from "./ProductPage.module.scss";
-import SubcategoryCarousel from "@/components/SubcategoryCarousel/SubcategoryCarousel";
-import { SortOption } from "@/components/SortDropdown/SortDropdown";
-import SortDropdown from "@/components/SortDropdown/SortDropdown";
-import Card from "@/components/Card/Card";
-import ProductFilterModal from "@/components/ProductFilterModal/ProductFilterModal";
-import icon from "../../assets/icons/filters.svg";
-import { Product } from "@/types/productInterface";
+"use client"
 
-interface Subcategory {
-  id: number;
-  name: string;
-  icon: string;
+import type React from "react"
+import { useState } from "react"
+import ProductGallery from "./components/ProductGallery/ProductGallery"
+import ProductInfo from "./components/ProductInfo/ProductInfo"
+import ProductTabs from "./components/ProductTabs/ProductTabs"
+import Breadcrumb from "./components/Breadcrumb/Breadcrumb"
+import "./ProductPage.scss"
+
+interface Product {
+  id: string
+  name: string
+  price: number
+  rating: number
+  reviewCount: number
+  images: string[]
+  colors: Array<{ name: string; value: string }>
+  sizes: string[]
+  description: string
+  materials: string
+  reviews: Array<{
+    id: string
+    author: string
+    rating: number
+    date: string
+    text: string
+    avatar: string
+  }>
 }
 
-interface ProductCatalogProps {
-  title: string;
-  products: Product[];
-  subcategories: Subcategory[];
-}
+const ProductPage: React.FC = () => {
+  const [selectedColor, setSelectedColor] = useState<string>("green")
+  const [selectedSize, setSelectedSize] = useState<string>("NB")
+  const [quantity, setQuantity] = useState<number>(1)
+  const [activeTab, setActiveTab] = useState<string>("description")
 
-const ProductCatalogPage: React.FC<ProductCatalogProps> = ({
-  title,
-  products,
-  subcategories,
-}) => {
-  const [activeId, setActiveId] = useState<number | null>(null);
-  const [sort, setSort] = useState<SortOption>("featured");
-  const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 12;
-  const [isSortOpen, setIsSortOpen] = useState(false);
-  const [filters, setFilters] = useState<Record<string, string[]>>({});
-  const [isFilterOpen, setIsFilterOpen] = useState(false);
-  const [isOverlayVisible, setIsOverlayVisible] = useState(false);
-  const [tempFilters, setTempFilters] = useState<Record<string, string[]>>({});
+  const product: Product = {
+    id: "1",
+    name: "Woven Dungarees & Headband - Green",
+    price: 16.5,
+    rating: 4.6,
+    reviewCount: 12,
+    images: [
+      "/placeholder.svg?height=400&width=300",
+      "/placeholder.svg?height=400&width=300",
+      "/placeholder.svg?height=400&width=300",
+      "/placeholder.svg?height=400&width=300",
+      "/placeholder.svg?height=400&width=300",
+    ],
+    colors: [
+      { name: "Green", value: "green" },
+      { name: "Purple", value: "purple" },
+      { name: "Light Purple", value: "light-purple" },
+    ],
+    sizes: ["NB", "3M", "6M", "9M", "12M", "18M", "24M"],
+    description: `Outfits to embolden her as she grows from a baby into an exploring, inquisitive toddler! This girls' collection is designed to be easily dressed up or down, giving you freedom to create a flexible wardrobe of casual day-to-day and special occasion outfits. Patterns are subtle – intertwining foliage, delicate trailing floral, trellis motifs; colours are fresh - leafy greens, soft pinks and a hint of delicate heather; and finishing touches are intricately embroidered for a subtle but lasting impression.
 
-  const filterBtnRef = useRef<HTMLButtonElement>(null);
+A complete outfit! Textured woven dungarees with matching headband set. Dungarees with adjustable button fastening on strap, patch pocket and stylish turned up cuffs. Matching bow headband, features elasticated and velcro fastening, so is easy to adjust and comfy to wear.
 
-  const applyFilters = (selectedFilters: Record<string, string[]>) => {
-    setFilters(selectedFilters);
-    setTempFilters(selectedFilters);
-  };
+Our Baby to Toddler collection features stylish and comfy elevated basics and day-to-day clothing that can be co-ordinated or worn as separates, for a wardrobe that's easy to wear and looks adorable. A thoughtful range with attention to detail in every piece, fabrics and fastenings have been well considered, to be ultra-comfortable, wearable, effortless and easy to care for. The ultimate collection of quality timeless pieces that will let your little one explore the world in comfort and style.`,
+    materials: "Material: 100% Cotton, with button details.",
+    reviews: [
+      {
+        id: "1",
+        author: "Joshua",
+        rating: 5,
+        date: "08.05.2023",
+        text: "We had a fantastic experience shopping at MamaCare's online store! The website was easy to navigate, and the product descriptions were detailed and helpful. Customer support was outstanding—Sarah promptly answered all our questions and provided expert guidance, making the process smooth and stress-free. Thanks to her help, we felt confident in our purchase. Highly recommend MamaCare for a seamless online shopping experience!",
+        avatar: "/placeholder.svg?height=40&width=40",
+      },
+      {
+        id: "2",
+        author: "Joshua",
+        rating: 5,
+        date: "08.05.2023",
+        text: "We had a fantastic experience shopping at MamaCare's online store! The website was easy to navigate, and the product descriptions were detailed and helpful. Customer support was outstanding—Sarah promptly answered all our questions and provided expert guidance, making the process smooth and stress-free. Thanks to her help, we felt confident in our purchase. Highly recommend MamaCare for a seamless online shopping experience!",
+        avatar: "/placeholder.svg?height=40&width=40",
+      },
+      {
+        id: "3",
+        author: "Joshua",
+        rating: 5,
+        date: "08.05.2023",
+        text: "We had a fantastic experience shopping at MamaCare's online store! The website was easy to navigate, and the product descriptions were detailed and helpful. Customer support was outstanding—Sarah promptly answered all our questions and provided expert guidance, making the process smooth and stress-free. Thanks to h...",
+        avatar: "/placeholder.svg?height=40&width=40",
+      },
+    ],
+  }
 
-  useEffect(() => {
-    if (isSortOpen || isFilterOpen) {
-      setIsOverlayVisible(true);
-    } else {
-      const timeout = setTimeout(() => setIsOverlayVisible(false), 10);
-      return () => clearTimeout(timeout);
-    }
-  }, [isSortOpen, isFilterOpen]);
+  const breadcrumbItems = [
+    { label: "PickaBuy", href: "/" },
+    { label: "Baby Clothing", href: "/baby-clothing" },
+    { label: "Woven Dungarees & Headband - Green", href: "#" },
+  ]
 
-  useEffect(() => {
-    setCurrentPage(1);
-  }, [sort, activeId, filters]);
-
-  useEffect(() => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  }, [currentPage]);
-
-  const filteredProducts = useMemo(() => {
-    let result = [...products];
-
-    if (activeId) {
-      result = result.filter(
-        (p) =>
-          p.category ===
-          subcategories.find((s) => s.id === activeId)?.name.toLowerCase()
-      );
-    }
-
-    return result.filter((product) => {
-      return Object.entries(filters).every(([key, values]) => {
-        if (values.length === 0) return true;
-        return values.includes(product[key as keyof Product] as string);
-      });
-    });
-  }, [activeId, filters, products, subcategories]);
-
-  const sortedProducts = useMemo(() => {
-    let result = [...filteredProducts];
-    switch (sort) {
-      case "priceAsc":
-        return result.sort((a, b) => a.price - b.price);
-      case "priceDesc":
-        return result.sort((a, b) => b.price - a.price);
-      case "newest":
-        return result.sort((a, b) => Date.parse(b.date) - Date.parse(a.date));
-      default:
-        return result;
-    }
-  }, [filteredProducts, sort]);
-
-  const paginatedProducts = useMemo(() => {
-    const startIndex = (currentPage - 1) * itemsPerPage;
-    return sortedProducts.slice(startIndex, startIndex + itemsPerPage);
-  }, [sortedProducts, currentPage]);
-
-  const totalPages = Math.ceil(sortedProducts.length / itemsPerPage);
-
-  const matchCount = useMemo(() => {
-    return products.filter((product) => {
-      return Object.entries(tempFilters).every(([key, values]) => {
-        if (!values.length) return true;
-        return values.includes(product[key as keyof Product] as string);
-      });
-    }).length;
-  }, [products, tempFilters]);
+  const handleAddToCart = () => {
+    console.log("Added to cart:", {
+      product: product.name,
+      color: selectedColor,
+      size: selectedSize,
+      quantity,
+    })
+  }
 
   return (
-    <div className={styles.wrapper}>
-      <h1 className={styles.title}>{title}</h1>
+    <div className="product-page">
+      <div className="product-page__container">
+        <Breadcrumb items={breadcrumbItems} />
 
-      <section className={styles.subcategories}>
-        <SubcategoryCarousel
-          subcategories={subcategories}
-          activeId={activeId}
-          onSelect={setActiveId}
-        />
-      </section>
+        <div className="product-page__content">
+          <div className="product-page__gallery">
+            <ProductGallery images={product.images} />
+          </div>
 
-      <section className={styles.products}>
-        <div className={styles.filters}>
-          <button
-            ref={filterBtnRef}
-            onClick={() => {
-              setIsSortOpen(false);
-              setIsFilterOpen((prev) => !prev);
-            }}
-            className={styles.filterBtn}
-          >
-            <img src={icon} alt="filters button" /> <span>Filter By</span>
-          </button>
-
-          <ProductFilterModal
-            isOpen={isFilterOpen}
-            onClose={() => setIsFilterOpen(false)}
-            onApply={(selected) => {
-              applyFilters(selected);
-              setIsFilterOpen(false);
-            }}
-            matchCount={matchCount}
-            selectedFilters={tempFilters}
-            onChange={setTempFilters}
-            triggerRef={filterBtnRef}
-          />
-
-          <SortDropdown
-            selected={sort}
-            onChange={(val) => {
-              setSort(val);
-              setIsSortOpen(false);
-            }}
-            isOpen={isSortOpen}
-            setIsOpen={setIsSortOpen}
-          />
+          <div className="product-page__info">
+            <ProductInfo
+              product={product}
+              selectedColor={selectedColor}
+              selectedSize={selectedSize}
+              quantity={quantity}
+              onColorChange={setSelectedColor}
+              onSizeChange={setSelectedSize}
+              onQuantityChange={setQuantity}
+              onAddToCart={handleAddToCart}
+            />
+          </div>
         </div>
 
-        <div className={styles.grid}>
-          {paginatedProducts.length === 0 ? (
-            <p className={styles.noProducts}>
-              Немає товарів за заданими фільтрами
-            </p>
-          ) : (
-            paginatedProducts.map((product) => (
-              <Card
-                key={product.id}
-                title={product.name}
-                price={product.price}
-                image={product.image}
-                onAddToCart={() => console.log("Add to cart:", product.id)}
-              />
-            ))
-          )}
-        </div>
-
-        <div className={styles.pagination}>
-          <span>Page</span>
-          {Array.from({ length: totalPages }, (_, i) => (
-            <button
-              key={i}
-              onClick={() => setCurrentPage(i + 1)}
-              className={`${styles.pageBtn} ${
-                currentPage === i + 1 ? styles.active : ""
-              }`}
-            >
-              {i + 1}
-            </button>
-          ))}
-        </div>
-      </section>
-
-      {isOverlayVisible && (
-        <div
-          className={styles.overlay}
-          onClick={() => {
-            setIsSortOpen(false);
-            setIsFilterOpen(false);
-            setIsOverlayVisible(false);
-          }}
-        />
-      )}
+        <ProductTabs product={product} activeTab={activeTab} onTabChange={setActiveTab} />
+      </div>
     </div>
-  );
-};
+  )
+}
 
-export default ProductCatalogPage;
+export default ProductPage

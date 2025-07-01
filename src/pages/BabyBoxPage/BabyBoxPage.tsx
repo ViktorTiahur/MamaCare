@@ -1,4 +1,4 @@
-import ProductCatalogPage from "../ProductPage/ProductPage";
+import ProductCatalogPage from "../../components/ProductCatalogPage/ProductCatalogPage";
 import { subcategories } from "@/data/mockData";
 import productData from "@/data/fakeProducts.json";
 

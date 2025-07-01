@@ -37,12 +37,11 @@
 //     }
 //   }, [isSortOpen, isFilterOpen]);
 
-  
 // // при пагінації, повертає на початок сторінки
 //   useEffect(() => {
 //   window.scrollTo({
 //     top: 0,
-//     behavior: "smooth", 
+//     behavior: "smooth",
 //   });
 // }, [currentPage]);
 
@@ -203,8 +202,8 @@
 
 // export default PickAndChoosePage;
 
+import ProductCatalogPage from "../../components/ProductCatalogPage/ProductCatalogPage";
 
-import ProductCatalogPage from "../ProductPage/ProductPage";
 import { subcategories } from "@/data/mockData";
 import productData from "@/data/fakeProducts.json";
 
@@ -219,4 +218,3 @@ const PickAndBuyPage: React.FC = () => {
 };
 
 export default PickAndBuyPage;
-
