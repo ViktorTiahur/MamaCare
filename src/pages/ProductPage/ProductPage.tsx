@@ -8,26 +8,26 @@ import type React from "react";
 // import Breadcrumb from "./components/Breadcrumb/Breadcrumb"
 import "./ProductPage.module.scss";
 
-interface Product {
-  id: string;
-  name: string;
-  price: number;
-  rating: number;
-  reviewCount: number;
-  images: string[];
-  colors: Array<{ name: string; value: string }>;
-  sizes: string[];
-  description: string;
-  materials: string;
-  reviews: Array<{
-    id: string;
-    author: string;
-    rating: number;
-    date: string;
-    text: string;
-    avatar: string;
-  }>;
-}
+// interface Product {
+//   id: string;
+//   name: string;
+//   price: number;
+//   rating: number;
+//   reviewCount: number;
+//   images: string[];
+//   colors: Array<{ name: string; value: string }>;
+//   sizes: string[];
+//   description: string;
+//   materials: string;
+//   reviews: Array<{
+//     id: string;
+//     author: string;
+//     rating: number;
+//     date: string;
+//     text: string;
+//     avatar: string;
+//   }>;
+// }
 
 const ProductPage: React.FC = () => {
   // const [selectedColor, setSelectedColor] = useState<string>("green");
