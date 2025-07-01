@@ -1,39 +1,39 @@
-"use client"
+"use client";
 
-import type React from "react"
-import { useState } from "react"
-import ProductGallery from "./components/ProductGallery/ProductGallery"
-import ProductInfo from "./components/ProductInfo/ProductInfo"
-import ProductTabs from "./components/ProductTabs/ProductTabs"
-import Breadcrumb from "./components/Breadcrumb/Breadcrumb"
-import "./ProductPage.scss"
+import type React from "react";
+import { useState } from "react";
+// import ProductGallery from "./components/ProductGallery/ProductGallery"
+// import ProductInfo from "./components/ProductInfo/ProductInfo"
+// import ProductTabs from "./components/ProductTabs/ProductTabs"
+// import Breadcrumb from "./components/Breadcrumb/Breadcrumb"
+import "./ProductPage.module.scss";
 
 interface Product {
-  id: string
-  name: string
-  price: number
-  rating: number
-  reviewCount: number
-  images: string[]
-  colors: Array<{ name: string; value: string }>
-  sizes: string[]
-  description: string
-  materials: string
+  id: string;
+  name: string;
+  price: number;
+  rating: number;
+  reviewCount: number;
+  images: string[];
+  colors: Array<{ name: string; value: string }>;
+  sizes: string[];
+  description: string;
+  materials: string;
   reviews: Array<{
-    id: string
-    author: string
-    rating: number
-    date: string
-    text: string
-    avatar: string
-  }>
+    id: string;
+    author: string;
+    rating: number;
+    date: string;
+    text: string;
+    avatar: string;
+  }>;
 }
 
 const ProductPage: React.FC = () => {
-  const [selectedColor, setSelectedColor] = useState<string>("green")
-  const [selectedSize, setSelectedSize] = useState<string>("NB")
-  const [quantity, setQuantity] = useState<number>(1)
-  const [activeTab, setActiveTab] = useState<string>("description")
+  const [selectedColor, setSelectedColor] = useState<string>("green");
+  const [selectedSize, setSelectedSize] = useState<string>("NB");
+  const [quantity, setQuantity] = useState<number>(1);
+  const [activeTab, setActiveTab] = useState<string>("description");
 
   const product: Product = {
     id: "1",
@@ -86,13 +86,13 @@ Our Baby to Toddler collection features stylish and comfy elevated basics and da
         avatar: "/placeholder.svg?height=40&width=40",
       },
     ],
-  }
+  };
 
   const breadcrumbItems = [
     { label: "PickaBuy", href: "/" },
     { label: "Baby Clothing", href: "/baby-clothing" },
     { label: "Woven Dungarees & Headband - Green", href: "#" },
-  ]
+  ];
 
   const handleAddToCart = () => {
     console.log("Added to cart:", {
@@ -100,12 +100,12 @@ Our Baby to Toddler collection features stylish and comfy elevated basics and da
       color: selectedColor,
       size: selectedSize,
       quantity,
-    })
-  }
+    });
+  };
 
   return (
     <div className="product-page">
-      <div className="product-page__container">
+      {/* <div className="product-page__container">
         <Breadcrumb items={breadcrumbItems} />
 
         <div className="product-page__content">
@@ -127,10 +127,14 @@ Our Baby to Toddler collection features stylish and comfy elevated basics and da
           </div>
         </div>
 
-        <ProductTabs product={product} activeTab={activeTab} onTabChange={setActiveTab} />
-      </div>
+        <ProductTabs
+          product={product}
+          activeTab={activeTab}
+          onTabChange={setActiveTab}
+        />
+      </div> */}
     </div>
-  )
-}
+  );
+};
 
-export default ProductPage
+export default ProductPage;
