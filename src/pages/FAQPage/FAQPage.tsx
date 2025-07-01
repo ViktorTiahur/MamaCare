@@ -103,7 +103,7 @@ const FAQPage: React.FC = () => {
 
   return (
     <div className={styles.faq}>
-      <div className="faq__wrapper">
+      <div className={styles.faq__wrapper}>
         <h1 className={styles.faq__title}>FAQ</h1>
         <div className={styles.faq__container}>
           {faqItems.map((item, index) => (

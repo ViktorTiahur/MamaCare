@@ -12,6 +12,7 @@ import Layout from "./components/Layout/Layout";
 import FAQPage from "./pages/FAQPage/FAQPage";
 import AboutUsPage from "./pages/AboutUsPage/AboutUsPage";
 import PickAndBuy from "./pages/PickAndChoosePage/PickAndChoosePage";
+import BabyBox from "./pages/BabyBoxPage/BabyBoxPage";
 
 const App: React.FC = () => {
   return (
@@ -54,7 +55,7 @@ const App: React.FC = () => {
           path="/product/:id"
           element={
             <Layout>
-              <ProductPage />
+              <BabyBox />
             </Layout>
           }
         />
@@ -75,7 +76,7 @@ const App: React.FC = () => {
           }
         />
 
-          <Route
+        <Route
           path="/pickandbuy"
           element={
             <Layout>
@@ -83,8 +84,6 @@ const App: React.FC = () => {
             </Layout>
           }
         />
-
-     
       </Routes>
     </Router>
   );

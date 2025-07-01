@@ -19,6 +19,8 @@
     flex-direction: column;
     gap: 24px;
     margin-bottom: 84px;
+    
+    position: relative;
   }
 
   &__item {
@@ -33,6 +35,7 @@
         border-bottom: 1px solid #c7c2d6;
         background: #f7f4ff;
         border-radius: 12px 12px 0 0;
+      
       }
     }
   }
@@ -93,8 +96,11 @@
       text-decoration: underline;
     }
   }
-}
 
+  .faq__wrapper {
+    z-index: 9999;
+  }
+}
 
 // Media queries from large to small
 @media (max-width: 1024px) {

@@ -137,26 +137,41 @@ const Header: React.FC = () => {
 
         <nav className={styles.sidebarNav}>
           <div className={styles.navItem}>
-            {/* <Button className={styles.navButton}>Baby Boxes</Button> */}
-            <Link to="/product/1" className={styles.navButton}>
+            <Link
+              to="/product/1"
+              className={styles.navButton}
+              onClick={toggleSidebar}
+            >
               Baby Box
             </Link>
             <img src={arrowIcon} alt="Arrow" className={styles.arrowIcon} />
           </div>
           <div className={styles.navItem}>
-            <Link to="/cart" className={styles.navButton}>
+            <Link
+              to="/pickandbuy"
+              className={styles.navButton}
+              onClick={toggleSidebar}
+            >
               Pick & Buy
             </Link>
             <img src={arrowIcon} alt="Arrow" className={styles.arrowIcon} />
           </div>
           <div className={styles.navItem}>
-            <Link to="/faq" className={styles.navButton}>
+            <Link
+              to="/faq"
+              className={styles.navButton}
+              onClick={toggleSidebar}
+            >
               FAQ
             </Link>
             <img src={arrowIcon} alt="Arrow" className={styles.arrowIcon} />
           </div>
           <div className={styles.navItem}>
-            <Link to="/signup" className={styles.navButton}>
+            <Link
+              to="/about"
+              className={styles.navButton}
+              onClick={toggleSidebar}
+            >
               About Us
             </Link>
             <img src={arrowIcon} alt="Arrow" className={styles.arrowIcon} />

@@ -2,6 +2,7 @@
   position: relative;
   z-index: 5000;
   animation: fadeIn 0.3s ease;
+  width: 100%;
 
   .sort_button {
     display: flex;
@@ -34,7 +35,8 @@
     background-color: #300864;
   }
   .sort_menu {
-    width: 334px;
+    max-width: 334px;
+    width: 100%;
     height: 392px;
     padding: 28px 28px 34px;
 
@@ -118,5 +120,17 @@
   to {
     opacity: 1;
     transform: scale(1);
+  }
+}
+
+@media (max-width: 480px) {
+  .relative {
+    width: 100%;
+    .sort_menu {
+      width: calc(100vw - 32px);
+      max-width: 100%;
+      left: 0;
+      right: 0;
+    }
   }
 }

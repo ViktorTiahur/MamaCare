@@ -19,6 +19,7 @@
   // min-width: 124px;
   // height: 140px;
   opacity: 0;
+  pointer-events: none;
   transition: background 0.2s;
 
   &:nth-of-type(2) {
@@ -26,7 +27,7 @@
   }
 
   .dropdown-item {
-    width:max-content;
+    width: max-content;
     display: inline-flex;
     border-radius: 37px;
     margin: 0px auto;
@@ -83,6 +84,7 @@
 .dropdown-menu.show {
   opacity: 1;
   transform: translateY(0);
+  pointer-events: auto;
 }
 
 .user-dropdown-menu {

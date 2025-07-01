@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import styles from "./ProductFilterModal.module.scss";
 import arrow from "../../assets/icons/arrow.svg";
 import close from "../../assets/icons/clothe.svg";
+import checkbox from "../../assets/icons/galka.svg";
 
 const ProductFilterModal = ({
   isOpen,
@@ -40,13 +41,13 @@ const ProductFilterModal = ({
       options: [
         { label: "0-3m", value: "0-3 months" },
         { label: "12-18m", value: "12-18 months" },
-        { label: "1 year", value: "1y" },
-        { label: "2 years", value: "2y" },
-        { label: "3 years", value: "3y" },
-        { label: "4 years", value: "4y" },
-        { label: "5 years", value: "5y" },
-        { label: "6 years", value: "6y" },
-        { label: "7 years", value: "7y" },
+        { label: "1 year", value: "1 year" },
+        { label: "2 years", value: "2 years" },
+        { label: "3 years", value: "3 years" },
+        { label: "4 years", value: "4 years" },
+        { label: "5 years", value: "5 years" },
+        { label: "6 years", value: "6 years" },
+        { label: "7 years", value: "7 years" },
       ],
     },
     {
@@ -159,6 +160,9 @@ const ProductFilterModal = ({
                       }
                       onChange={() => toggleCheckbox(filter.id, option.value)}
                     />
+                    <div className={styles.checkboxIcon}>
+                      <img src={checkbox} alt="" />
+                    </div>
                     <span>{option.label}</span>
                   </label>
                 ))}

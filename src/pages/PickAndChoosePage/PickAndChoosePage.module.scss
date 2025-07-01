@@ -61,6 +61,7 @@
       margin-bottom: 32px;
       display: flex;
       gap: 32px;
+      position: relative;
 
       .filterBtn {
         display: flex;
@@ -98,5 +99,16 @@
   }
   @media (max-width: 695px) {
     padding: 44px 16px;
+
+    .grid {
+      grid-template-columns: repeat(2, minmax(170px, 1fr));
+    }
+  }
+
+  @media (max-width: 480px) {
+    .grid {
+      grid-template-columns: 1fr;
+      justify-items: center;
+    }
   }
 }
