@@ -156,16 +156,7 @@ const Header: React.FC = () => {
             </Link>
             <img src={arrowIcon} alt="Arrow" className={styles.arrowIcon} />
           </div>
-          <div className={styles.navItem}>
-            <Link
-              to="/faq"
-              className={styles.navButton}
-              onClick={toggleSidebar}
-            >
-              FAQ
-            </Link>
-            <img src={arrowIcon} alt="Arrow" className={styles.arrowIcon} />
-          </div>
+
           <div className={styles.navItem}>
             <Link
               to="/about"
@@ -173,6 +164,16 @@ const Header: React.FC = () => {
               onClick={toggleSidebar}
             >
               About Us
+            </Link>
+            <img src={arrowIcon} alt="Arrow" className={styles.arrowIcon} />
+          </div>
+          <div className={styles.navItem}>
+            <Link
+              to="/faq"
+              className={styles.navButton}
+              onClick={toggleSidebar}
+            >
+              FAQ
             </Link>
             <img src={arrowIcon} alt="Arrow" className={styles.arrowIcon} />
           </div>

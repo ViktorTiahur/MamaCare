@@ -9,7 +9,7 @@ import Button from "../Button/Button";
 import mail from "../../assets/icons/mail.svg";
 import phone from "../../assets/icons/phone.svg";
 import map from "../../assets/icons/map.svg";
-
+import { Link } from "react-router-dom";
 const Footer: FC = () => {
   return (
     <footer className={styles.footer}>
@@ -33,10 +33,18 @@ const Footer: FC = () => {
           </div>
         </div>
         <nav className={styles.nav}>
-          <NavLink className={styles.link} href="#" text="Baby Box" />
-          <NavLink className={styles.link} href="#" text="Pick & Buy" />
-          <NavLink className={styles.link} href="#" text="About us" />
-          <NavLink className={styles.link} href="#" text="FAQ" />
+          <Link to="/product/1" className={styles.link}>
+            Baby Box
+          </Link>
+          <Link to="/pickandbuy" className={styles.link}>
+            Pick & Buy
+          </Link>
+          <Link to="/about" className={styles.link}>
+            About Us
+          </Link>
+          <Link to="/faq" className={styles.link}>
+            FAQ
+          </Link>
         </nav>
 
         <div className={styles.contactSection}>
