@@ -167,7 +167,8 @@ const ProductCatalog: React.FC<ProductCatalogProps> = ({
           ) : (
             paginatedProducts.map((product) => (
               <Card
-                id={product.id}
+                key={product.id}
+                id={String(product.id)}
                 name={product.name}
                 price={product.price}
                 image={product.image}
