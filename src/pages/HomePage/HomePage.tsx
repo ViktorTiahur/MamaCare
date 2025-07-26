@@ -8,12 +8,15 @@ import ProductList from "@/components/ProductList/ProductList";
 import ReviewCarousel from "@/components/ReviewCarousel/ReviewCarousel";
 
 import styles from "./HomePage.module.scss";
+import { useTranslation } from "react-i18next";
 
 const HomePage = () => {
   const [itemsCount, setItemsCount] = useState({
     babyBoxItems: 3,
     pickItems: 8,
   });
+  const {t} = useTranslation();
+
 
   useEffect(() => {
     const handleResize = () => {
@@ -47,7 +50,7 @@ const HomePage = () => {
 
       <div className={styles.containerPick}>
         <Link to="/pickandbuy" className={styles.title}>
-          <h2>Pick & Buy</h2>
+          <h2>{t('Pick & Buy')}</h2>
           <img src={arrow} className={styles.arrow} alt="arrow link" />
         </Link>
 
@@ -56,7 +59,7 @@ const HomePage = () => {
           itemsToShow={itemsCount.pickItems}
         ></ProductList>
         <div className={styles.button}>
-          <Button>View all Products</Button>
+          <Button>{t('View all Products')}</Button>
         </div>
       </div>
 
