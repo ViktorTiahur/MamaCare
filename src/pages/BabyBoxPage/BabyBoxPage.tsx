@@ -1,6 +1,6 @@
 import ProductCatalog from "@/components/ProductCatalog/ProductCatalog";
 import { subcategories } from "@/data/mockData";
-import { mockProducts } from "@/data/mockProducts";
+import mockProducts from "@/data/mockProducts";
 
 const PickAndBuyPage = () => {
   return (

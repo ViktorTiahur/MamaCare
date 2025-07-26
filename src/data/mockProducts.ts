@@ -1,12 +1,13 @@
 import { ProductDetail } from "@/types/productInterface";
 
-export const mockProducts: ProductDetail[] = [
+const mockProducts: ProductDetail[] = [
   {
     id: "1",
     name: "Silicone Snack Plate - Bunny",
     category: "Pick&Buy",
     subcategory: "Feeding",
     image: "/images/preview/1.png",
+    date: "2025-01-01",
     description:
       "Soft and durable silicone snack plate shaped like a bunny — perfect for toddlers and mess-free meals.",
     materials:
@@ -50,6 +51,7 @@ export const mockProducts: ProductDetail[] = [
     subcategory: "Feeding",
     name: "Sniffer Soothers Nose + Face Wipes",
     image: "/images/preview/1.png",
+    date: "2025-01-01",
     description:
       "Gentle and effective wipes infused with soothing eucalyptus. Great for toddlers during cold season.",
     materials:
@@ -79,6 +81,7 @@ export const mockProducts: ProductDetail[] = [
     subcategory: "Feeding",
     name: "Baby Boy Box for Toddlers (1+ Year)",
     image: "/images/preview/1.png",
+    date: "2025-01-01",
     description:
       "A curated gift box for boys aged 1+ with premium products including toys, snacks, and bath essentials.",
     materials:
@@ -112,6 +115,7 @@ export const mockProducts: ProductDetail[] = [
     subcategory: "Feeding",
     name: "Organic Cotton Onesie Set",
     image: "/images/preview/1.png",
+    date: "2025-01-01",
     description:
       "Set of 3 organic cotton onesies with cute animal prints. Soft, breathable and gentle on baby skin.",
     materials: "100% organic cotton. GOTS certified. Machine washable.",
@@ -140,6 +144,7 @@ export const mockProducts: ProductDetail[] = [
     subcategory: "Feeding",
     name: "Natural Wooden Teething Ring",
     image: "/images/preview/1.png",
+    date: "2025-01-01",
     description:
       "Handmade wooden teething ring with soft silicone beads. Safe, durable and calming for teething babies.",
     materials: "Beech wood, food-grade silicone. Handmade. Non-toxic finish.",
@@ -163,11 +168,12 @@ export const mockProducts: ProductDetail[] = [
     images: ["/images/preview/5.png", "/images/preview/5-2.png"],
   },
   {
-    id: "1",
+    id: "6",
     category: "Pick&Buy",
     subcategory: "Feeding",
     name: "Silicone Snack Plate - Bunny",
     image: "/images/preview/1.png",
+    date: "2025-01-01",
     description:
       "Soft and durable silicone snack plate shaped like a bunny — perfect for toddlers and mess-free meals.",
     materials:
@@ -203,11 +209,12 @@ export const mockProducts: ProductDetail[] = [
     ],
   },
   {
-    id: "2",
+    id: "7",
     category: "Pick&Buy",
     subcategory: "Feeding",
     name: "Sniffer Soothers Nose + Face Wipes",
     image: "/images/preview/1.png",
+    date: "2025-01-01",
     description:
       "Gentle and effective wipes infused with soothing eucalyptus. Great for toddlers during cold season.",
     materials:
@@ -232,11 +239,12 @@ export const mockProducts: ProductDetail[] = [
     images: ["/images/preview/2.png", "/images/preview/2-2.png"],
   },
   {
-    id: "3",
+    id: "8",
     category: "Pick&Buy",
     subcategory: "Feeding",
     name: "Baby Boy Box for Toddlers (1+ Year)",
     image: "/images/preview/1.png",
+    date: "2025-01-01",
     description:
       "A curated gift box for boys aged 1+ with premium products including toys, snacks, and bath essentials.",
     materials:
@@ -265,11 +273,12 @@ export const mockProducts: ProductDetail[] = [
     ],
   },
   {
-    id: "4",
+    id: "9",
     category: "Pick&Buy",
     subcategory: "Feeding",
     name: "Organic Cotton Onesie Set",
     image: "/images/preview/1.png",
+    date: "2025-01-01",
     description:
       "Set of 3 organic cotton onesies with cute animal prints. Soft, breathable and gentle on baby skin.",
     materials: "100% organic cotton. GOTS certified. Machine washable.",
@@ -293,11 +302,12 @@ export const mockProducts: ProductDetail[] = [
     images: ["/images/preview/4.png", "/images/preview/4-2.png"],
   },
   {
-    id: "5",
+    id: "10",
     category: "Pick&Buy",
     subcategory: "Feeding",
     name: "Natural Wooden Teething Ring",
     image: "/images/preview/1.png",
+    date: "2025-01-01",
     description:
       "Handmade wooden teething ring with soft silicone beads. Safe, durable and calming for teething babies.",
     materials: "Beech wood, food-grade silicone. Handmade. Non-toxic finish.",
@@ -321,11 +331,12 @@ export const mockProducts: ProductDetail[] = [
     images: ["/images/preview/5.png", "/images/preview/5-2.png"],
   },
   {
-    id: "1",
+    id: "11",
     category: "Pick&Buy",
     subcategory: "Feeding",
     name: "Silicone Snack Plate - Bunny",
     image: "/images/preview/1.png",
+    date: "2025-01-01",
     description:
       "Soft and durable silicone snack plate shaped like a bunny — perfect for toddlers and mess-free meals.",
     materials:
@@ -361,11 +372,12 @@ export const mockProducts: ProductDetail[] = [
     ],
   },
   {
-    id: "2",
+    id: "12",
     category: "Pick&Buy",
     subcategory: "Feeding",
     name: "Sniffer Soothers Nose + Face Wipes",
     image: "/images/preview/1.png",
+    date: "2025-01-01",
     description:
       "Gentle and effective wipes infused with soothing eucalyptus. Great for toddlers during cold season.",
     materials:
@@ -390,11 +402,12 @@ export const mockProducts: ProductDetail[] = [
     images: ["/images/preview/2.png", "/images/preview/2-2.png"],
   },
   {
-    id: "3",
+    id: "13",
     category: "Pick&Buy",
     subcategory: "Feeding",
     name: "Baby Boy Box for Toddlers (1+ Year)",
     image: "/images/preview/1.png",
+    date: "2025-01-01",
     description:
       "A curated gift box for boys aged 1+ with premium products including toys, snacks, and bath essentials.",
     materials:
@@ -423,11 +436,12 @@ export const mockProducts: ProductDetail[] = [
     ],
   },
   {
-    id: "4",
+    id: "14",
     category: "Pick&Buy",
     subcategory: "Feeding",
     name: "Organic Cotton Onesie Set",
     image: "/images/preview/1.png",
+    date: "2025-01-01",
     description:
       "Set of 3 organic cotton onesies with cute animal prints. Soft, breathable and gentle on baby skin.",
     materials: "100% organic cotton. GOTS certified. Machine washable.",
@@ -451,11 +465,12 @@ export const mockProducts: ProductDetail[] = [
     images: ["/images/preview/4.png", "/images/preview/4-2.png"],
   },
   {
-    id: "5",
+    id: "15",
     category: "Pick&Buy",
     subcategory: "Feeding",
     name: "Natural Wooden Teething Ring",
     image: "/images/preview/1.png",
+    date: "2025-01-01",
     description:
       "Handmade wooden teething ring with soft silicone beads. Safe, durable and calming for teething babies.",
     materials: "Beech wood, food-grade silicone. Handmade. Non-toxic finish.",
@@ -479,11 +494,12 @@ export const mockProducts: ProductDetail[] = [
     images: ["/images/preview/5.png", "/images/preview/5-2.png"],
   },
   {
-    id: "1",
+    id: "16",
     category: "Pick&Buy",
     subcategory: "Feeding",
     name: "Silicone Snack Plate - Bunny",
     image: "/images/preview/1.png",
+    date: "2025-01-01",
     description:
       "Soft and durable silicone snack plate shaped like a bunny — perfect for toddlers and mess-free meals.",
     materials:
@@ -519,11 +535,12 @@ export const mockProducts: ProductDetail[] = [
     ],
   },
   {
-    id: "2",
+    id: "17",
     category: "Pick&Buy",
     subcategory: "Feeding",
     name: "Sniffer Soothers Nose + Face Wipes",
     image: "/images/preview/1.png",
+    date: "2025-01-01",
     description:
       "Gentle and effective wipes infused with soothing eucalyptus. Great for toddlers during cold season.",
     materials:
@@ -548,11 +565,12 @@ export const mockProducts: ProductDetail[] = [
     images: ["/images/preview/2.png", "/images/preview/2-2.png"],
   },
   {
-    id: "3",
+    id: "18",
     category: "Pick&Buy",
     subcategory: "Feeding",
     name: "Baby Boy Box for Toddlers (1+ Year)",
     image: "/images/preview/1.png",
+    date: "2025-01-01",
     description:
       "A curated gift box for boys aged 1+ with premium products including toys, snacks, and bath essentials.",
     materials:
@@ -581,11 +599,12 @@ export const mockProducts: ProductDetail[] = [
     ],
   },
   {
-    id: "4",
+    id: "19",
     category: "Pick&Buy",
     subcategory: "Feeding",
     name: "Organic Cotton Onesie Set",
     image: "/images/preview/1.png",
+    date: "2025-01-01",
     description:
       "Set of 3 organic cotton onesies with cute animal prints. Soft, breathable and gentle on baby skin.",
     materials: "100% organic cotton. GOTS certified. Machine washable.",
@@ -609,11 +628,12 @@ export const mockProducts: ProductDetail[] = [
     images: ["/images/preview/4.png", "/images/preview/4-2.png"],
   },
   {
-    id: "5",
+    id: "20",
     category: "Pick&Buy",
     subcategory: "Feeding",
     name: "Natural Wooden Teething Ring",
     image: "/images/preview/1.png",
+    date: "2025-01-01",
     description:
       "Handmade wooden teething ring with soft silicone beads. Safe, durable and calming for teething babies.",
     materials: "Beech wood, food-grade silicone. Handmade. Non-toxic finish.",
@@ -637,3 +657,6 @@ export const mockProducts: ProductDetail[] = [
     images: ["/images/preview/5.png", "/images/preview/5-2.png"],
   },
 ];
+
+
+export default mockProducts;

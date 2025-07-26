@@ -2,8 +2,8 @@ import { useState } from "react";
 import { useParams } from "react-router-dom";
 
 import Breadcrumbs from "@/components/Breadcrumbs/Breadcrumbs";
-import { mockProducts } from "@/data/mockProducts";
 import ProductImageCarousel from "@/components/ProductImageCarousel/ProductImageCarousel";
+import mockProducts from "@/data/mockProducts";
 
 import styles from "./ProductPage.module.scss";
 
