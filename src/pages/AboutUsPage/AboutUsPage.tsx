@@ -1,11 +1,12 @@
-import type React from "react";
-import styles from "./AboutUsPage.module.scss";
-import matherPhoto from "../../assets/images/about-desktop.png";
-import heart from "../../assets/icons/icon-heart.svg";
-import BabyBoxSection from "../../components/BabyBoxSection/BabyBoxSection";
 import { useState, useEffect } from "react";
 
-const AboutUsPage: React.FC = () => {
+import heart from "@/assets/icons/icon-heart.svg";
+import matherPhoto from "@/assets/images/about-desktop.png";
+import BabyBoxSection from "@/components/BabyBoxSection/BabyBoxSection";
+
+import styles from "./AboutUsPage.module.scss";
+
+const AboutUsPage = () => {
   const [boxCount, setBoxCount] = useState(3);
 
   useEffect(() => {

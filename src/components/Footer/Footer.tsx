@@ -1,16 +1,18 @@
-import { FC } from "react";
-import NavLink from "../NavLink/Navlink";
-import styles from "./Footer.module.scss";
-import face from "../../assets/icons/face.png";
-import link from "../../assets/icons/link.png";
-import youtube from "../../assets/icons/youtube.png";
-import insta from "../../assets/icons/insta.png";
-import Button from "../Button/Button";
-import mail from "../../assets/icons/mail.svg";
-import phone from "../../assets/icons/phone.svg";
-import map from "../../assets/icons/map.svg";
 import { Link } from "react-router-dom";
-const Footer: FC = () => {
+
+import face from "@/assets/icons/face.png";
+import insta from "@/assets/icons/insta.png";
+import link from "@/assets/icons/link.png";
+import mail from "@/assets/icons/mail.svg";
+import map from "@/assets/icons/map.svg";
+import phone from "@/assets/icons/phone.svg";
+import youtube from "@/assets/icons/youtube.png";
+import Button from "@/components/Button/Button";
+import NavLink from "@/components/NavLink/Navlink";
+
+import styles from "./Footer.module.scss";
+
+const Footer = () => {
   return (
     <footer className={styles.footer}>
       <div className={styles.container}>
@@ -33,7 +35,7 @@ const Footer: FC = () => {
           </div>
         </div>
         <nav className={styles.nav}>
-          <Link to="/product/1" className={styles.link}>
+          <Link to="/product" className={styles.link}>
             Baby Box
           </Link>
           <Link to="/pickandbuy" className={styles.link}>

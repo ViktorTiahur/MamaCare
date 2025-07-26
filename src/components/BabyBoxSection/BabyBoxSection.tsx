@@ -1,8 +1,10 @@
 import React from "react";
-import styles from "./BabyBoxSection.module.scss";
-import ProductList from "../ProductList/ProductList";
-import Button from "../Button/Button";
+
 import arrow from '../../assets/icons/icon-arrow.svg'
+import Button from "../Button/Button";
+import ProductList from "../ProductList/ProductList";
+
+import styles from "./BabyBoxSection.module.scss";
 
 interface BabyBoxSectionProps {
   itemsToShow: number;

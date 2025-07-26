@@ -1,32 +1,36 @@
 import React from "react";
+import { Link } from "react-router-dom";
+
+import Button from "@/components/Button/Button";
+
 import styles from "./Card.module.scss";
-import Button from "../Button/Button";
 
 interface CardProps {
-  title: string;
+  id: string;
+  name: string;
   price: number;
-  // description: string;
-  // brend: string;
-  // color: string;
-  // age: number;
   image: string;
   customClass?: string;
   onAddToCart?: () => void;
 }
 
 const Card: React.FC<CardProps> = ({
-  title,
-  // description,
+  id,
+  name,
   price,
-  // brend,
   image,
   customClass,
   onAddToCart,
 }) => {
+  console.log("Card ID:", id);
+
   return (
     <div className={`${styles.card} ${customClass || ""}`}>
-      <img src={image} alt={title} className={styles.cardImage} />
-      <h2 className={styles.title}>{title}</h2>
+      <Link to={`/product/${id}`} className={styles.cardLink}>
+        <img src={image} alt={name} className={styles.cardImage} />
+        <h2 className={styles.title}>{name}</h2>
+      </Link>
+
       <div className={styles.addToCard}>
         <p>${price}</p>
         <Button onClick={onAddToCart} className={styles.addButton}>

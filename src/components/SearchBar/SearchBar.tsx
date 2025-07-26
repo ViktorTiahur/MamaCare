@@ -1,6 +1,8 @@
 import React, { useState } from "react";
-import styles from "./SearchBar.module.scss";
+
 import searchIcon from "../../assets/icons/icon-search-states-56.svg";
+
+import styles from "./SearchBar.module.scss";
 
 const SearchBar: React.FC = () => {
   const [isExpanded, setIsExpanded] = useState(false);

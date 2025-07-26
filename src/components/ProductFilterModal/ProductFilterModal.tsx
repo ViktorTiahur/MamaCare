@@ -1,8 +1,10 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, useCallback } from "react";
+
+import arrow from "@/assets/icons/arrow.svg";
+import close from "@/assets/icons/clothe.svg";
+import checkbox from "@/assets/icons/galka.svg";
+
 import styles from "./ProductFilterModal.module.scss";
-import arrow from "../../assets/icons/arrow.svg";
-import close from "../../assets/icons/clothe.svg";
-import checkbox from "../../assets/icons/galka.svg";
 
 const ProductFilterModal = ({
   isOpen,
@@ -24,15 +26,28 @@ const ProductFilterModal = ({
   const [expandedFilter, setExpandedFilter] = useState<string | null>(null);
   const modalRef = useRef<HTMLDivElement>(null);
 
-  const handleClickOutside = (e: MouseEvent) => {
-    if (
-      modalRef.current &&
-      !modalRef.current.contains(e.target as Node) &&
-      !triggerRef?.current?.contains(e.target as Node)
-    ) {
-      onClose();
+  const handleClickOutside = useCallback(
+    (e: MouseEvent) => {
+      if (
+        modalRef.current &&
+        !modalRef.current.contains(e.target as Node) &&
+        !triggerRef?.current?.contains(e.target as Node)
+      ) {
+        onClose();
+      }
+    },
+    [onClose, triggerRef]
+  );
+
+  useEffect(() => {
+    if (isOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
     }
-  };
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [isOpen, handleClickOutside]);
 
   const filters = [
     {
@@ -60,16 +75,6 @@ const ProductFilterModal = ({
       ],
     },
   ];
-
-  useEffect(() => {
-    if (isOpen) {
-      document.addEventListener("mousedown", handleClickOutside);
-    }
-
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, [isOpen]);
 
   const toggleCheckbox = (categoryId: string, value: string) => {
     const current = selectedFilters[categoryId] || [];

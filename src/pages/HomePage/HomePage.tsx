@@ -1,12 +1,15 @@
-import React, { useState, useEffect } from "react";
-import styles from "./HomePage.module.scss";
-import ProductList from "../../components/ProductList/ProductList";
-import Button from "../../components/Button/Button";
-import ReviewCarousel from "../../components/ReviewCarousel/ReviewCarousel";
-import BabyBoxSection from "../../components/BabyBoxSection/BabyBoxSection";
-import arrow from "../../assets/icons/icon-arrow.svg";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-const HomePage: React.FC = () => {
+
+import arrow from "@/assets/icons/icon-arrow.svg";
+import BabyBoxSection from "@/components/BabyBoxSection/BabyBoxSection";
+import Button from "@/components/Button/Button";
+import ProductList from "@/components/ProductList/ProductList";
+import ReviewCarousel from "@/components/ReviewCarousel/ReviewCarousel";
+
+import styles from "./HomePage.module.scss";
+
+const HomePage = () => {
   const [itemsCount, setItemsCount] = useState({
     babyBoxItems: 3,
     pickItems: 8,
@@ -25,7 +28,7 @@ const HomePage: React.FC = () => {
       }
     };
 
-    handleResize(); // Викликаємо при завантаженні
+    handleResize();
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
@@ -33,20 +36,13 @@ const HomePage: React.FC = () => {
   return (
     <div className={styles.homePage}>
       <div className={styles.containerBabyBoxed}>
-
-        <Link to="/pickandbuy" className={styles.title}>
-          <h2>Baby Boxes</h2>
+        <Link to="/product" className={styles.title}>
           <img src={arrow} className={styles.arrow} alt="arrow link" />
         </Link>
         <BabyBoxSection
           title="Baby Boxes"
           itemsToShow={itemsCount.babyBoxItems}
-
-
         />
-
-
-        
       </div>
 
       <div className={styles.containerPick}>

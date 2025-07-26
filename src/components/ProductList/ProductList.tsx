@@ -1,33 +1,43 @@
 import React from "react";
-import products from "../../data/products.json";
-import Card from "../Card/Card";
+
+import Card from "@/components/Card/Card";
+import { mockProducts } from "@/data/mockProducts";
+
 import styles from "./ProductList.module.scss";
 
 interface ProductListProps {
-  title?: string;
-  customClass?: string; // Проп для кастомного класу
+  name?: string;
   children?: React.ReactNode;
   itemsToShow?: number;
+  customClass?: string;
 }
 
 const ProductList: React.FC<ProductListProps> = ({
-  title,
+  name,
   customClass,
   children,
   itemsToShow = 3,
 }) => {
-  const limitedProducts = products.slice(0, itemsToShow);
+  const limitedProducts = mockProducts.slice(0, itemsToShow);
 
   return (
-    // <div className={`${styles.productList} ${customClass || ""}`}>
-    //   <div className={styles.container}>
     <div className={`${styles.cardList}  ${customClass || ""}`}>
-      {title && <h2 className={styles.title}>{title}</h2>}
-      {limitedProducts.map((product, index) => (
-        <Card key={index} {...product} />
-      ))}
+      {name && <h2 className={styles.title}>{name}</h2>}
+      {limitedProducts.map((product) => {
+        console.log("Mapped product:", product); 
+        return (
+          <Card
+            key={product.id}
+            id={product.id}
+            name={product.name}
+            price={product.price}
+            image={product.image}
+          />
+        );
+      })}
+
       {/* </div> */}
-       {children}
+      {children}
       {/* </div> */}
     </div>
   );

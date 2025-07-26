@@ -1,18 +1,21 @@
 // App.tsx
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
+import Layout from "@/components/Layout/Layout";
+import AboutUsPage from "@/pages/AboutUsPage/AboutUsPage";
+import BabyBox from "@/pages/BabyBoxPage/BabyBoxPage";
+import CartPage from "@/pages/CartPage/CartPage";
+import FAQPage from "@/pages/FAQPage/FAQPage";
+import HomePage from "@/pages/HomePage/HomePage";
+import LoginPage from "@/pages/LoginPage/LoginPage";
+import PickAndBuy from "@/pages/PickAndChoosePage/PickAndChoosePage";
+import ProductPage from "@/pages/ProductPage/ProductPage";
+import SignUpPage from "@/pages/SignUpPage/SignUpPage";
+// import ProductPage from "./pages/ProductPage/ProductPage";
+
 import GlobalStyle from "../globalStyle";
 import "./App.css";
-import HomePage from "./pages/HomePage/HomePage";
-import LoginPage from "./pages/LoginPage/LoginPage";
-import SignUpPage from "./pages/SignUpPage/SignUpPage";
-import CartPage from "./pages/CartPage/CartPage";
-// import ProductPage from "./pages/ProductPage/ProductPage";
-import Layout from "./components/Layout/Layout";
-import FAQPage from "./pages/FAQPage/FAQPage";
-import AboutUsPage from "./pages/AboutUsPage/AboutUsPage";
-import PickAndBuy from "./pages/PickAndChoosePage/PickAndChoosePage";
-import BabyBox from "./pages/BabyBoxPage/BabyBoxPage";
 
 const App: React.FC = () => {
   return (
@@ -52,7 +55,7 @@ const App: React.FC = () => {
           }
         />
         <Route
-          path="/product/:id"
+          path="/product"
           element={
             <Layout>
               <BabyBox />
@@ -81,6 +84,14 @@ const App: React.FC = () => {
           element={
             <Layout>
               <PickAndBuy />
+            </Layout>
+          }
+        />
+        <Route
+          path="/product/:productId"
+          element={
+            <Layout>
+              <ProductPage />
             </Layout>
           }
         />

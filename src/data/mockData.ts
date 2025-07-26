@@ -1,9 +1,9 @@
-import postpartum from '../assets/icons/postpartum.png'
 import baby_care from '../assets/icons/baby-care.png'
 import cleaning from '../assets/icons/cleaning.png'
 import clothing from '../assets/icons/clothing.png'
-import for_mama from '../assets/icons/for-mama.png'
 import feeding from '../assets/icons/feeding.png'
+import for_mama from '../assets/icons/for-mama.png'
+import postpartum from '../assets/icons/postpartum.png'
 import toys from '../assets/icons/toys.png'
 
 export const subcategories = [

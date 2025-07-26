@@ -1,7 +1,9 @@
 import React, { useState } from "react";
-import styles from "./SearchModal.module.scss";
-import searchIcon from "../../assets/icons/icon-search-states-56.svg";
+
 import closeIcon from "../../assets/icons/icon-burger-close.svg";
+import searchIcon from "../../assets/icons/icon-search-states-56.svg";
+
+import styles from "./SearchModal.module.scss";
 
 interface Product {
   id: number;

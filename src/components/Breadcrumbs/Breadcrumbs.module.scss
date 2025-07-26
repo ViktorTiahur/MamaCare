@@ -1,0 +1,26 @@
+.breadcrumbs {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 100%;
+  margin-bottom: 16px;
+  color: #65558f;
+
+  a {
+    text-decoration: underline;
+    color: #65558f;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
+  span,
+  .separator {
+    color: #000000;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 22px;
+    letter-spacing: 0.1px;
+    text-decoration: none;
+  }
+}

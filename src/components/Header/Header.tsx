@@ -1,21 +1,23 @@
 import React, { useState } from "react";
-import styles from "./Header.module.scss";
-import BannerCarousel from "../BannerCarousel/BannerCarousel";
-import Button from "../Button/Button";
-import searchIcon from "../../assets/icons/icon-search-states-56.svg";
-import cartIcon from "../../assets/icons/icon-cart-states-56.svg";
+import { Link } from "react-router-dom";
+
 import userIcon from "../../assets/icons/icon-account-states-56.svg";
-import burgerMenu from "../../assets/icons/icon-hamburger menu-states-56.svg";
+import arrowIcon from "../../assets/icons/icon-arrow.svg";
 import burgerClose from "../../assets/icons/icon-burger-close.svg";
-import userIconSmall from "../../assets/icons/icon-user-19.svg";
+import cartIcon from "../../assets/icons/icon-cart-states-56.svg";
+import burgerMenu from "../../assets/icons/icon-hamburger menu-states-56.svg";
 import userLogin from "../../assets/icons/icon-log-in19.svg";
 import userLogOut from "../../assets/icons/icon-log-out19.svg";
+import searchIcon from "../../assets/icons/icon-search-states-56.svg";
+import userIconSmall from "../../assets/icons/icon-user-19.svg";
+import BannerCarousel from "../BannerCarousel/BannerCarousel";
+import Button from "../Button/Button";
 // import NavLink from "../NavLink/Navlink";
 import Dropdown from "../Dropdown/Dropdown";
-import arrowIcon from "../../assets/icons/icon-arrow.svg";
 import SearchModal from "../SearchModal/SearchModal";
-import { Link } from "react-router-dom";
 // import { useLocation } from "react-router-dom";
+
+import styles from "./Header.module.scss";
 
 const Header: React.FC = () => {
   const [selectedLang, setSelectedLang] = useState("en");
@@ -44,7 +46,7 @@ const Header: React.FC = () => {
   };
 
   const handleLangDropdownToggle = (isOpen: boolean) => {
-    setIsLangDropdownActive(isOpen); // Оновлюємо стан
+    setIsLangDropdownActive(isOpen);
   };
 
   const handleUserSelect = (item: string) => {
@@ -69,7 +71,7 @@ const Header: React.FC = () => {
           </Link>
 
           <nav className={styles.leftButtons}>
-            <Link to="/product/1" className={styles.link}>
+            <Link to="/product" className={styles.link}>
               Baby Box
             </Link>
             <Link to="/pickandbuy" className={styles.link}>
@@ -111,9 +113,9 @@ const Header: React.FC = () => {
             items={isAuthenticated ? authorizedItems : unauthorizedItems}
             selectedItem=""
             onSelect={handleUserSelect}
-            showIcons={true} // Відображаємо іконки у випадаючому списку
-            showIcon={true} // Відображаємо іконку на кнопці
-            icon={userIcon} // Використовуємо іконку користувача
+            showIcons={true}
+            showIcon={true}
+            icon={userIcon}
             menuClassName={styles.userDropdownMenu}
             itemClassName={styles.userDropdownItem}
           />
@@ -138,7 +140,7 @@ const Header: React.FC = () => {
         <nav className={styles.sidebarNav}>
           <div className={styles.navItem}>
             <Link
-              to="/product/1"
+              to="/product"
               className={styles.navButton}
               onClick={toggleSidebar}
             >

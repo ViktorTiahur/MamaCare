@@ -1,8 +1,10 @@
+import { describe } from "node:test";
+
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import SubcategoryList from "./SubcategoryList";
-import { describe } from "node:test";
 import { test, expect, vi } from 'vitest';
+
+import SubcategoryList from "./SubcategoryList";
 import '@testing-library/jest-dom';
 
 

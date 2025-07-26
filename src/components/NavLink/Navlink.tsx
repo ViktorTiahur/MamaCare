@@ -1,4 +1,5 @@
 import { FC } from "react";
+
 import styles from "./Navlink.module.scss";
 
 interface NavLinkProps {

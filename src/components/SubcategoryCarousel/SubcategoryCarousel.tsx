@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
-import styles from "./SubcategoryCarousel.module.scss";
-import SubcategoryList from "../SubcategoryList/SubcategoryList";
-import leftArrow from "../../assets/icons/arrow-left.svg";
-import rightArrow from "../../assets/icons/arrow-right.svg";
+
+import leftArrow from "@/assets/icons/arrow-left.svg";
+import rightArrow from "@/assets/icons/arrow-right.svg";
+import SubcategoryList from "@/components/SubcategoryList/SubcategoryList";
 import { SubcategoryProps } from "@/types/subcategory";
+
+import styles from "./SubcategoryCarousel.module.scss";
 
 const SubcategoryCarousel: React.FC<SubcategoryProps> = ({
   subcategories,

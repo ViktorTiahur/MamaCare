@@ -1,7 +1,6 @@
-// styles
 import styles from "./CartPage.module.scss";
 
-const CartPage = ({}) => {
+const CartPage = () => {
   return <div className={styles.cart}>CartPage</div>;
 };
 

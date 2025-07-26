@@ -1,7 +1,9 @@
 import React from "react";
-import styles from "./SubcategoryList.module.scss";
-import Button from "../Button/Button";
+
 import { SubcategoryProps } from "../../types/subcategory";
+import Button from "../Button/Button";
+
+import styles from "./SubcategoryList.module.scss";
 
 const SubcategoryList: React.FC<SubcategoryProps> = ({
   subcategories,

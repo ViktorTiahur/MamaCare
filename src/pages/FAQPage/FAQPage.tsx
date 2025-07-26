@@ -2,10 +2,12 @@
 
 import type React from "react";
 import { useState, useEffect } from "react";
-import styles from "./FAQPage.module.scss";
-import plusIcon from "../../assets/icons/Icons-add-24.svg";
+
 import minusIcon from "../../assets/icons/icon-close-18.svg";
+import plusIcon from "../../assets/icons/Icons-add-24.svg";
 import BabyBoxSection from "../../components/BabyBoxSection/BabyBoxSection";
+
+import styles from "./FAQPage.module.scss";
 
 interface FAQItem {
   question: string;

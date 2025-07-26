@@ -1,6 +1,8 @@
 import React from "react";
-import styles from "./ReviewCard.module.scss";
+
 import star from "../../assets/icons/icon-star-24.svg";
+
+import styles from "./ReviewCard.module.scss";
 
 interface ReviewProps {
   image: string;

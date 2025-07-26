@@ -1,12 +1,12 @@
-import ProductCatalogPage from "../../components/ProductCatalogPage/ProductCatalogPage";
+import ProductCatalog from "@/components/ProductCatalog/ProductCatalog";
 import { subcategories } from "@/data/mockData";
-import productData from "@/data/fakeProducts.json";
+import { mockProducts } from "@/data/mockProducts";
 
-const PickAndBuyPage: React.FC = () => {
+const PickAndBuyPage = () => {
   return (
-    <ProductCatalogPage
+    <ProductCatalog
       title="Baby Box"
-      products={productData}
+      products={mockProducts}
       subcategories={subcategories}
     />
   );

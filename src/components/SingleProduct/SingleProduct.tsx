@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import Card from "../Card/Card";
+
 import products from "../../data/products.json";
+import Card from "../Card/Card";
 
 const SingleProduct: React.FC = () => {
   const [product] = useState(products[0]); // Беремо перший товар з файлу

@@ -1,12 +1,34 @@
 export interface Product {
-  id: number;
+  id: string;
   name: string;
   price: number;
   image: string;
-  brand: string;
-  color: string;
-  age: string;
-  gender: string;
+ 
+}
+
+export interface Review {
+  id: string;
+  author: string;
+  rating: number; 
+  text: string;
+  date: string;
+}
+
+export interface ProductDetail extends Product {
   category: string;
-  date: string; // ISO-формат дати, напр. '2025-05-12'
+  subcategory: string;
+  description: string;
+  materials: string;
+  availableColors: string[];
+  availableSizes: string[];
+  defaultColor: string;
+  defaultSize: string;
+  maxQuantity: number;
+  images: string[];
+  reviews: Review[]; 
+  brand: string;
+  age: number;
+  // gender: string;
+  // category: string;
+  // date: string; 
 }

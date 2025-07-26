@@ -1,6 +1,8 @@
 import React from "react";
-import styles from "./SortDropdown.module.scss";
+
 import icon from "../../assets/icons/sort.svg";
+
+import styles from "./SortDropdown.module.scss";
 
 export type SortOption =
   | "featured"

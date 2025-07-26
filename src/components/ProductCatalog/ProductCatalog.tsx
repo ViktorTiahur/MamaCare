@@ -1,13 +1,14 @@
 import React, { useState, useMemo, useEffect, useRef } from "react";
-import SubcategoryCarousel from "@/components/SubcategoryCarousel/SubcategoryCarousel";
-import { SortOption } from "@/components/SortDropdown/SortDropdown";
-import SortDropdown from "@/components/SortDropdown/SortDropdown";
+
+import icon from "@/assets/icons/filters.svg";
 import Card from "@/components/Card/Card";
 import ProductFilterModal from "@/components/ProductFilterModal/ProductFilterModal";
-import icon from "../../assets/icons/filters.svg";
+import { SortOption } from "@/components/SortDropdown/SortDropdown";
+import SortDropdown from "@/components/SortDropdown/SortDropdown";
+import SubcategoryCarousel from "@/components/SubcategoryCarousel/SubcategoryCarousel";
 import { Product } from "@/types/productInterface";
 
-import styles from "./ProductCatalogPage.module.scss";
+import styles from "./ProductCatalog.module.scss";
 
 interface Subcategory {
   id: number;
@@ -21,7 +22,7 @@ interface ProductCatalogProps {
   subcategories: Subcategory[];
 }
 
-const ProductCatalogPage: React.FC<ProductCatalogProps> = ({
+const ProductCatalog: React.FC<ProductCatalogProps> = ({
   title,
   products,
   subcategories,
@@ -80,7 +81,7 @@ const ProductCatalogPage: React.FC<ProductCatalogProps> = ({
   }, [activeId, filters, products, subcategories]);
 
   const sortedProducts = useMemo(() => {
-    let result = [...filteredProducts];
+    const result = [...filteredProducts];
     switch (sort) {
       case "priceAsc":
         return result.sort((a, b) => a.price - b.price);
@@ -166,8 +167,8 @@ const ProductCatalogPage: React.FC<ProductCatalogProps> = ({
           ) : (
             paginatedProducts.map((product) => (
               <Card
-                key={product.id}
-                title={product.name}
+                id={product.id}
+                name={product.name}
                 price={product.price}
                 image={product.image}
                 onAddToCart={() => console.log("Add to cart:", product.id)}
@@ -206,4 +207,4 @@ const ProductCatalogPage: React.FC<ProductCatalogProps> = ({
   );
 };
 
-export default ProductCatalogPage;
+export default ProductCatalog;

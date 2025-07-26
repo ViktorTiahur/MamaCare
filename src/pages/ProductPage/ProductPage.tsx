@@ -1,208 +1,175 @@
-import React, { useState, useMemo, useEffect, useRef } from "react";
+import { useState } from "react";
+import { useParams } from "react-router-dom";
+
+import Breadcrumbs from "@/components/Breadcrumbs/Breadcrumbs";
+import { mockProducts } from "@/data/mockProducts";
+import ProductImageCarousel from "@/components/ProductImageCarousel/ProductImageCarousel";
+
 import styles from "./ProductPage.module.scss";
-import SubcategoryCarousel from "@/components/SubcategoryCarousel/SubcategoryCarousel";
-import { SortOption } from "@/components/SortDropdown/SortDropdown";
-import SortDropdown from "@/components/SortDropdown/SortDropdown";
-import Card from "@/components/Card/Card";
-import ProductFilterModal from "@/components/ProductFilterModal/ProductFilterModal";
-import icon from "../../assets/icons/filters.svg";
-import { Product } from "@/types/productInterface";
 
-interface Subcategory {
-  id: number;
-  name: string;
-  icon: string;
-}
+const ProductPage = () => {
+  const { productId } = useParams<{ productId: string }>();
+  const product = mockProducts.find((p) => p.id === productId);
 
-interface ProductCatalogProps {
-  title: string;
-  products: Product[];
-  subcategories: Subcategory[];
-}
+  const [selectedColor, setSelectedColor] = useState(
+    () => product?.defaultColor || ""
+  );
+  const [selectedSize, setSelectedSize] = useState(
+    () => product?.defaultSize || ""
+  );
+  const [quantity, setQuantity] = useState(1);
+  const [activeTab, setActiveTab] = useState<
+    "description" | "materials" | "reviews"
+  >("description");
 
-const ProductCatalogPage: React.FC<ProductCatalogProps> = ({
-  title,
-  products,
-  subcategories,
-}) => {
-  const [activeId, setActiveId] = useState<number | null>(null);
-  const [sort, setSort] = useState<SortOption>("featured");
-  const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 12;
-  const [isSortOpen, setIsSortOpen] = useState(false);
-  const [filters, setFilters] = useState<Record<string, string[]>>({});
-  const [isFilterOpen, setIsFilterOpen] = useState(false);
-  const [isOverlayVisible, setIsOverlayVisible] = useState(false);
-  const [tempFilters, setTempFilters] = useState<Record<string, string[]>>({});
-
-  const filterBtnRef = useRef<HTMLButtonElement>(null);
-
-  const applyFilters = (selectedFilters: Record<string, string[]>) => {
-    setFilters(selectedFilters);
-    setTempFilters(selectedFilters);
-  };
-
-  useEffect(() => {
-    if (isSortOpen || isFilterOpen) {
-      setIsOverlayVisible(true);
-    } else {
-      const timeout = setTimeout(() => setIsOverlayVisible(false), 10);
-      return () => clearTimeout(timeout);
-    }
-  }, [isSortOpen, isFilterOpen]);
-
-  useEffect(() => {
-    setCurrentPage(1);
-  }, [sort, activeId, filters]);
-
-  useEffect(() => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  }, [currentPage]);
-
-  const filteredProducts = useMemo(() => {
-    let result = [...products];
-
-    if (activeId) {
-      result = result.filter(
-        (p) =>
-          p.category ===
-          subcategories.find((s) => s.id === activeId)?.name.toLowerCase()
-      );
-    }
-
-    return result.filter((product) => {
-      return Object.entries(filters).every(([key, values]) => {
-        if (values.length === 0) return true;
-        return values.includes(product[key as keyof Product] as string);
-      });
-    });
-  }, [activeId, filters, products, subcategories]);
-
-  const sortedProducts = useMemo(() => {
-    let result = [...filteredProducts];
-    switch (sort) {
-      case "priceAsc":
-        return result.sort((a, b) => a.price - b.price);
-      case "priceDesc":
-        return result.sort((a, b) => b.price - a.price);
-      case "newest":
-        return result.sort((a, b) => Date.parse(b.date) - Date.parse(a.date));
-      default:
-        return result;
-    }
-  }, [filteredProducts, sort]);
-
-  const paginatedProducts = useMemo(() => {
-    const startIndex = (currentPage - 1) * itemsPerPage;
-    return sortedProducts.slice(startIndex, startIndex + itemsPerPage);
-  }, [sortedProducts, currentPage]);
-
-  const totalPages = Math.ceil(sortedProducts.length / itemsPerPage);
-
-  const matchCount = useMemo(() => {
-    return products.filter((product) => {
-      return Object.entries(tempFilters).every(([key, values]) => {
-        if (!values.length) return true;
-        return values.includes(product[key as keyof Product] as string);
-      });
-    }).length;
-  }, [products, tempFilters]);
+  if (!product) return <p>Product not found</p>;
 
   return (
-    <div className={styles.wrapper}>
-      <h1 className={styles.title}>{title}</h1>
+    <div className={styles.productPage}>
+      <Breadcrumbs
+        category={product.category}
+        subcategory={product.subcategory}
+        productName={product.name}
+      />
 
-      <section className={styles.subcategories}>
-        <SubcategoryCarousel
-          subcategories={subcategories}
-          activeId={activeId}
-          onSelect={setActiveId}
-        />
-      </section>
+      <div className={styles.container}>
+        <section className={styles.gallery} aria-label="Product Images">
+          <ProductImageCarousel images={product.images} />
+        </section>
 
-      <section className={styles.products}>
-        <div className={styles.filters}>
-          <button
-            ref={filterBtnRef}
-            onClick={() => {
-              setIsSortOpen(false);
-              setIsFilterOpen((prev) => !prev);
+        <section className={styles.info} aria-label="Product Info">
+          <h1 className={styles.name}>{product.name}</h1>
+          <p className={styles.price}>{product.price}</p>
+          <div className={styles.rating}>
+            {product.reviews.length > 0
+              ? (
+                  product.reviews.reduce((acc, r) => acc + r.rating, 0) /
+                  product.reviews.length
+                ).toFixed(1)
+              : "No ratings yet"}{" "}
+            / 5
+          </div>
+
+          <form
+            className={styles.options}
+            onSubmit={(e) => {
+              e.preventDefault();
+              console.log("add to cart", {
+                productId: productId,
+                selectedColor,
+                selectedSize,
+                quantity,
+              });
             }}
-            className={styles.filterBtn}
           >
-            <img src={icon} alt="filters button" /> <span>Filter By</span>
-          </button>
+            <fieldset className={styles.fieldset}>
+              <legend>Choose Color</legend>
+              {product.availableColors.map((color) => (
+                <label key={color} className={styles.colorOption}>
+                  <input
+                    type="radio"
+                    name="color"
+                    value={color}
+                    checked={selectedColor === color}
+                    onChange={() => setSelectedColor(color)}
+                  />
+                  <span style={{ backgroundColor: color }} />
+                </label>
+              ))}
+            </fieldset>
 
-          <ProductFilterModal
-            isOpen={isFilterOpen}
-            onClose={() => setIsFilterOpen(false)}
-            onApply={(selected) => {
-              applyFilters(selected);
-              setIsFilterOpen(false);
-            }}
-            matchCount={matchCount}
-            selectedFilters={tempFilters}
-            onChange={setTempFilters}
-            triggerRef={filterBtnRef}
-          />
+            <fieldset className={styles.fieldset}>
+              <legend>Choose Size</legend>
+              {product.availableSizes.map((size) => (
+                <label key={size} className={styles.sizeOption}>
+                  <input
+                    type="radio"
+                    name="size"
+                    value={size}
+                    checked={selectedSize === size}
+                    onChange={() => setSelectedSize(size)}
+                  />
+                  <span>{size}</span>
+                </label>
+              ))}
+            </fieldset>
 
-          <SortDropdown
-            selected={sort}
-            onChange={(val) => {
-              setSort(val);
-              setIsSortOpen(false);
-            }}
-            isOpen={isSortOpen}
-            setIsOpen={setIsSortOpen}
-          />
-        </div>
-
-        <div className={styles.grid}>
-          {paginatedProducts.length === 0 ? (
-            <p className={styles.noProducts}>
-              Немає товарів за заданими фільтрами
-            </p>
-          ) : (
-            paginatedProducts.map((product) => (
-              <Card
-                key={product.id}
-                title={product.name}
-                price={product.price}
-                image={product.image}
-                onAddToCart={() => console.log("Add to cart:", product.id)}
+            <label className={styles.quantityLabel}>
+              Quantity:
+              <input
+                type="number"
+                min="1"
+                max={product.maxQuantity}
+                value={quantity}
+                onChange={(e) => setQuantity(Number(e.target.value))}
+                className={styles.quantityInput}
               />
-            ))
-          )}
-        </div>
+            </label>
 
-        <div className={styles.pagination}>
-          <span>Page</span>
-          {Array.from({ length: totalPages }, (_, i) => (
-            <button
-              key={i}
-              onClick={() => setCurrentPage(i + 1)}
-              className={`${styles.pageBtn} ${
-                currentPage === i + 1 ? styles.active : ""
-              }`}
-            >
-              {i + 1}
+            <button type="submit" className={styles.addToCart}>
+              Add to Cart
             </button>
-          ))}
+          </form>
+        </section>
+      </div>
+
+      <section className={styles.tabs} aria-label="Product Details">
+        <nav className={styles.tabNav}>
+          <button
+            className={`${styles.tab} ${
+              activeTab === "description" ? styles.active : ""
+            }`}
+            onClick={() => setActiveTab("description")}
+          >
+            Description
+          </button>
+          <button
+            className={`${styles.tab} ${
+              activeTab === "materials" ? styles.active : ""
+            }`}
+            onClick={() => setActiveTab("materials")}
+          >
+            Materials
+          </button>
+          <button
+            className={`${styles.tab} ${
+              activeTab === "reviews" ? styles.active : ""
+            }`}
+            onClick={() => setActiveTab("reviews")}
+          >
+            Reviews
+          </button>
+        </nav>
+
+        <div className={styles.tabContent}>
+          {activeTab === "description" && <p>{product.description}</p>}
+
+          {activeTab === "materials" && <p>{product.materials}</p>}
+
+          {activeTab === "reviews" &&
+            (product.reviews.length > 0 ? (
+              <ul className={styles.reviewList}>
+                {product.reviews.map((r) => (
+                  <li key={r.id} className={styles.review}>
+                    <strong>{r.author}</strong> – {r.rating}/5
+                    <p>{r.text}</p>
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <p>No reviews yet.</p>
+            ))}
         </div>
       </section>
 
-      {isOverlayVisible && (
-        <div
-          className={styles.overlay}
-          onClick={() => {
-            setIsSortOpen(false);
-            setIsFilterOpen(false);
-            setIsOverlayVisible(false);
-          }}
-        />
-      )}
+      <section className={styles.bundle} aria-label="Bundle Offers">
+        <h2 className={styles.bundleTitle}>
+          Upgrade to box to get cheaper deal!
+        </h2>
+        {/* Продукти-бокси */}
+      </section>
     </div>
   );
 };
 
-export default ProductCatalogPage;
+export default ProductPage;

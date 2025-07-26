@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
-import styles from "./BannerCarousel.module.scss";
-import Button from "../Button/Button";
+
 import { slides } from "../../constants/slides";
+import Button from "../Button/Button";
+
+import styles from "./BannerCarousel.module.scss";
 
 const BannerCarousel: React.FC = () => {
   const [currentSlide, setCurrentSlide] = useState(0);

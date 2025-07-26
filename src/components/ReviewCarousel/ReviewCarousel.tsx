@@ -1,11 +1,13 @@
-import React, { useState, useEffect } from "react";
-import reviews from "../../data/review.json";
-import styles from "./ReviewCarousel.module.scss";
-import ReviewCard from "../Review/ReviewCard";
-import leftArrow from "../../assets/icons/icon-arrov-left.svg";
-import rightArrow from "../../assets/icons/icon-arrov-right.svg";
+import { useState, useEffect } from "react";
 
-const ReviewCarousel: React.FC = () => {
+import leftArrow from "@/assets/icons/icon-arrov-left.svg";
+import rightArrow from "@/assets/icons/icon-arrov-right.svg";
+import ReviewCard from "@/components/Review/ReviewCard";
+import reviews from "@/data/review.json";
+
+import styles from "./ReviewCarousel.module.scss";
+
+const ReviewCarousel = () => {
   const [index, setIndex] = useState(0);
   const [itemsPerPage, setItemsPerPage] = useState(3); // Початкове значення для кількості карток на екрані
 
