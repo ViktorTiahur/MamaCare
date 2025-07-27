@@ -6,9 +6,12 @@ import ProductImageCarousel from "@/components/ProductImageCarousel/ProductImage
 import mockProducts from "@/data/mockProducts";
 
 import styles from "./ProductPage.module.scss";
+import getStringInCurrectLaguage from "@/untils/getStringInCurrentLanguage";
+import { useTranslation } from "react-i18next";
 
 const ProductPage = () => {
   const { productId } = useParams<{ productId: string }>();
+  const {i18n} = useTranslation();
   const product = mockProducts.find((p) => p.id === productId);
 
   const [selectedColor, setSelectedColor] = useState(
@@ -27,9 +30,9 @@ const ProductPage = () => {
   return (
     <div className={styles.productPage}>
       <Breadcrumbs
-        category={product.category}
-        subcategory={product.subcategory}
-        productName={product.name}
+        category={getStringInCurrectLaguage(product.category,i18n.language as "en" | "uk")}
+        subcategory={getStringInCurrectLaguage(product.subcategory,i18n.language as "en" | "uk")}
+        productName={getStringInCurrectLaguage(product.name,i18n.language as "en" | "uk")}
       />
 
       <div className={styles.container}>
@@ -38,7 +41,7 @@ const ProductPage = () => {
         </section>
 
         <section className={styles.info} aria-label="Product Info">
-          <h1 className={styles.name}>{product.name}</h1>
+          <h1 className={styles.name}>{getStringInCurrectLaguage(product.name, i18n.language as "en" | "uk")}</h1>
           <p className={styles.price}>{product.price}</p>
           <div className={styles.rating}>
             {product.reviews.length > 0
@@ -142,9 +145,9 @@ const ProductPage = () => {
         </nav>
 
         <div className={styles.tabContent}>
-          {activeTab === "description" && <p>{product.description}</p>}
+          {activeTab === "description" && <p>{getStringInCurrectLaguage(product.description, i18n.language as "en" | "uk")}</p>}
 
-          {activeTab === "materials" && <p>{product.materials}</p>}
+          {activeTab === "materials" && <p>{getStringInCurrectLaguage(product.materials , i18n.language as "en" | "uk")}</p>}
 
           {activeTab === "reviews" &&
             (product.reviews.length > 0 ? (

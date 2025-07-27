@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, {  useState } from "react";
+import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 
 import userIcon from "../../assets/icons/icon-account-states-56.svg";
@@ -20,7 +21,8 @@ import SearchModal from "../SearchModal/SearchModal";
 import styles from "./Header.module.scss";
 
 const Header: React.FC = () => {
-  const [selectedLang, setSelectedLang] = useState("en");
+  const {i18n,t} = useTranslation();
+  const [selectedLang, setSelectedLang] = useState(i18n.language || "en"); // Встановлюємо мову за замовчуванням
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isAuthenticated, setIsAuthenticated] = useState(false); // Змінна для статусу авторизації
   const [isSearchOpen, setIsSearchOpen] = useState(false);
@@ -28,17 +30,17 @@ const Header: React.FC = () => {
 
   const languages = [
     { code: "en", label: "ENG" },
-    { code: "ua", label: "UKR" },
+    { code: "uk", label: "UKR" },
   ];
 
   const authorizedItems = [
-    { code: "myProfil", label: "My Profil", icon: userIconSmall },
-    { code: "logOut", label: "Log out", icon: userLogOut },
+    { code: "myProfil", label: t("Header.My Profile"), icon: userIconSmall },
+    { code: "logOut", label: t("Header.Log out"), icon: userLogOut },
   ];
 
   const unauthorizedItems = [
-    { code: "login", label: "Log in", icon: userLogin },
-    { code: "register", label: "Sign up", icon: userIconSmall },
+    { code: "login", label: t("Header.Log in"), icon: userLogin },
+    { code: "register", label: t("Header.Sign up"), icon: userIconSmall },
   ];
 
   const toggleSidebar = () => {
@@ -59,6 +61,13 @@ const Header: React.FC = () => {
     }
   };
 
+  // Зміна мови при виборі з випадаючого списку
+  function handleSetLaguage(lang : string) {
+    setSelectedLang(lang);
+    i18n.changeLanguage(lang);
+
+  };
+
   return (
     <header className={styles.header}>
       <div className={styles.topBar}>
@@ -72,16 +81,16 @@ const Header: React.FC = () => {
 
           <nav className={styles.leftButtons}>
             <Link to="/product" className={styles.link}>
-              Baby Box
+              {t('Header.Baby Box')}
             </Link>
             <Link to="/pickandbuy" className={styles.link}>
-              Pick & Buy
+              {t('Header.Pick & Buy')}
             </Link>
             <Link to="/about" className={styles.link}>
-              About Us
+              {t('Header.About Us')}
             </Link>
             <Link to="/faq" className={styles.link}>
-              FAQ
+              {t('Header.FAQ')}
             </Link>
           </nav>
         </div>
@@ -90,7 +99,7 @@ const Header: React.FC = () => {
             className={styles.langDropdown}
             items={languages}
             selectedItem={selectedLang}
-            onSelect={setSelectedLang}
+            onSelect={handleSetLaguage}
             menuClassName={styles.langDropdownMenu}
           />
           <Button
@@ -144,7 +153,7 @@ const Header: React.FC = () => {
               className={styles.navButton}
               onClick={toggleSidebar}
             >
-              Baby Box
+              {t('Header.Baby Box')}
             </Link>
             <img src={arrowIcon} alt="Arrow" className={styles.arrowIcon} />
           </div>
@@ -154,7 +163,7 @@ const Header: React.FC = () => {
               className={styles.navButton}
               onClick={toggleSidebar}
             >
-              Pick & Buy
+              {t('Header.Pick & Buy')}
             </Link>
             <img src={arrowIcon} alt="Arrow" className={styles.arrowIcon} />
           </div>
@@ -165,7 +174,7 @@ const Header: React.FC = () => {
               className={styles.navButton}
               onClick={toggleSidebar}
             >
-              About Us
+              {t('Header.About Us')}
             </Link>
             <img src={arrowIcon} alt="Arrow" className={styles.arrowIcon} />
           </div>
@@ -175,7 +184,7 @@ const Header: React.FC = () => {
               className={styles.navButton}
               onClick={toggleSidebar}
             >
-              FAQ
+              {t('Header.FAQ')}
             </Link>
             <img src={arrowIcon} alt="Arrow" className={styles.arrowIcon} />
           </div>

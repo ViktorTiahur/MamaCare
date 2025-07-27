@@ -9,11 +9,13 @@ import styles from "./BabyBoxSection.module.scss";
 interface BabyBoxSectionProps {
   itemsToShow: number;
   title: string;
+  lang: "en" | "uk";
 }
 
 const BabyBoxSection: React.FC<BabyBoxSectionProps> = ({
   itemsToShow,
   title,
+  lang
 }) => {
   return (
     <div className={styles.containerBabyBoxed}>
@@ -28,6 +30,7 @@ const BabyBoxSection: React.FC<BabyBoxSectionProps> = ({
       <ProductList
         customClass={styles.babyBoxedList}
         itemsToShow={itemsToShow}
+        lang={lang}
       />
       <div className={styles.button}>
         <Button>View all Gift Boxes</Button>

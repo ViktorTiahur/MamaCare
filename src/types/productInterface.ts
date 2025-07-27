@@ -1,9 +1,9 @@
 export interface Product {
   id: string | number;
-  name: string;
+  name: string | { en: string; uk: string };
   price: number;
   image: string;
-  category: string;
+  category: string | { en: string; uk: string };
   date: string;
  
 }
@@ -17,10 +17,10 @@ export interface Review {
 }
 
 export interface ProductDetail extends Product {
-  category: string;
-  subcategory: string;
-  description: string;
-  materials: string;
+  category: string | { en: string; uk: string };
+  subcategory: string | { en: string; uk: string };
+  description: string | { en: string; uk: string };
+  materials: string | { en: string; uk: string };
   availableColors: string[];
   availableSizes: string[];
   defaultColor: string;
@@ -28,7 +28,7 @@ export interface ProductDetail extends Product {
   maxQuantity: number;
   images: string[];
   reviews: Review[]; 
-  brand: string;
+  brand: string | { en: string; uk: string };
   age: number;
   // gender: string;
   // category: string;

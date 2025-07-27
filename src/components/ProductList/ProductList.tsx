@@ -4,19 +4,23 @@ import Card from "@/components/Card/Card";
 import mockProducts from "@/data/mockProducts";
 
 import styles from "./ProductList.module.scss";
+import getStringInCurrectLaguage from "@/untils/getStringInCurrentLanguage";
 
 interface ProductListProps {
   name?: string;
   children?: React.ReactNode;
   itemsToShow?: number;
   customClass?: string;
+  lang: "en" | "uk";
 }
+
+
 
 const ProductList: React.FC<ProductListProps> = ({
   name,
   customClass,
   children,
-  itemsToShow = 3,
+  itemsToShow = 3,lang,
 }) => {
   const limitedProducts = mockProducts.slice(0, itemsToShow);
 
@@ -29,7 +33,7 @@ const ProductList: React.FC<ProductListProps> = ({
           <Card
             key={product.id}
             id={String(product.id)}
-            name={product.name}
+            name={getStringInCurrectLaguage(product.name, lang)}
             price={product.price}
             image={product.image}
           />

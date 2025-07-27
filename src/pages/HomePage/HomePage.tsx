@@ -15,7 +15,7 @@ const HomePage = () => {
     babyBoxItems: 3,
     pickItems: 8,
   });
-  const {t} = useTranslation();
+  const {t,i18n} = useTranslation();
 
 
   useEffect(() => {
@@ -43,23 +43,25 @@ const HomePage = () => {
           <img src={arrow} className={styles.arrow} alt="arrow link" />
         </Link>
         <BabyBoxSection
-          title="Baby Boxes"
+        lang={i18n.language as "en" | "uk"}
+          title={t('HomePage.Baby Boxes')}
           itemsToShow={itemsCount.babyBoxItems}
         />
       </div>
 
       <div className={styles.containerPick}>
         <Link to="/pickandbuy" className={styles.title}>
-          <h2>{t('Pick & Buy')}</h2>
+          <h2>{t('HomePage.Pick & Buy')}</h2>
           <img src={arrow} className={styles.arrow} alt="arrow link" />
         </Link>
 
         <ProductList
+                lang={i18n.language as "en" | "uk"}
           customClass={styles.pickList}
           itemsToShow={itemsCount.pickItems}
         ></ProductList>
         <div className={styles.button}>
-          <Button>{t('View all Products')}</Button>
+          <Button>{t('HomePage.View all Products')}</Button>
         </div>
       </div>
 
