@@ -28,7 +28,7 @@ const ProductList: React.FC<ProductListProps> = ({
     <div className={`${styles.cardList}  ${customClass || ""}`}>
       {name && <h2 className={styles.title}>{name}</h2>}
       {limitedProducts.map((product) => {
-        console.log("Mapped product:", product);
+        // console.log("Mapped product:", product);
         return (
           <Card
             key={product.id}

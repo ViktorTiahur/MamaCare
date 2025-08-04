@@ -4,7 +4,7 @@ const mockProducts: ProductDetail[] = [
   {
     id: "1",
     name: {
-      en: "Silicone Snack Plate - Bunny",
+      en: "Silicone Snack Plate - Bunny na barabani",
       uk: "Силіконова тарілка для перекусів - Зайчик",
     },
     category: {
@@ -36,14 +36,14 @@ const mockProducts: ProductDetail[] = [
       {
         id: "r2",
         author: "Oleh",
-        rating: 4,
+        rating: 1,
         text: "Great plate, but a bit small.",
         date: "2025-01-14",
       },
     ],
     price: 25,
     brand: "SoftCare",
-    availableColors: ["Black", "Grey", "Green"],
+    availableColors: ["Black", "Grey", "Green", 'Yellow', 'Red'],
     availableSizes: ["S", "M", "L"],
     defaultColor: "Black",
     defaultSize: "M",

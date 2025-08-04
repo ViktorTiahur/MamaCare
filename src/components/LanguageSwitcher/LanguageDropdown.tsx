@@ -38,7 +38,7 @@ const LanguageDropdown: React.FC = () => {
   const handleSelect = (lang: string) => {
     setSelectedLang(lang);
     setIsOpen(false);
-    console.log("Вибрана мова:", lang);
+    // console.log("Вибрана мова:", lang);
     // Додаткову логіку зміни мови можна реалізувати тут (наприклад, i18n)
   };
 

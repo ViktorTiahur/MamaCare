@@ -1,21 +1,58 @@
 .productPage {
+  padding: 32px 156px 84px;
   .container {
     display: flex;
+    gap: 44px;
   }
 
   .gallery {
     width: 100%;
     max-width: 466px;
+    max-height: 563px;
   }
 
   .info {
+    max-width: 618px;
+    max-height: 563px;
+
+    gap: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
   }
 
   .title {
+    font-weight: 300;
+    font-size: 44px;
+    line-height: 100%;
+    color: #5e4b8b;
   }
   .price {
+    font-weight: 500;
+    font-size: 28px;
+    line-height: 100%;
+    letter-spacing: 0%;
   }
   .rating {
+    height: 32px;
+    display: flex;
+    align-items: center;
+    .ratingStar {
+      height: 32px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      img {
+        height: 25px;
+      }
+    }
+    .ratingText {
+      height: 24px;
+      font-size: 20px;
+      font-weight: 600;
+      margin-left: 15px;
+      border-bottom: 1px solid #000000;
+    }
   }
 
   .options {
@@ -23,6 +60,16 @@
     flex-direction: column;
 
     .fieldset {
+      font-weight: 600;
+      font-size: 20px;
+      border-bottom: 1px solid #c7c2d6;
+      padding-bottom: 16px;
+      margin-bottom: 25px;
+
+      legend {
+        margin-bottom: 16px;
+      }
+
       .colorOption {
         display: inline-block;
         margin-right: 8px;
@@ -34,14 +81,14 @@
 
         span {
           display: inline-block;
-          width: 32px;
-          height: 32px;
+          width: 50px;
+          height: 50px;
           border: 2px solid transparent;
           border-radius: 6px;
         }
 
         input:checked + span {
-          border-color: #5e4b8b; // фіолетова рамка як у макеті
+          border: 2px solid #65558f;
         }
       }
 
@@ -54,28 +101,72 @@
 
         span {
           display: inline-block;
-          padding: 6px 12px;
-          border: 1.5px solid #ccc;
           border-radius: 8px;
-          font-size: 14px;
-          font-weight: 500;
-          min-width: 44px;
-          text-align: center;
-          transition: 0.2s ease;
+          font-size: 20px;
+          font-weight: 400;
+          line-height: 30px;
+          width: 50px;
+          height: 50px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border: 1px solid #c7c2d6;
         }
 
         input:checked + span {
-          border-color: #5e4b8b;
-          color: #5e4b8b;
+          border: 2px solid #65558f;
+
           font-weight: 600;
         }
       }
     }
-    .quantityLabel {
+    .buttons {
+      display: flex;
+      gap: 24px;
     }
-    .quantityInput {
+    .quantitySelector {
+      width: 150px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background-color: #eaddff;
+      border-radius: 100px;
+      padding: 4px 24px;
     }
+
+    .qtyBtn {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+
+      &:disabled {
+        opacity: 0.4;
+        cursor: not-allowed;
+      }
+    }
+
+    .qtyInput {
+      width: 36px;
+      height: 40px;
+      text-align: center;
+      border: none;
+      background-color: #fff;
+      border-radius: 8px;
+      font-weight: 400;
+      font-size: 20px;
+    }
+
     .addToCart {
+      height: 50px;
+      width: 100%;
+      max-width: 294px;
+      border-radius: 100px;
+      background-color: #65558f;
+      color: #fff;
+      font-weight: 600;
+      font-size: 16px;
+      cursor: pointer;
     }
 
     .tabs {

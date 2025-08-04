@@ -2,16 +2,19 @@ import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useParams } from "react-router-dom";
 
+import star from "@/assets/icons/icon-star-24.svg";
+import plus from "@/assets/icons/plus.svg";
+import minus from "@/assets/icons/minus.svg";
 import Breadcrumbs from "@/components/Breadcrumbs/Breadcrumbs";
 import ProductImageCarousel from "@/components/ProductImageCarousel/ProductImageCarousel";
 import mockProducts from "@/data/mockProducts";
-import getStringInCurrectLaguage from "@/untils/getStringInCurrentLanguage";
+import getStringInCurrentLanguage from "@/untils/getStringInCurrentLanguage";
 
 import styles from "./ProductPage.module.scss";
 
 const ProductPage = () => {
   const { productId } = useParams<{ productId: string }>();
-  const {i18n} = useTranslation();
+  const { i18n } = useTranslation();
   const product = mockProducts.find((p) => p.id === productId);
 
   const [selectedColor, setSelectedColor] = useState(
@@ -27,12 +30,27 @@ const ProductPage = () => {
 
   if (!product) return <p>Product not found</p>;
 
+  const averageRating =
+    product.reviews.length > 0
+      ? product.reviews.reduce((sum, r) => sum + r.rating, 0) /
+        product.reviews.length
+      : 0;
+
   return (
     <div className={styles.productPage}>
       <Breadcrumbs
-        category={getStringInCurrectLaguage(product.category,i18n.language as "en" | "uk")}
-        subcategory={getStringInCurrectLaguage(product.subcategory,i18n.language as "en" | "uk")}
-        productName={getStringInCurrectLaguage(product.name,i18n.language as "en" | "uk")}
+        category={getStringInCurrentLanguage(
+          product.category,
+          i18n.language as "en" | "uk"
+        )}
+        subcategory={getStringInCurrentLanguage(
+          product.subcategory,
+          i18n.language as "en" | "uk"
+        )}
+        productName={getStringInCurrentLanguage(
+          product.name,
+          i18n.language as "en" | "uk"
+        )}
       />
 
       <div className={styles.container}>
@@ -41,17 +59,31 @@ const ProductPage = () => {
         </section>
 
         <section className={styles.info} aria-label="Product Info">
-          <h1 className={styles.name}>{getStringInCurrectLaguage(product.name, i18n.language as "en" | "uk")}</h1>
-          <p className={styles.price}>{product.price}</p>
+          <h2 className={styles.title}>
+            {getStringInCurrentLanguage(
+              product.name,
+              i18n.language as "en" | "uk"
+            )}
+          </h2>
           <div className={styles.rating}>
-            {product.reviews.length > 0
-              ? (
-                  product.reviews.reduce((acc, r) => acc + r.rating, 0) /
-                  product.reviews.length
-                ).toFixed(1)
-              : "No ratings yet"}{" "}
-            / 5
+            <div className={styles.ratingStar}>
+              {Array.from({ length: 5 }).map((_, index) => (
+                <img
+                  key={index}
+                  src={star}
+                  alt="Star"
+                  className={styles.star}
+                  style={{
+                    opacity: index < Math.round(averageRating) ? 1 : 0.3,
+                  }}
+                />
+              ))}
+            </div>
+            <span className={styles.ratingText}>
+              {averageRating.toFixed(1)}/5 ({product.reviews.length})
+            </span>
           </div>
+          <p className={styles.price}>${product.price}</p>
 
           <form
             className={styles.options}
@@ -66,7 +98,7 @@ const ProductPage = () => {
             }}
           >
             <fieldset className={styles.fieldset}>
-              <legend>Choose Color</legend>
+              <legend>Choose Color:</legend>
               {product.availableColors.map((color) => (
                 <label key={color} className={styles.colorOption}>
                   <input
@@ -82,7 +114,7 @@ const ProductPage = () => {
             </fieldset>
 
             <fieldset className={styles.fieldset}>
-              <legend>Choose Size</legend>
+              <legend>Size:</legend>
               {product.availableSizes.map((size) => (
                 <label key={size} className={styles.sizeOption}>
                   <input
@@ -96,22 +128,37 @@ const ProductPage = () => {
                 </label>
               ))}
             </fieldset>
-
-            <label className={styles.quantityLabel}>
-              Quantity:
+            <div className={styles.buttons}>
+            <div className={styles.quantitySelector}>
+              <button
+                type="button"
+                onClick={() => setQuantity((prev) => Math.max(1, prev - 1))}
+                className={styles.qtyBtn}
+                disabled={quantity <= 1}
+              >
+                <img src={minus} alt="Remove one item" />
+              </button>
               <input
-                type="number"
-                min="1"
-                max={product.maxQuantity}
+                type="text"
+                readOnly
                 value={quantity}
-                onChange={(e) => setQuantity(Number(e.target.value))}
-                className={styles.quantityInput}
+                className={styles.qtyInput}
               />
-            </label>
+              <button
+                type="button"
+                onClick={() =>
+                  setQuantity((prev) => Math.min(product.maxQuantity, prev + 1))
+                }
+                className={styles.qtyBtn}
+                disabled={quantity >= product.maxQuantity}
+              >
+                <img src={plus} alt="Add one item" />
+              </button>
+            </div>
 
             <button type="submit" className={styles.addToCart}>
               Add to Cart
-            </button>
+            </button></div>
           </form>
         </section>
       </div>
@@ -145,9 +192,23 @@ const ProductPage = () => {
         </nav>
 
         <div className={styles.tabContent}>
-          {activeTab === "description" && <p>{getStringInCurrectLaguage(product.description, i18n.language as "en" | "uk")}</p>}
+          {activeTab === "description" && (
+            <p>
+              {getStringInCurrentLanguage(
+                product.description,
+                i18n.language as "en" | "uk"
+              )}
+            </p>
+          )}
 
-          {activeTab === "materials" && <p>{getStringInCurrectLaguage(product.materials , i18n.language as "en" | "uk")}</p>}
+          {activeTab === "materials" && (
+            <p>
+              {getStringInCurrentLanguage(
+                product.materials,
+                i18n.language as "en" | "uk"
+              )}
+            </p>
+          )}
 
           {activeTab === "reviews" &&
             (product.reviews.length > 0 ? (
