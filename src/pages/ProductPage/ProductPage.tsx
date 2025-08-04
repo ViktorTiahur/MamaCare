@@ -1,13 +1,13 @@
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { useParams } from "react-router-dom";
 
 import Breadcrumbs from "@/components/Breadcrumbs/Breadcrumbs";
 import ProductImageCarousel from "@/components/ProductImageCarousel/ProductImageCarousel";
 import mockProducts from "@/data/mockProducts";
+import getStringInCurrectLaguage from "@/untils/getStringInCurrentLanguage";
 
 import styles from "./ProductPage.module.scss";
-import getStringInCurrectLaguage from "@/untils/getStringInCurrentLanguage";
-import { useTranslation } from "react-i18next";
 
 const ProductPage = () => {
   const { productId } = useParams<{ productId: string }>();

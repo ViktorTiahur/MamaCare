@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 
 import arrow from "@/assets/icons/icon-arrow.svg";
@@ -8,7 +9,6 @@ import ProductList from "@/components/ProductList/ProductList";
 import ReviewCarousel from "@/components/ReviewCarousel/ReviewCarousel";
 
 import styles from "./HomePage.module.scss";
-import { useTranslation } from "react-i18next";
 
 const HomePage = () => {
   const [itemsCount, setItemsCount] = useState({

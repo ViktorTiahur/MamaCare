@@ -8,8 +8,8 @@ await i18next
 .use(LanguageDetector)
 .use(Backend)
  .init({
-    fallbackLng: 'uk',
+    fallbackLng: 'en',
     debug: true,
-    lng:'uk'
+    lng:'en'
   });
 

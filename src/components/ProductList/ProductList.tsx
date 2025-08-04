@@ -2,9 +2,9 @@ import React from "react";
 
 import Card from "@/components/Card/Card";
 import mockProducts from "@/data/mockProducts";
+import getStringInCurrectLaguage from "@/untils/getStringInCurrentLanguage";
 
 import styles from "./ProductList.module.scss";
-import getStringInCurrectLaguage from "@/untils/getStringInCurrentLanguage";
 
 interface ProductListProps {
   name?: string;
