@@ -37,7 +37,7 @@ const ProductPage = () => {
       : 0;
 
   return (
-    <div className={styles.productPage}>
+    <main className={styles.productPage} aria-label="Product Page">
       <Breadcrumbs
         category={getStringInCurrentLanguage(
           product.category,
@@ -53,7 +53,7 @@ const ProductPage = () => {
         )}
       />
 
-      <div className={styles.container}>
+      <section className={styles.details} aria-label="Product Details">
         <section className={styles.gallery} aria-label="Product Images">
           <ProductImageCarousel images={product.images} />
         </section>
@@ -164,7 +164,7 @@ const ProductPage = () => {
             </div>
           </form>
         </section>
-      </div>
+      </section>
 
       <section className={styles.tabs} aria-label="Product Details">
         <nav className={styles.tabNav}>
@@ -235,7 +235,7 @@ const ProductPage = () => {
         </h2>
         {/* Продукти-бокси */}
       </section>
-    </div>
+    </main>
   );
 };
 
