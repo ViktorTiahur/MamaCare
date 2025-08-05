@@ -2,7 +2,7 @@ import React from "react";
 
 import Card from "@/components/Card/Card";
 import mockProducts from "@/data/mockProducts";
-import getStringInCurrectLaguage from "@/untils/getStringInCurrentLanguage";
+import getStringInCurrectLaguage from "@/utils/getStringInCurrentLanguage";
 
 import styles from "./ProductList.module.scss";
 
@@ -14,13 +14,12 @@ interface ProductListProps {
   lang: "en" | "uk";
 }
 
-
-
 const ProductList: React.FC<ProductListProps> = ({
   name,
   customClass,
   children,
-  itemsToShow = 3,lang,
+  itemsToShow = 3,
+  lang,
 }) => {
   const limitedProducts = mockProducts.slice(0, itemsToShow);
 

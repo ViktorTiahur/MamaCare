@@ -1,5 +1,4 @@
 import React from "react";
-import { useTranslation } from 'react-i18next';
 import { Link } from "react-router-dom";
 
 import Button from "@/components/Button/Button";
@@ -23,17 +22,11 @@ const Card: React.FC<CardProps> = ({
   customClass,
   onAddToCart,
 }) => {
-  const { i18n } = useTranslation();
-
-
   return (
     <div className={`${styles.card} ${customClass || ""}`}>
       <Link to={`/product/${id}`} className={styles.cardLink}>
         <img src={image} alt={name} className={styles.cardImage} />
-        <h2 className={styles.title}>
-  {typeof name === 'object' ? name[i18n.language] : name}
-</h2>
-
+        <h2 className={styles.title}>{name}</h2>
       </Link>
 
       <div className={styles.addToCard}>

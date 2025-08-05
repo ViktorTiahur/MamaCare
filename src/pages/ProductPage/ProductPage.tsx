@@ -3,12 +3,12 @@ import { useTranslation } from "react-i18next";
 import { useParams } from "react-router-dom";
 
 import star from "@/assets/icons/icon-star-24.svg";
-import plus from "@/assets/icons/plus.svg";
 import minus from "@/assets/icons/minus.svg";
+import plus from "@/assets/icons/plus.svg";
 import Breadcrumbs from "@/components/Breadcrumbs/Breadcrumbs";
 import ProductImageCarousel from "@/components/ProductImageCarousel/ProductImageCarousel";
 import mockProducts from "@/data/mockProducts";
-import getStringInCurrentLanguage from "@/untils/getStringInCurrentLanguage";
+import getStringInCurrentLanguage from "@/utils/getStringInCurrentLanguage";
 
 import styles from "./ProductPage.module.scss";
 
@@ -129,36 +129,39 @@ const ProductPage = () => {
               ))}
             </fieldset>
             <div className={styles.buttons}>
-            <div className={styles.quantitySelector}>
-              <button
-                type="button"
-                onClick={() => setQuantity((prev) => Math.max(1, prev - 1))}
-                className={styles.qtyBtn}
-                disabled={quantity <= 1}
-              >
-                <img src={minus} alt="Remove one item" />
-              </button>
-              <input
-                type="text"
-                readOnly
-                value={quantity}
-                className={styles.qtyInput}
-              />
-              <button
-                type="button"
-                onClick={() =>
-                  setQuantity((prev) => Math.min(product.maxQuantity, prev + 1))
-                }
-                className={styles.qtyBtn}
-                disabled={quantity >= product.maxQuantity}
-              >
-                <img src={plus} alt="Add one item" />
+              <div className={styles.quantitySelector}>
+                <button
+                  type="button"
+                  onClick={() => setQuantity((prev) => Math.max(1, prev - 1))}
+                  className={styles.qtyBtn}
+                  disabled={quantity <= 1}
+                >
+                  <img src={minus} alt="Remove one item" />
+                </button>
+                <input
+                  type="text"
+                  readOnly
+                  value={quantity}
+                  className={styles.qtyInput}
+                />
+                <button
+                  type="button"
+                  onClick={() =>
+                    setQuantity((prev) =>
+                      Math.min(product.maxQuantity, prev + 1)
+                    )
+                  }
+                  className={styles.qtyBtn}
+                  disabled={quantity >= product.maxQuantity}
+                >
+                  <img src={plus} alt="Add one item" />
+                </button>
+              </div>
+
+              <button type="submit" className={styles.addToCart}>
+                Add to Cart
               </button>
             </div>
-
-            <button type="submit" className={styles.addToCart}>
-              Add to Cart
-            </button></div>
           </form>
         </section>
       </div>

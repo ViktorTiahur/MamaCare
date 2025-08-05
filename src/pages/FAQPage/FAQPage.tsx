@@ -2,10 +2,11 @@
 
 import type React from "react";
 import { useState, useEffect } from "react";
+import { useTranslation } from "react-i18next";
 
-import minusIcon from "../../assets/icons/icon-close-18.svg";
-import plusIcon from "../../assets/icons/Icons-add-24.svg";
-import BabyBoxSection from "../../components/BabyBoxSection/BabyBoxSection";
+import minusIcon from "@/assets/icons/icon-close-18.svg";
+import plusIcon from "@/assets/icons/Icons-add-24.svg";
+import BabyBoxSection from "@/components/BabyBoxSection/BabyBoxSection";
 
 import styles from "./FAQPage.module.scss";
 
@@ -87,6 +88,7 @@ const FAQPage: React.FC = () => {
     );
   };
 
+  const { i18n } = useTranslation();
   const [boxCount, setBoxCount] = useState(3);
 
   useEffect(() => {
@@ -133,6 +135,7 @@ const FAQPage: React.FC = () => {
         <BabyBoxSection
           title="Keep shopping for BabyBoxes"
           itemsToShow={boxCount}
+          lang={i18n.language as "en" | "uk"}
         />
       </div>
     </div>

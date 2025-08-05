@@ -1,4 +1,5 @@
 import React, { useState, useMemo, useEffect, useRef } from "react";
+import { useTranslation } from "react-i18next";
 
 import icon from "@/assets/icons/filters.svg";
 import Card from "@/components/Card/Card";
@@ -7,6 +8,7 @@ import { SortOption } from "@/components/SortDropdown/SortDropdown";
 import SortDropdown from "@/components/SortDropdown/SortDropdown";
 import SubcategoryCarousel from "@/components/SubcategoryCarousel/SubcategoryCarousel";
 import { Product } from "@/types/productInterface";
+import getStringInCurrentLanguage from "@/utils/getStringInCurrentLanguage";
 
 import styles from "./ProductCatalog.module.scss";
 
@@ -36,6 +38,8 @@ const ProductCatalog: React.FC<ProductCatalogProps> = ({
   const [isFilterOpen, setIsFilterOpen] = useState(false);
   const [isOverlayVisible, setIsOverlayVisible] = useState(false);
   const [tempFilters, setTempFilters] = useState<Record<string, string[]>>({});
+
+  const { i18n } = useTranslation();
 
   const filterBtnRef = useRef<HTMLButtonElement>(null);
 
@@ -112,7 +116,9 @@ const ProductCatalog: React.FC<ProductCatalogProps> = ({
 
   return (
     <div className={styles.wrapper}>
-      <h1 className={styles.title}>{title}</h1>
+      <h1 className={styles.title}>
+        {getStringInCurrentLanguage(title, i18n.language as "en" | "uk")}
+      </h1>
 
       <section className={styles.subcategories}>
         <SubcategoryCarousel
@@ -169,7 +175,10 @@ const ProductCatalog: React.FC<ProductCatalogProps> = ({
               <Card
                 key={product.id}
                 id={String(product.id)}
-                name={product.name}
+                name={getStringInCurrentLanguage(
+                  product.name,
+                  i18n.language as "en" | "uk"
+                )}
                 price={product.price}
                 image={product.image}
                 onAddToCart={() => console.log("Add to cart:", product.id)}

@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useTranslation } from "react-i18next";
 
 import heart from "@/assets/icons/icon-heart.svg";
 import matherPhoto from "@/assets/images/about-desktop.png";
@@ -8,6 +9,7 @@ import styles from "./AboutUsPage.module.scss";
 
 const AboutUsPage = () => {
   const [boxCount, setBoxCount] = useState(3);
+  const { i18n } = useTranslation();
 
   useEffect(() => {
     const handleResize = () => {
@@ -165,7 +167,11 @@ const AboutUsPage = () => {
         </div>
       </div>
 
-      <BabyBoxSection title="We Recommend" itemsToShow={boxCount} />
+      <BabyBoxSection
+        title="We Recommend"
+        itemsToShow={boxCount}
+        lang={i18n.language as "en" | "uk"}
+      />
     </div>
   );
 };
