@@ -77,7 +77,7 @@
         cursor: pointer;
 
         input {
-          display: none; // сховати стандартний radio
+          display: none;
         }
 
         span {
@@ -140,10 +140,11 @@
       display: flex;
       align-items: center;
       cursor: pointer;
+      color: #65558f;
 
       &:disabled {
-        opacity: 0.4;
         cursor: not-allowed;
+        color: #b0b0b0;
       }
     }
 
@@ -189,12 +190,15 @@
       &:hover {
         border-bottom: 4px solid #a982e873;
       }
-      &:active {
-        border-bottom: 4px solid #a982e8;
-      }
+
       &:focus {
         border-bottom: 4px solid #a982e8a6;
       }
+    }
+    .active {
+      border-bottom: 4px solid #a982e8;
+      color: #65558f;
+      font-weight: 500;
     }
 
     .tabContent {
@@ -204,13 +208,211 @@
       font-weight: 400;
       font-size: 20px;
       line-height: 30px;
+
+      .reviewsSection {
+        width: 1128px;
+        padding: 32px 120px 32px 64px;
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+        .container {
+          display: flex;
+          flex-direction: column;
+          gap: 40px;
+          justify-content: center;
+        }
+
+        /* Summary */
+        .reviewsSummary {
+          display: flex;
+          align-items: flex-start;
+          gap: 24px;
+          padding: 32px 32px 0 32px;
+          gap: 40px;
+
+          /* лівий блок із середньою оцінкою */
+          .avgBox {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 8px;
+
+            .avgValue {
+              font-size: 32px;
+              font-weight: 600;
+
+              span {
+                font-weight: 400;
+                color: #6c6c6c;
+              }
+            }
+
+            .stars {
+              display: flex;
+              gap: 4px;
+
+              .star {
+                height: 24px;
+                opacity: 0.3;
+
+                &.filled {
+                  opacity: 1;
+                }
+              }
+            }
+
+            .count {
+              color: #6c6c6c;
+              font-size: 14px;
+            }
+          }
+
+          /* праворуч — розподіл 5..1 */
+          .distList {
+            width: 40%;
+            min-width: 260px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+
+            .distItem {
+              display: flex;
+              align-items: center;
+              gap: 8px;
+              font-size: 14px;
+
+              .distLabel {
+                width: 16px;
+                text-align: right;
+              }
+
+              .distBar {
+                flex: 1;
+                height: 8px;
+                background: #eee9ff;
+                border-radius: 999px;
+                overflow: hidden;
+
+                > span {
+                  display: block;
+                  height: 100%;
+                  background: #65558f;
+                  width: 0;
+                }
+              }
+
+              .distPct {
+                width: 40px;
+                text-align: right;
+                color: #6c6c6c;
+              }
+            }
+          }
+        }
+
+        /* Кнопка "Leave Review" */
+        .leaveReviewBtn {
+          width: 159px;
+          height: 48px;
+          align-self: center;
+          border-radius: 100px;
+          background: #65558f;
+          color: #fff;
+          font-weight: 500;
+          font-size: 18px;
+          line-height: 22px;
+          letter-spacing: 0.1px;
+          cursor: pointer;
+        }
+
+        /* Список відгуків */
+        .reviewList {
+          display: flex;
+          flex-direction: column;
+          gap: 24px;
+
+          .reviewItem {
+            border-top: 2px solid #c7c2d6;
+            display: flex;
+            gap: 12px;
+            padding: 16px 0;
+
+            .avatar {
+              width: 40px;
+              height: 40px;
+              border-radius: 999px;
+              background: #e0d7ff;
+              color: #65558f;
+              font-weight: 700;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              flex: 0 0 40px;
+            }
+
+            .reviewBody {
+              flex: 1;
+
+              .reviewHeader {
+                display: flex;
+                align-items: center;
+                gap: 8px;
+                margin-bottom: 8px;
+
+                .author {
+                  font-weight: 700;
+                }
+
+                .inlineStars {
+                  display: flex;
+                  gap: 2px;
+
+                  .star {
+                    height: 16px;
+                    opacity: 0.3;
+
+                    &.filled {
+                      opacity: 1;
+                    }
+                  }
+                }
+
+                .date {
+                  margin-left: 4px;
+                  color: #6c6c6c;
+                  font-size: 12px;
+                }
+              }
+
+              .text {
+                line-height: 1.5;
+              }
+            }
+          }
+        }
+
+        /* "Show All Reviews" */
+        .showAllBtn {
+          align-self: center;
+          background: none;
+          border: none;
+          color: #65558f;
+          font-weight: 600;
+          cursor: pointer;
+
+          &:hover {
+            text-decoration: underline;
+          }
+          &:focus-visible {
+            outline: 2px solid #a982e8;
+            outline-offset: 2px;
+          }
+        }
+      }
     }
   }
+}
 
-  .bundle {
-    margin-top: 4rem;
-
-    .bundleTitle {
-    }
-  }
+.bundle {
+  margin-top: 4rem;
 }

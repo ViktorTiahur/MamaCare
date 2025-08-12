@@ -31,7 +31,6 @@
   .topBar {
     display: flex;
     justify-content: space-between;
-    // align-items: end;
     padding: 24px 42px 0;
     border-bottom: 2px solid #c7c2d6;
     height: 86px;
@@ -47,7 +46,6 @@
 
       button,
       .link {
-        // background-color: #a982e8;
         margin-right: 48px;
         white-space: nowrap;
         text-decoration: none;
@@ -151,7 +149,7 @@
 
     &.activeSidebar {
       transform: translateX(0);
-      background-color: #b91919; // Додатковий стиль
+      background-color: #b91919;
     }
 
     .sidebarHeader {
@@ -276,7 +274,6 @@
   .header {
     .topBar {
       padding: 29px 24px 0;
-      // align-items: end;
 
       .burgerMenu {
         display: flex;
@@ -377,14 +374,9 @@
           }
         }
       }
-
-      .logo {
-      }
     }
     .sidebar {
       .sidebarHeader {
-        .burgerClose {
-        }
         .logo {
           font-size: 24px;
         }

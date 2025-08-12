@@ -18,12 +18,12 @@ const mockProducts: ProductDetail[] = [
     image: "/images/preview/1.png",
     date: "2025-01-01",
     description: {
-      en: "Soft and durable silicone snack plate shaped like a bunny — perfect for toddlers and mess-free meals.",
+      en: "Outfits to embolden her as she grows from a baby into an exploring, inquisitive toddler! This girls’ collection is designed to be easily dressed up or down, giving you freedom to create a flexible wardrobe of casual day-to-day and special occasion outfits. Patterns are subtle – intertwining foliage, delicate trailing floral, trellis motifs; colours are fresh - leafy greens, soft pinks and a hint of delicate heather; and finishing touches are intricately embroidered for a subtle but lasting impression. A complete outfit! Textured woven dungarees with matching headband set. Dungarees with adjustable button fastening on strap, patch pocket and stylish turned up cuffs. Matching bow headband, features elasticated and velcro fastening, so is easy to adjust and comfy to wear. Our Baby to Toddler collection features stylish and comfy elevated basics and day-to-day clothing that can be co-ordinated or worn as separates, for a wardrobe thats easy to wear and looks adorable. A thoughtful range with attention to detail in every piece, fabrics and fastenings have been well considered, to be ultra-comfortable, wearable, effortless and easy to care for. The ultimate collection of quality timeless pieces that will let your little one explore the world in comfort and style.Soft and durable silicone snack plate shaped like a bunny — perfect for toddlers and mess-free meals. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tenetur quas, distinctio id dolorem laborum illum! Eaque provident laborum possimus illum tenetur nemo aspernatur. Maiores consectetur dolor quos harum deleniti aspernatur?",
       uk: "М'яка та міцна силіконова тарілка у формі зайчика — ідеально для малюків та безладних перекусів.",
     },
     materials: {
       en: "100% BPA-free food-grade silicone. Microwave and dishwasher safe.",
-      uk: "100% харчовий силікон без BPA. Підходить для мікрохвильовки та посудомийки.",
+      uk: "100% харчовий силікон без BPA. Підходить для мікрохвильовки та посудомийки. 100% харчовий силікон без BPA. Підходить для мікрохвильовки та посудомийки. 100% харчовий силікон без BPA. Підходить для мікрохвильовки та посудомийки. 100% харчовий силікон без BPA. Підходить для мікрохвильовки та посудомийки. 100% харчовий силікон без BPA. Підходить для мікрохвильовки та посудомийки. ",
     },
     reviews: [
       {
@@ -32,6 +32,7 @@ const mockProducts: ProductDetail[] = [
         rating: 5,
         text: "My baby loves it! Very soft and cute design.",
         date: "2024-12-02",
+        
       },
       {
         id: "r2",
@@ -69,13 +70,13 @@ const mockProducts: ProductDetail[] = [
       uk: "Годування",
     },
     name: {
-      en: "Sniffer Soothers Nose + Face Wipes",
-      uk: "Вологі серветки для носа та обличчя Sniffer Soothers",
+      en: "Sniffer Soothers Nose + Face",
+      uk: "Вологі серветки для носа",
     },
     image: "/images/preview/1.png",
     date: "2025-01-01",
     description: {
-      en: "Gentle and effective wipes infused with soothing eucalyptus. Great for toddlers during cold season.",
+      en: "Gentle and effective wipes infused with soothing eucalyptus. Great for toddlers during cold season. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tenetur quas, distinctio id dolorem laborum illum! Eaque provident laborum possimus illum tenetur nemo aspernatur. Maiores consectetur dolor quos harum deleniti aspernatur?",
       uk: "Делікатні та ефективні серветки з евкаліптом. Чудово підходять для малюків у холодний сезон.",
     },
     materials: {
@@ -100,9 +101,9 @@ const mockProducts: ProductDetail[] = [
     maxQuantity: 20,
     age: 1,
     images: ["/images/preview/2.png", "/images/preview/2-2.png"],
-    availableColors: [],
-    availableSizes: [],
-    defaultColor: ""
+    availableColors: ['red', 'green'],
+    availableSizes: ["M"],
+    defaultColor: "Red"
   },
   {
     id: "3",

@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "types": ["vitest"],
+    "types": ["vitest", "vite/client", "vitest/globals", "vite-plugin-svgr/client"],
      "baseUrl": "./",
     "paths": {
       "@/*": ["src/*"]

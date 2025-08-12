@@ -3,8 +3,8 @@ import { useTranslation } from "react-i18next";
 import { useParams } from "react-router-dom";
 
 import star from "@/assets/icons/icon-star-24.svg";
-import minus from "@/assets/icons/minus.svg";
-import plus from "@/assets/icons/plus.svg";
+import MinusIcon from "@/assets/icons/minus.svg?react";
+import PlusIcon from "@/assets/icons/plus.svg?react";
 import Breadcrumbs from "@/components/Breadcrumbs/Breadcrumbs";
 import ProductImageCarousel from "@/components/ProductImageCarousel/ProductImageCarousel";
 import mockProducts from "@/data/mockProducts";
@@ -136,7 +136,7 @@ const ProductPage = () => {
                   className={styles.qtyBtn}
                   disabled={quantity <= 1}
                 >
-                  <img src={minus} alt="Remove one item" />
+                  <MinusIcon className={styles.minus} />
                 </button>
                 <input
                   type="text"
@@ -154,7 +154,7 @@ const ProductPage = () => {
                   className={styles.qtyBtn}
                   disabled={quantity >= product.maxQuantity}
                 >
-                  <img src={plus} alt="Add one item" />
+                  <PlusIcon className={styles.iconPlus} aria-label="Add" />
                 </button>
               </div>
 
@@ -213,19 +213,106 @@ const ProductPage = () => {
             </p>
           )}
 
-          {activeTab === "reviews" &&
-            (product.reviews.length > 0 ? (
+          {activeTab === "reviews" && (
+            <div className={styles.reviewsSection}>
+              {/* Summary */}
+              <div className={styles.container}>
+                <div className={styles.reviewsSummary}>
+                  <div className={styles.avgBox}>
+                    <div className={styles.avgValue}>
+                      {averageRating.toFixed(1)} <span>/ 5</span>
+                    </div>
+                    <div className={styles.count}>
+                      ({product.reviews.length}{" "}
+                      {product.reviews.length === 1 ? "Review" : "Reviews"})
+                    </div>
+                    <div className={styles.stars}>
+                      {Array.from({ length: 5 }).map((_, i) => (
+                        <img
+                          key={i}
+                          src={star}
+                          alt=""
+                          className={`${styles.star} ${
+                            i < Math.round(averageRating) ? styles.filled : ""
+                          }`}
+                        />
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Distribution 5..1 */}
+                  <ul className={styles.distList}>
+                    {[5, 4, 3, 2, 1].map((n) => {
+                      const count = product.reviews.filter(
+                        (r) => Math.round(r.rating) === n
+                      ).length;
+                      const pct = product.reviews.length
+                        ? Math.round((count / product.reviews.length) * 100)
+                        : 0;
+                      return (
+                        <li key={n} className={styles.distItem}>
+                          <span className={styles.distLabel}>{n}</span>
+                          <div className={styles.distBar}>
+                            <span style={{ width: `${pct}%` }} />
+                          </div>
+                          <span className={styles.distPct}>{pct}%</span>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </div>
+
+                <button type="button" className={styles.leaveReviewBtn}>
+                  Leave Review
+                </button>
+              </div>
+
+              {/* Reviews list */}
               <ul className={styles.reviewList}>
                 {product.reviews.map((r) => (
-                  <li key={r.id} className={styles.review}>
-                    <strong>{r.author}</strong> – {r.rating}/5
-                    <p>{r.text}</p>
+                  <li key={r.id} className={styles.reviewItem}>
+                    <div className={styles.avatar} aria-hidden="true">
+                      {(r.author?.[0] || "U").toUpperCase()}
+                    </div>
+                    <div className={styles.reviewBody}>
+                      <div className={styles.reviewHeader}>
+                        <strong className={styles.author}>{r.author}</strong>
+                        <div className={styles.inlineStars}>
+                          {Array.from({ length: 5 }).map((_, i) => (
+                            <img
+                              key={i}
+                              src={star}
+                              alt=""
+                              className={`${styles.star} ${
+                                i < Math.round(r.rating) ? styles.filled : ""
+                              }`}
+                            />
+                          ))}
+                        </div>
+                        {r.date && (
+                          <time className={styles.date} dateTime={r.date}>
+                            {new Date(r.date).toLocaleDateString(
+                              i18n.language === "uk" ? "uk-UA" : "en-US",
+                              {
+                                day: "2-digit",
+                                month: "2-digit",
+                                year: "numeric",
+                              }
+                            )}
+                          </time>
+                        )}
+                      </div>
+                      <p className={styles.text}>{r.text}</p>
+                    </div>
                   </li>
                 ))}
               </ul>
-            ) : (
-              <p>No reviews yet.</p>
-            ))}
+
+              <button type="button" className={styles.showAllBtn}>
+                Show All Reviews
+              </button>
+            </div>
+          )}
         </div>
       </section>
 
