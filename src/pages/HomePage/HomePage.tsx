@@ -15,8 +15,7 @@ const HomePage = () => {
     babyBoxItems: 3,
     pickItems: 8,
   });
-  const {t,i18n} = useTranslation();
-
+  const { t, i18n } = useTranslation();
 
   useEffect(() => {
     const handleResize = () => {
@@ -42,26 +41,32 @@ const HomePage = () => {
         <Link to="/product" className={styles.title}>
           <img src={arrow} className={styles.arrow} alt="arrow link" />
         </Link>
+
         <BabyBoxSection
-        lang={i18n.language as "en" | "uk"}
-          title={t('HomePage.Baby Boxes')}
-          itemsToShow={itemsCount.babyBoxItems}
+          title="Baby Boxes"
+          responsive={[
+            { upTo: 360, items: 2 },
+            { upTo: 480, items: 2 },
+            { upTo: 695, items: 4 },
+            { upTo: Number.POSITIVE_INFINITY, items: 3 },
+          ]}
+          showButton={false}
         />
       </div>
 
       <div className={styles.containerPick}>
         <Link to="/pickandbuy" className={styles.title}>
-          <h2>{t('HomePage.Pick & Buy')}</h2>
+          <h2>{t("HomePage.Pick & Buy")}</h2>
           <img src={arrow} className={styles.arrow} alt="arrow link" />
         </Link>
 
         <ProductList
-                lang={i18n.language as "en" | "uk"}
+          lang={i18n.language as "en" | "uk"}
           customClass={styles.pickList}
           itemsToShow={itemsCount.pickItems}
         ></ProductList>
         <div className={styles.button}>
-          <Button>{t('HomePage.View all Products')}</Button>
+          <Button>{t("HomePage.View all Products")}</Button>
         </div>
       </div>
 
