@@ -1,8 +1,8 @@
 "use client";
 
 import type React from "react";
-import { useState, useEffect } from "react";
-import { useTranslation } from "react-i18next";
+import { useState } from "react";
+// import { useTranslation } from "react-i18next";
 
 import minusIcon from "@/assets/icons/icon-close-18.svg";
 import plusIcon from "@/assets/icons/Icons-add-24.svg";
@@ -88,22 +88,7 @@ const FAQPage: React.FC = () => {
     );
   };
 
-  const { i18n } = useTranslation();
-  const [boxCount, setBoxCount] = useState(3);
-
-  useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth < 695) {
-        setBoxCount(2);
-      } else {
-        setBoxCount(3);
-      }
-    };
-
-    handleResize();
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
+  // const { i18n } = useTranslation();
 
   return (
     <div className={styles.faq}>
@@ -134,8 +119,12 @@ const FAQPage: React.FC = () => {
         </div>
         <BabyBoxSection
           title="Keep shopping for BabyBoxes"
-          itemsToShow={boxCount}
-          lang={i18n.language as "en" | "uk"}
+          responsive={[
+            { upTo: 360, items: 1 },
+            { upTo: 480, items: 2 },
+            { upTo: 695, items: 4 },
+            { upTo: Number.POSITIVE_INFINITY, items: 3 },
+          ]}
         />
       </div>
     </div>

@@ -173,8 +173,6 @@
   }
 
   .tabs {
-    margin-top: 3rem;
-
     .tabNav {
       display: flex;
       gap: 4px;
@@ -203,15 +201,15 @@
 
     .tabContent {
       border-top: 2px solid #c7c2d6;
-      padding: 32px 62px;
+      padding: 32px 120px 32px 62px;
 
       font-weight: 400;
       font-size: 20px;
       line-height: 30px;
 
       .reviewsSection {
-        width: 1128px;
-        padding: 32px 120px 32px 64px;
+        max-width: 1128px;
+        // padding: 32px 120px 32px 64px;
         display: flex;
         flex-direction: column;
         gap: 40px;
@@ -220,15 +218,15 @@
           flex-direction: column;
           gap: 40px;
           justify-content: center;
+          padding: 32px 32px 0 32px;
         }
 
         /* Summary */
         .reviewsSummary {
           display: flex;
-          align-items: flex-start;
-          gap: 24px;
-          padding: 32px 32px 0 32px;
-          gap: 40px;
+          justify-content: flex-start;
+          gap: 60px;
+          padding: 0 25px;
 
           /* лівий блок із середньою оцінкою */
           .avgBox {
@@ -236,41 +234,29 @@
             flex-direction: column;
             justify-content: center;
             gap: 8px;
+            // max-width: 320px;
 
+            text-align: center;
             .avgValue {
-              font-size: 32px;
-              font-weight: 600;
-
-              span {
-                font-weight: 400;
-                color: #6c6c6c;
-              }
-            }
-
-            .stars {
-              display: flex;
-              gap: 4px;
-
-              .star {
-                height: 24px;
-                opacity: 0.3;
-
-                &.filled {
-                  opacity: 1;
-                }
-              }
+              font-weight: 300;
+              font-size: 44px;
+              line-height: 100%;
+              text-align: center;
             }
 
             .count {
-              color: #6c6c6c;
+              font-weight: 400;
               font-size: 14px;
+              line-height: 130%;
+              letter-spacing: 0%;
+              text-decoration: underline;
+              text-decoration-style: solid;
+              color: #65558f;
             }
           }
 
           /* праворуч — розподіл 5..1 */
           .distList {
-            width: 40%;
-            min-width: 260px;
             display: flex;
             flex-direction: column;
             gap: 8px;
@@ -282,29 +268,28 @@
               font-size: 14px;
 
               .distLabel {
-                width: 16px;
-                text-align: right;
+                font-weight: 600;
+                font-size: 20px;
               }
 
               .distBar {
-                flex: 1;
-                height: 8px;
-                background: #eee9ff;
-                border-radius: 999px;
+                height: 14px;
+                width: 394px;
+                background: #eaddff;
                 overflow: hidden;
 
                 > span {
                   display: block;
                   height: 100%;
-                  background: #65558f;
-                  width: 0;
+                  background: #897a9a;
+                  // width: 0;
                 }
               }
 
               .distPct {
-                width: 40px;
-                text-align: right;
-                color: #6c6c6c;
+                font-weight: 400;
+                font-size: 20px;
+                line-height: 30px;
               }
             }
           }
@@ -329,20 +314,23 @@
         .reviewList {
           display: flex;
           flex-direction: column;
-          gap: 24px;
+          gap: 20px;
+          max-width: 946px;
+          padding-bottom: 30px;
+          border-bottom: 2px solid #c7c2d6;
 
           .reviewItem {
-            border-top: 2px solid #c7c2d6;
             display: flex;
-            gap: 12px;
-            padding: 16px 0;
+            gap: 36px;
+            padding: 20px;
+            padding-top: 32px;
+            border-top: 2px solid #c7c2d6;
 
             .avatar {
-              width: 40px;
-              height: 40px;
+              width: 64px;
+              height: 64px;
               border-radius: 999px;
-              background: #e0d7ff;
-              color: #65558f;
+              border: 2px solid #b0b0b0;
               font-weight: 700;
               display: flex;
               align-items: center;
@@ -351,31 +339,28 @@
             }
 
             .reviewBody {
-              flex: 1;
-
               .reviewHeader {
                 display: flex;
                 align-items: center;
                 gap: 8px;
-                margin-bottom: 8px;
+                margin-bottom: 4px;
+
+                span {
+                  color: #696778;
+                }
 
                 .author {
                   font-weight: 700;
+                  font-size: 20px;
+                  line-height: 30px;
                 }
-
-                .inlineStars {
-                  display: flex;
-                  gap: 2px;
-
-                  .star {
-                    height: 16px;
-                    opacity: 0.3;
-
-                    &.filled {
-                      opacity: 1;
-                    }
-                  }
-                }
+              }
+              .time {
+                font-weight: 400;
+                font-size: 14px;
+                line-height: 130%;
+                letter-spacing: 0%;
+                margin-bottom: 8px;
 
                 .date {
                   margin-left: 4px;
@@ -385,7 +370,11 @@
               }
 
               .text {
-                line-height: 1.5;
+                font-weight: 400;
+                font-size: 20px;
+                line-height: 30px;
+                letter-spacing: 0%;
+                color: #000000;
               }
             }
           }
@@ -393,26 +382,56 @@
 
         /* "Show All Reviews" */
         .showAllBtn {
-          align-self: center;
-          background: none;
-          border: none;
+          height: 48px;
           color: #65558f;
           font-weight: 600;
-          cursor: pointer;
+          font-size: 20px;
+          line-height: 100%;
+          letter-spacing: 0%;
+        }
+      }
+    }
+  }
 
-          &:hover {
-            text-decoration: underline;
+  .bundle {
+    padding: 32px 24px 0 24px;
+  }
+
+  @media (max-width: 1200px) {
+    padding: 32px 24px;
+
+    .tabs {
+      .tabContent {
+        padding: 32px 62px;
+
+        .reviewsSection {
+          .container {
+            padding: 32px 10px 0 10px;
           }
-          &:focus-visible {
-            outline: 2px solid #a982e8;
-            outline-offset: 2px;
+          .reviewsSummary {
+            padding: 0;
           }
         }
       }
     }
   }
-}
+  @media (max-width: 1024px) {
+    .details {
+      flex-direction: column;
 
-.bundle {
-  margin-top: 4rem;
+      .gallery {
+        width: 100%;
+        max-width: 100%;
+        padding-bottom: 0;
+      }
+
+      .wrapper {
+        max-width: 100%;
+      }
+    }
+  }
+  @media (max-width: 695px) {
+  }
+  @media (max-width: 480px) {
+  }
 }

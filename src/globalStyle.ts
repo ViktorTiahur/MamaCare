@@ -43,7 +43,7 @@ const GlobalStyle = createGlobalStyle`
     max-width: 100%;
     max-height: 100%;
     font-family: 'Roboto', sans-serif;
-    background-color: #f8f8f8;
+    background-color: #fff;
     color: #1A1A1A;
   }
 

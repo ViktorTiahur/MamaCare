@@ -1,5 +1,4 @@
-import { useState, useEffect } from "react";
-import { useTranslation } from "react-i18next";
+// import { useTranslation } from "react-i18next";
 
 import heart from "@/assets/icons/icon-heart.svg";
 import matherPhoto from "@/assets/images/about-desktop.png";
@@ -8,27 +7,6 @@ import BabyBoxSection from "@/components/BabyBoxSection/BabyBoxSection";
 import styles from "./AboutUsPage.module.scss";
 
 const AboutUsPage = () => {
-  const [boxCount, setBoxCount] = useState(3);
-  const { i18n } = useTranslation();
-
-  useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth < 360) {
-        setBoxCount(1);
-      } else if (window.innerWidth < 480) {
-        setBoxCount(2);
-      } else if (window.innerWidth < 695) {
-        setBoxCount(4);
-      } else {
-        setBoxCount(3);
-      }
-    };
-
-    handleResize();
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
   return (
     <div className={styles.aboutUs}>
       <div className={styles.aboutUs__container}>
@@ -169,8 +147,12 @@ const AboutUsPage = () => {
 
       <BabyBoxSection
         title="We Recommend"
-        itemsToShow={boxCount}
-        lang={i18n.language as "en" | "uk"}
+        responsive={[
+          { upTo: 360, items: 1 },
+          { upTo: 480, items: 2 },
+          { upTo: 695, items: 4 },
+          { upTo: Number.POSITIVE_INFINITY, items: 3 },
+        ]}
       />
     </div>
   );

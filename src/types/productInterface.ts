@@ -12,8 +12,9 @@ export interface Review {
   id: string;
   author: string;
   rating: number; 
-  text: string;
+  text: string | { en: string; uk: string };
   date: string;
+  avatar: string;
 }
 
 export interface ProductDetail extends Product {

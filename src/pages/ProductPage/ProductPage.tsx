@@ -2,11 +2,12 @@ import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useParams } from "react-router-dom";
 
-import star from "@/assets/icons/icon-star-24.svg";
 import MinusIcon from "@/assets/icons/minus.svg?react";
 import PlusIcon from "@/assets/icons/plus.svg?react";
+import BabyBoxSection from "@/components/BabyBoxSection/BabyBoxSection";
 import Breadcrumbs from "@/components/Breadcrumbs/Breadcrumbs";
 import ProductImageCarousel from "@/components/ProductImageCarousel/ProductImageCarousel";
+import Rating from "@/components/Rating/Rating";
 import mockProducts from "@/data/mockProducts";
 import getStringInCurrentLanguage from "@/utils/getStringInCurrentLanguage";
 
@@ -66,23 +67,12 @@ const ProductPage = () => {
             )}
           </h2>
           <div className={styles.rating}>
-            <div className={styles.ratingStar}>
-              {Array.from({ length: 5 }).map((_, index) => (
-                <img
-                  key={index}
-                  src={star}
-                  alt="Star"
-                  className={styles.star}
-                  style={{
-                    opacity: index < Math.round(averageRating) ? 1 : 0.3,
-                  }}
-                />
-              ))}
-            </div>
+            <Rating value={averageRating} size={32} />
             <span className={styles.ratingText}>
               {averageRating.toFixed(1)}/5 ({product.reviews.length})
             </span>
           </div>
+
           <p className={styles.price}>${product.price}</p>
 
           <form
@@ -227,16 +217,7 @@ const ProductPage = () => {
                       {product.reviews.length === 1 ? "Review" : "Reviews"})
                     </div>
                     <div className={styles.stars}>
-                      {Array.from({ length: 5 }).map((_, i) => (
-                        <img
-                          key={i}
-                          src={star}
-                          alt=""
-                          className={`${styles.star} ${
-                            i < Math.round(averageRating) ? styles.filled : ""
-                          }`}
-                        />
-                      ))}
+                      <Rating value={averageRating} size={64} />
                     </div>
                   </div>
 
@@ -269,40 +250,51 @@ const ProductPage = () => {
 
               {/* Reviews list */}
               <ul className={styles.reviewList}>
-                {product.reviews.map((r) => (
-                  <li key={r.id} className={styles.reviewItem}>
+                {product.reviews.map((r, reviewIndex) => (
+                  <li
+                    key={r.id ?? `rev-${reviewIndex}`}
+                    className={styles.reviewItem}
+                  >
                     <div className={styles.avatar} aria-hidden="true">
-                      {(r.author?.[0] || "U").toUpperCase()}
+                      <img
+                        src={r.avatar}
+                        alt={r.author}
+                        className={styles.avatar}
+                      />
                     </div>
                     <div className={styles.reviewBody}>
                       <div className={styles.reviewHeader}>
                         <strong className={styles.author}>{r.author}</strong>
-                        <div className={styles.inlineStars}>
-                          {Array.from({ length: 5 }).map((_, i) => (
-                            <img
-                              key={i}
-                              src={star}
-                              alt=""
-                              className={`${styles.star} ${
-                                i < Math.round(r.rating) ? styles.filled : ""
-                              }`}
-                            />
-                          ))}
+                        <span>|</span>
+                        <div className={styles.stars}>
+                          <Rating
+                            value={Math.max(
+                              0,
+                              Math.min(5, Number(r.rating) || 0)
+                            )}
+                            size={24}
+                          />
                         </div>
+                      </div>
+                      <div className={styles.time}>
+                        <span>Reviewed on</span>
                         {r.date && (
                           <time className={styles.date} dateTime={r.date}>
-                            {new Date(r.date).toLocaleDateString(
-                              i18n.language === "uk" ? "uk-UA" : "en-US",
-                              {
-                                day: "2-digit",
-                                month: "2-digit",
-                                year: "numeric",
-                              }
-                            )}
+                            {new Date(r.date).toLocaleDateString("uk-UA", {
+                              day: "2-digit",
+                              month: "2-digit",
+                              year: "numeric",
+                            })}
                           </time>
                         )}
                       </div>
-                      <p className={styles.text}>{r.text}</p>
+                      <p className={styles.text}>
+                        {" "}
+                        {getStringInCurrentLanguage(
+                          product.name,
+                          i18n.language as "en" | "uk"
+                        )}
+                      </p>
                     </div>
                   </li>
                 ))}
@@ -317,10 +309,16 @@ const ProductPage = () => {
       </section>
 
       <section className={styles.bundle} aria-label="Bundle Offers">
-        <h2 className={styles.bundleTitle}>
-          Upgrade to box to get cheaper deal!
-        </h2>
-        {/* Продукти-бокси */}
+        <BabyBoxSection
+          title="Upgrade to box to get cheaper deal!"
+          responsive={[
+            { upTo: 360, items: 1 },
+            { upTo: 480, items: 2 },
+            { upTo: 695, items: 4 },
+            { upTo: Number.POSITIVE_INFINITY, items: 3 },
+          ]}
+          showButton={false}
+        />
       </section>
     </main>
   );

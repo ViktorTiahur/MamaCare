@@ -1,40 +1,71 @@
-import React from "react";
+"use client";
 
-import arrow from '../../assets/icons/icon-arrow.svg'
+import React from "react";
+import { useTranslation } from "react-i18next";
+
+import arrow from "@/assets/icons/icon-arrow.svg";
+
 import Button from "../Button/Button";
 import ProductList from "../ProductList/ProductList";
 
 import styles from "./BabyBoxSection.module.scss";
+import { useResponsiveItems, type ResponsiveRule } from "./useResponsiveItems";
 
 interface BabyBoxSectionProps {
-  itemsToShow: number;
   title: string;
-  lang: "en" | "uk";
+  /** якщо хочеш зафіксувати кількість карток — просто передай items */
+  items?: number;
+  /** або ж передай правила для адаптиву; якщо не передав — є розумні дефолти */
+  responsive?: ResponsiveRule[];
+  lang?: "en" | "uk";
+  showButton?: boolean;
+  buttonLabel?: string;
+  buttonOnClick?: () => void;
+  linkHref?: string;
+  className?: string;
+  listClassName?: string;
 }
 
 const BabyBoxSection: React.FC<BabyBoxSectionProps> = ({
-  itemsToShow,
   title,
-  lang
+  items,
+  responsive,
+  lang,
+  showButton = true,
+  buttonLabel = "View all Gift Boxes",
+  buttonOnClick,
+  linkHref = "#",
+  className,
+  listClassName,
 }) => {
+  const { i18n } = useTranslation();
+  const resolvedLang: "en" | "uk" =
+    lang ?? (i18n.language === "uk" ? "uk" : "en");
+
+  const itemsToShow = useResponsiveItems({
+    fixed: items,
+    responsive,
+    fallback: 3,
+  });
+
   return (
-    <div className={styles.containerBabyBoxed}>
-
- <a href="#" className={styles.title}>
-            <h2>{title}</h2>
-            <img src={arrow} className={styles.arrow} alt="arrow link" />
-          </a>
-
-
+    <div className={`${styles.containerBabyBoxed} ${className ?? ""}`}>
+      <a href={linkHref} className={styles.title}>
+        <h2>{title}</h2>
+        <img src={arrow} className={styles.arrow} alt="arrow link" />
+      </a>
 
       <ProductList
-        customClass={styles.babyBoxedList}
+        customClass={`${styles.babyBoxedList} ${listClassName ?? ""}`}
         itemsToShow={itemsToShow}
-        lang={lang}
+        lang={resolvedLang}
       />
-      <div className={styles.button}>
-        <Button>View all Gift Boxes</Button>
-      </div>
+
+      {showButton && (
+        <div className={styles.button}>
+          <Button onClick={buttonOnClick}>{buttonLabel}</Button>
+        </div>
+      )}
     </div>
   );
 };

@@ -2,7 +2,7 @@ import { ProductDetail } from "@/types/productInterface";
 
 const mockProducts: ProductDetail[] = [
   {
-    id: "1",
+    id: "11",
     name: {
       en: "Silicone Snack Plate - Bunny na barabani",
       uk: "Силіконова тарілка для перекусів - Зайчик",
@@ -30,16 +30,57 @@ const mockProducts: ProductDetail[] = [
         id: "r1",
         author: "Anna",
         rating: 5,
-        text: "My baby loves it! Very soft and cute design.",
+        text: {
+         en: "We had a fantastic experience shopping at MamaCare's online store! The website was easy to navigate, and the product descriptions were detailed and helpful. Customer support was outstanding—Sarah promptly answered all our questions and provided expert guidance, making the process smooth and stress-free. Thanks to her help, we felt confident in our purchase. Highly recommend MamaCare for a seamless online shopping experience!",
+        uk: "Ми мали чудовий досвід покупок в інтернет-магазині **MamaCare**! Сайт був простим у навігації, а описи товарів — детальними та корисними. Підтримка клієнтів була на найвищому рівні — Сара швидко відповіла на всі наші запитання та надала професійні поради, зробивши процес легким і безтурботним. Завдяки її допомозі ми почувались впевнено у своєму виборі. Дуже рекомендуємо **MamaCare** для бездоганного онлайн-шопінгу!",
+        } ,
         date: "2024-12-02",
+        avatar: "/images/avatars/anna.png",
         
       },
       {
         id: "r2",
         author: "Oleh",
-        rating: 1,
-        text: "Great plate, but a bit small.",
+        rating: 2,
+          text: {
+         en: "We had a fantastic experience shopping at MamaCare's online store! The website was easy to navigate, and the product descriptions were detailed and helpful. Customer support was outstanding—Sarah promptly answered all our questions and provided expert guidance, making the process smooth and stress-free. Thanks to her help, we felt confident in our purchase. Highly recommend MamaCare for a seamless online shopping experience!",
+        uk: "Ми мали чудовий досвід покупок в інтернет-магазині **MamaCare**! Сайт був простим у навігації, а описи товарів — детальними та корисними. Підтримка клієнтів була на найвищому рівні — Сара швидко відповіла на всі наші запитання та надала професійні поради, зробивши процес легким і безтурботним. Завдяки її допомозі ми почувались впевнено у своєму виборі. Дуже рекомендуємо **MamaCare** для бездоганного онлайн-шопінгу!",
+        } ,
         date: "2025-01-14",
+        avatar: "/images/avatars/anna.png",
+      },
+      {
+        id: "r3",
+        author: "Oleh",
+        rating: 2,
+          text: {
+         en: "We had a fantastic experience shopping at MamaCare's online store! The website was easy to navigate, and the product descriptions were detailed and helpful. Customer support was outstanding—Sarah promptly answered all our questions and provided expert guidance, making the process smooth and stress-free. Thanks to her help, we felt confident in our purchase. Highly recommend MamaCare for a seamless online shopping experience!",
+        uk: "Ми мали чудовий досвід покупок в інтернет-магазині **MamaCare**! Сайт був простим у навігації, а описи товарів — детальними та корисними. Підтримка клієнтів була на найвищому рівні — Сара швидко відповіла на всі наші запитання та надала професійні поради, зробивши процес легким і безтурботним. Завдяки її допомозі ми почувались впевнено у своєму виборі. Дуже рекомендуємо **MamaCare** для бездоганного онлайн-шопінгу!",
+        } ,
+        date: "2025-01-14",
+        avatar: "/images/avatars/anna.png",
+      },
+      {
+        id: "r4",
+        author: "Oleh",
+        rating: 5,
+          text: {
+         en: "We had a fantastic experience shopping at MamaCare's online store! The website was easy to navigate, and the product descriptions were detailed and helpful. Customer support was outstanding—Sarah promptly answered all our questions and provided expert guidance, making the process smooth and stress-free. Thanks to her help, we felt confident in our purchase. Highly recommend MamaCare for a seamless online shopping experience!",
+        uk: "Ми мали чудовий досвід покупок в інтернет-магазині **MamaCare**! Сайт був простим у навігації, а описи товарів — детальними та корисними. Підтримка клієнтів була на найвищому рівні — Сара швидко відповіла на всі наші запитання та надала професійні поради, зробивши процес легким і безтурботним. Завдяки її допомозі ми почувались впевнено у своєму виборі. Дуже рекомендуємо **MamaCare** для бездоганного онлайн-шопінгу!",
+        } ,
+        date: "2025-01-14",
+        avatar: "/images/avatars/anna.png",
+      },
+      {
+        id: "r5",
+        author: "Oleh",
+        rating: 2,
+          text: {
+         en: "We had a fantastic experience shopping at MamaCare's online store! The website was easy to navigate, and the product descriptions were detailed and helpful. Customer support was outstanding—Sarah promptly answered all our questions and provided expert guidance, making the process smooth and stress-free. Thanks to her help, we felt confident in our purchase. Highly recommend MamaCare for a seamless online shopping experience!",
+        uk: "Ми мали чудовий досвід покупок в інтернет-магазині **MamaCare**! Сайт був простим у навігації, а описи товарів — детальними та корисними. Підтримка клієнтів була на найвищому рівні — Сара швидко відповіла на всі наші запитання та надала професійні поради, зробивши процес легким і безтурботним. Завдяки її допомозі ми почувались впевнено у своєму виборі. Дуже рекомендуємо **MamaCare** для бездоганного онлайн-шопінгу!",
+        } ,
+        date: "2025-01-14",
+        avatar: "/images/avatars/anna.png",
       },
     ],
     price: 25,
@@ -56,11 +97,10 @@ const mockProducts: ProductDetail[] = [
       "/images/preview/1-3.png",
       "/images/preview/1.png",
       "/images/preview/1-2.png",
-      "/images/preview/1-3.png",
     ],
   },
   {
-    id: "2",
+    id: "12",
     category: {
       en: "Pick&Buy",
       uk: "Обери&Купи",
@@ -85,11 +125,15 @@ const mockProducts: ProductDetail[] = [
     },
     reviews: [
       {
-        id: "r3",
+        id: "r6",
         author: "Marta",
         rating: 5,
-        text: "Soothing and refreshing. A must-have during winter.",
+          text: {
+         en: "We had a fantastic experience shopping at MamaCare's online store! The website was easy to navigate, and the product descriptions were detailed and helpful. Customer support was outstanding—Sarah promptly answered all our questions and provided expert guidance, making the process smooth and stress-free. Thanks to her help, we felt confident in our purchase. Highly recommend MamaCare for a seamless online shopping experience!",
+        uk: "Ми мали чудовий досвід покупок в інтернет-магазині **MamaCare**! Сайт був простим у навігації, а описи товарів — детальними та корисними. Підтримка клієнтів була на найвищому рівні — Сара швидко відповіла на всі наші запитання та надала професійні поради, зробивши процес легким і безтурботним. Завдяки її допомозі ми почувались впевнено у своєму виборі. Дуже рекомендуємо **MamaCare** для бездоганного онлайн-шопінгу!",
+        } ,
         date: "2025-02-10",
+        avatar: "/images/avatars/anna.png",
       },
     ],
     price: 4.55,
@@ -106,7 +150,7 @@ const mockProducts: ProductDetail[] = [
     defaultColor: "Red"
   },
   {
-    id: "3",
+    id: "13",
     category: {
       en: "Pick&Buy",
       uk: "Обери&Купи",
@@ -131,11 +175,12 @@ const mockProducts: ProductDetail[] = [
     },
     reviews: [
       {
-        id: "r4",
+        id: "r7",
         author: "Olha",
         rating: 5,
         text: "Amazing variety! Perfect for gifting.",
         date: "2025-03-01",
+        avatar: "/images/avatars/anna.png",
       },
     ],
     price: 350,
@@ -156,7 +201,7 @@ const mockProducts: ProductDetail[] = [
     age: 0
   },
   {
-    id: "4",
+    id: "14",
     category: {
       en: "Pick&Buy",
       uk: "Обери&Купи",
@@ -181,11 +226,12 @@ const mockProducts: ProductDetail[] = [
     },
     reviews: [
       {
-        id: "r5",
+        id: "r8",
         author: "Taras",
         rating: 4,
         text: "Very soft and nice prints. A bit tight in size L.",
         date: "2025-02-25",
+        avatar: "/images/avatars/anna.png",
       },
     ],
     price: 29.99,
@@ -202,7 +248,7 @@ const mockProducts: ProductDetail[] = [
     age: 0
   },
   {
-    id: "5",
+    id: "51",
     category: {
       en: "Pick&Buy",
       uk: "Обери&Купи",
@@ -227,11 +273,12 @@ const mockProducts: ProductDetail[] = [
     },
     reviews: [
       {
-        id: "r6",
+        id: "r9",
         author: "Yulia",
         rating: 5,
         text: "Looks great and my daughter loves chewing on it.",
         date: "2025-04-03",
+        avatar: "/images/avatars/anna.png",
       },
     ],
     price: 12.5,
@@ -247,7 +294,7 @@ const mockProducts: ProductDetail[] = [
     age: 0,
     images: ["/images/preview/5.png", "/images/preview/5-2.png"],
   }, {
-    id: "1",
+    id: "16",
     name: {
       en: "Silicone Snack Plate - Bunny na barabani",
       uk: "Силіконова тарілка для перекусів - Зайчик",
@@ -272,18 +319,20 @@ const mockProducts: ProductDetail[] = [
     },
     reviews: [
       {
-        id: "r1",
+        id: "r10",
         author: "Anna",
         rating: 5,
         text: "My baby loves it! Very soft and cute design.",
         date: "2024-12-02",
+        avatar: "/images/avatars/anna.png",
       },
       {
-        id: "r2",
+        id: "r12",
         author: "Oleh",
         rating: 1,
         text: "Great plate, but a bit small.",
         date: "2025-01-14",
+        avatar: "/images/avatars/anna.png",
       },
     ],
     price: 25,
@@ -304,7 +353,7 @@ const mockProducts: ProductDetail[] = [
     ],
   },
   {
-    id: "2",
+    id: "17",
     category: {
       en: "Pick&Buy",
       uk: "Обери&Купи",
@@ -329,11 +378,12 @@ const mockProducts: ProductDetail[] = [
     },
     reviews: [
       {
-        id: "r3",
+        id: "r13",
         author: "Marta",
         rating: 5,
         text: "Soothing and refreshing. A must-have during winter.",
         date: "2025-02-10",
+        avatar: "/images/avatars/anna.png",
       },
     ],
     price: 4.55,
@@ -350,7 +400,7 @@ const mockProducts: ProductDetail[] = [
     defaultColor: ""
   },
   {
-    id: "3",
+    id: "18",
     category: {
       en: "Pick&Buy",
       uk: "Обери&Купи",
@@ -375,11 +425,12 @@ const mockProducts: ProductDetail[] = [
     },
     reviews: [
       {
-        id: "r4",
+        id: "r14",
         author: "Olha",
         rating: 5,
         text: "Amazing variety! Perfect for gifting.",
         date: "2025-03-01",
+        avatar: "/images/avatars/anna.png",
       },
     ],
     price: 350,
@@ -400,7 +451,7 @@ const mockProducts: ProductDetail[] = [
     age: 0
   },
   {
-    id: "4",
+    id: "49",
     category: {
       en: "Pick&Buy",
       uk: "Обери&Купи",
@@ -425,11 +476,12 @@ const mockProducts: ProductDetail[] = [
     },
     reviews: [
       {
-        id: "r5",
+        id: "r15",
         author: "Taras",
         rating: 4,
         text: "Very soft and nice prints. A bit tight in size L.",
         date: "2025-02-25",
+        avatar: "/images/avatars/anna.png",
       },
     ],
     price: 29.99,
@@ -446,7 +498,7 @@ const mockProducts: ProductDetail[] = [
     age: 0
   },
   {
-    id: "5",
+    id: "15",
     category: {
       en: "Pick&Buy",
       uk: "Обери&Купи",
@@ -471,11 +523,12 @@ const mockProducts: ProductDetail[] = [
     },
     reviews: [
       {
-        id: "r6",
+        id: "r16",
         author: "Yulia",
         rating: 5,
         text: "Looks great and my daughter loves chewing on it.",
         date: "2025-04-03",
+        avatar: "/images/avatars/anna.png",
       },
     ],
     price: 12.5,

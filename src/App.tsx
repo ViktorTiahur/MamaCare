@@ -14,7 +14,7 @@ import ProductPage from "@/pages/ProductPage/ProductPage";
 import SignUpPage from "@/pages/SignUpPage/SignUpPage";
 // import ProductPage from "./pages/ProductPage/ProductPage";
 
-import GlobalStyle from "../globalStyle";
+import GlobalStyle from "./globalStyle";
 import "./App.css";
 
 const App: React.FC = () => {

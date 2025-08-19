@@ -1,73 +1,137 @@
+// --- tokens ---
+$max-w: 466px;
+$gap: 12px;
+
+$border-col: #c7c2d6;
+$thumb-size: 86px;
+$thumb-radius: 8px;
+$thumb-active-col: #897a9a;
+
+$arrow-size: 48px;
+$arrow-bg: #ffffff8c;
+
+// --- component ---
 .wrapper {
-  max-width: 466px;
+  max-width: $max-w;
   display: flex;
   flex-direction: column;
-  gap: 12px;
-}
+  gap: $gap;
 
-.mainImageWrapper {
-  position: relative;
-  min-height: 466px;
-  width: 100%;
-  // aspect-ratio: 1 / 1;
-  border-radius: 16px;
-  overflow: hidden;
-  border: 1px solid #c7c2d6;
-  padding: 8px 96px;
-  display: flex;
-  align-items: center;
-
-  img {
+  .mainImageWrapper {
+    position: relative;
+    min-height: $max-w;
     width: 100%;
-    height: 100%;
-    object-fit: cover;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid $border-col;
+    display: flex;
+    align-items: center;
+
+    .mainImage {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .arrowLeft,
+    .arrowRight {
+      height: $arrow-size;
+      width: $arrow-size;
+      border-radius: 100px;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      cursor: pointer;
+      background-color: $arrow-bg;
+
+      img {
+        width: $arrow-size;
+        height: $arrow-size;
+        display: block;
+      }
+    }
+
+    .arrowLeft {
+      left: 12px;
+    }
+    .arrowRight {
+      right: 12px;
+    }
+  }
+
+  .thumbnailNav {
+    display: flex;
+    justify-content: space-between;
+    /* використовуємо CSS-змінну для розрахунку ширини мініатюр на мобайл */
+    --gap: 9px;
+    gap: var(--gap);
+
+    .thumbBtn {
+      padding: 0;
+      border: 0;
+      background: transparent;
+      cursor: pointer;
+      line-height: 0;
+
+      &:focus-visible {
+        outline: 2px solid rgba(101, 85, 143, 0.5);
+        outline-offset: 2px;
+        border-radius: $thumb-radius;
+      }
+    }
+
+    .thumbnail {
+      width: $thumb-size;
+      height: $thumb-size;
+      border-radius: $thumb-radius;
+      object-fit: cover;
+      cursor: pointer;
+      border: 1px solid $border-col;
+      transition: transform 0.2s ease, opacity 0.2s ease, border-color 0.2s ease;
+
+      &:hover {
+        opacity: 0.8;
+      }
+      &.active {
+        border: 2px solid $thumb-active-col;
+        transform: scale(1.05);
+      }
+    }
   }
 }
 
-.arrowLeft,
-.arrowRight {
-  position: absolute;
-  top: 50%;
-  //   background: white;
-  //   border: 1px solid #c2b6dd;
-  //   padding: 6px;
-  cursor: pointer;
+/* --- responsive: <1024px --- */
+/* < 1024px: ширина на весь екран + 5 адаптивних мініатюр */
+@media (max-width: 1024px) {
+  .wrapper {
+    max-width: 100%;
+    width: 100%;
+    gap: 10px;
+    .mainImageWrapper {
+      aspect-ratio: 1/1;
+    }
 
-  img {
-    width: 48px;
-    height: 48px;
-  }
-}
+    .thumbnailNav {
+      /* використовуємо ту саму відстань між мініатюрами як змінну */
+      gap: 8px;
+      width: 100%;
+      // gap: var(--gap);
+      // justify-content: space-between; /* не змінюємо структуру */
 
-.arrowLeft {
-  left: 12px;
-}
-.arrowRight {
-  right: 12px;
-}
+      /* саме кнопка є flex-елементом — фіксуємо її ширину,
+       щоб 5 штук ідеально вписались у ряд */
+      .thumbBtn {
+        max-width: 180px;
+      }
 
-.thumbnailNav {
-  display: flex;
-  justify-content: space-between;
-  gap: 8px;
-
-  img:nth-child(3) {
-    border-color: #5e4b8b;
-    transform: scale(1.1);
-  }
-}
-
-.thumbnail {
-  width: 87px;
-  height: 87px;
-  border-radius: 8px;
-  border: 2px solid transparent;
-  object-fit: cover;
-  cursor: pointer;
-  transition: 0.2s;
-  border: 1px solid #c7c2d6;
-
-  &:hover {
-    opacity: 0.7;
+      /* картинка займає ширину кнопки; квадрат за потреби */
+      .thumbnail {
+        max-width: 190px;
+        width: 100%;
+        height: auto;
+        aspect-ratio: 1 / 1; /* прибери, якщо не хочеш квадрат */
+      }
+    }
   }
 }
