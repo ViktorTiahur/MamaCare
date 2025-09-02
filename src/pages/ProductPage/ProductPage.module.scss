@@ -391,14 +391,18 @@
     height: 48px;
     margin: 4px auto 0;
     border: 0;
-    cursor: pointer;
     display: grid;
     place-items: center;
+    cursor: pointer;
 
     .chevron {
       width: 18px;
       height: 18px;
       transition: transform 0.2s ease;
+    }
+
+    &:disabled {
+      display: none;
     }
   }
   .expanded .chevron {

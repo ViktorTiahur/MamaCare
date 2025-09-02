@@ -61,8 +61,7 @@ const ProductPage = () => {
         if (expandedMap[id]) el.classList.remove(styles.clamp);
       });
     });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [productId, activeTab]);
+  }, [productId, activeTab, reviews.length]);
 
   const averageRating =
     reviews.length > 0
@@ -293,6 +292,7 @@ const ProductPage = () => {
                       (r, i) => {
                         const id = r.id ?? `rev-${i}`;
                         const expanded = !!expandedMap[id];
+                        const canToggle = !!clampedMap[id];
                         return (
                           <li key={id} className={styles.reviewItem}>
                             <div className={styles.avatar} aria-hidden="true">
@@ -351,23 +351,27 @@ const ProductPage = () => {
                                 )}
                               </p>
 
-                              {clampedMap[id] && (
-                                <button
-                                  type="button"
-                                  className={`${styles.toggleBtn} ${
-                                    expanded ? styles.expanded : ""
-                                  }`}
-                                  aria-expanded={expanded}
-                                  onClick={() =>
-                                    setExpandedMap((m) => ({
-                                      ...m,
-                                      [id]: !expanded,
-                                    }))
-                                  }
-                                >
-                                  <OpenReview className={styles.chevron} />
-                                </button>
-                              )}
+                              <button
+                                type="button"
+                                className={`${styles.toggleBtn} ${
+                                  expanded ? styles.expanded : ""
+                                }`}
+                                aria-expanded={expanded}
+                                aria-disabled={!canToggle}
+                                disabled={!canToggle}
+                                onClick={() => {
+                                  if (!canToggle) return;
+                                  setExpandedMap((m) => ({
+                                    ...m,
+                                    [id]: !expanded,
+                                  }));
+                                }}
+                              >
+                                <OpenReview
+                                  className={styles.chevron}
+                                  aria-hidden="true"
+                                />
+                              </button>
                             </div>
                           </li>
                         );

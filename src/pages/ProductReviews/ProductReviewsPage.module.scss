@@ -1,10 +1,10 @@
 .page {
   max-width: 1440px;
   margin: 0 auto;
-  padding: 32px 24px 32px;
+  padding: 32px 159px 32px;
 
   .header {
-    padding: 32px 156px;
+    padding-top: 32px;
 
     .h1 {
       font-size: 18px;
@@ -12,26 +12,30 @@
       margin: 12px 0 16px;
     }
 
+    /* summary row: rating + distribution */
     .summaryGrid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 24px;
-      align-items: center;
+      display: flex;
+      align-items: flex-start;
+      gap: 56px; /* як на макеті — повітря між блоками */
+      flex-wrap: nowrap;
 
       .avgBox {
-        display: grid;
+        flex: 0 0 auto;
+        display: flex;
+        flex-direction: column;
         gap: 6px;
-        justify-items: start;
+        align-items: flex-start;
 
         .avgValue {
           font-size: 32px;
           font-weight: 700;
           line-height: 1;
+          span {
+            font-weight: 500;
+            opacity: 0.7;
+          }
         }
-        .avgValue span {
-          font-weight: 500;
-          opacity: 0.7;
-        }
+
         .count {
           font-size: 12px;
           opacity: 0.7;
@@ -42,45 +46,53 @@
       }
 
       .distList {
-        display: grid;
+        flex: 1 1 auto;
+        display: flex;
+        flex-direction: column;
         gap: 8px;
+        min-width: 320px;
 
         .distItem {
-          display: grid;
-          grid-template-columns: 16px 1fr 40px;
+          display: flex;
           align-items: center;
-          gap: 10px;
+          gap: 12px;
 
           .distLabel {
-            font-weight: 600;
             width: 16px;
             text-align: right;
+            font-weight: 600;
           }
+
           .distBar {
+            flex: 1 1 auto;
             height: 10px;
             background: #e9e1f4;
             border-radius: 999px;
             overflow: hidden;
+            position: relative;
 
             > span {
+              position: relative;
               display: block;
               height: 100%;
-              width: 0;
               background: #a57bd4;
+              /* ширину задаємо інлайном у JSX */
             }
           }
+
           .distPct {
+            width: 40px;
+            text-align: right;
             font-size: 12px;
             color: #4b3a5f;
-            text-align: right;
           }
         }
       }
     }
 
     .leaveReviewBtn {
-      margin-top: 16px;
-      align-self: start;
+      display: block;
+      margin: 16px auto 0; /* як на макеті — кнопка по центру */
       border: 0;
       padding: 10px 16px;
       border-radius: 999px;
@@ -102,8 +114,6 @@
   }
 
   .listSection {
-    padding: 0 156px;
-
     .h2 {
       font-size: 16px;
       font-weight: 600;
@@ -138,14 +148,14 @@
     }
 
     .reviewList {
-      display: grid;
+      display: flex;
+      flex-direction: column;
       gap: 24px;
       margin-top: 12px;
 
       .reviewItem {
-        display: grid;
-        grid-template-columns: 48px 1fr;
-        gap: 12px;
+        display: flex;
+        gap: 16px;
         padding: 16px 0;
         border-top: 1px solid #e6e6e6;
 
@@ -154,6 +164,7 @@
         }
 
         .avatarWrap {
+          flex: 0 0 48px;
           width: 48px;
           height: 48px;
           border-radius: 50%;
@@ -167,13 +178,16 @@
         }
 
         .body {
-          display: grid;
+          flex: 1 1 auto;
+          display: flex;
+          flex-direction: column;
           gap: 6px;
 
           .row1 {
             display: flex;
             align-items: center;
             gap: 8px;
+
             .author {
               font-weight: 600;
             }
@@ -220,6 +234,10 @@
         &[aria-current="page"] {
           font-weight: 600;
         }
+        &:disabled {
+          cursor: default;
+          opacity: 0.7;
+        }
       }
     }
   }
@@ -228,51 +246,56 @@
     display: flex;
     justify-content: center;
     margin-top: 20px;
-  }
-  .backLink {
-    text-decoration: none;
-    color: #6f42c1;
-    &:hover {
-      text-decoration: underline;
+
+    .backLink {
+      text-decoration: none;
+      color: #6f42c1;
+      &:hover {
+        text-decoration: underline;
+      }
     }
   }
 
   /* ======= Responsive ======= */
   @media (max-width: 1200px) {
-    .header .summaryGrid {
-      grid-template-columns: 1fr;
-      gap: 16px;
-    }
-    .header .summaryGrid .avgBox .avgValue {
-      font-size: 28px;
-    }
-    .header .summaryGrid .distList .distItem {
-      grid-template-columns: 16px 1fr 36px;
+    padding: 32px 24px;
+
+    .header {
+      .summaryGrid {
+        flex-wrap: wrap;
+        gap: 24px;
+
+        .avgBox {
+          align-items: flex-start;
+        }
+      }
     }
   }
 
   @media (max-width: 1024px) {
-    .reviewList .reviewItem {
-      grid-template-columns: 44px 1fr;
-    }
-    .reviewList .reviewItem .avatarWrap {
-      width: 44px;
-      height: 44px;
+    .listSection .reviewList .reviewItem {
+      .avatarWrap {
+        flex-basis: 44px;
+        width: 44px;
+        height: 44px;
+      }
     }
   }
 
   @media (max-width: 768px) {
     padding: 24px 12px;
 
-    .reviewList .reviewItem {
-      grid-template-columns: 40px 1fr;
-    }
-    .reviewList .reviewItem .avatarWrap {
-      width: 40px;
-      height: 40px;
-    }
     .header .summaryGrid .avgBox .avgValue {
       font-size: 26px;
+    }
+
+    .listSection .reviewList .reviewItem {
+      gap: 12px;
+      .avatarWrap {
+        flex-basis: 40px;
+        width: 40px;
+        height: 40px;
+      }
     }
   }
 
@@ -284,6 +307,7 @@
       width: 100%;
       text-align: center;
     }
+
     .listSection .pagination .pageBtn {
       min-width: 28px;
       height: 28px;
