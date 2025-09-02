@@ -11,6 +11,7 @@ import HomePage from "@/pages/HomePage/HomePage";
 import LoginPage from "@/pages/LoginPage/LoginPage";
 import PickAndBuy from "@/pages/PickAndChoosePage/PickAndChoosePage";
 import ProductPage from "@/pages/ProductPage/ProductPage";
+import ProductReviewsPage from "@/pages/ProductReviews/ProductReviewsPage";
 import SignUpPage from "@/pages/SignUpPage/SignUpPage";
 // import ProductPage from "./pages/ProductPage/ProductPage";
 
@@ -94,6 +95,10 @@ const App: React.FC = () => {
               <ProductPage />
             </Layout>
           }
+        />
+        <Route
+          path="/product/:productId/reviews"
+          element={<Layout><ProductReviewsPage /></Layout>}
         />
       </Routes>
     </Router>
