@@ -1,6 +1,11 @@
-import { useMemo, useState } from "react";
+import { useMemo, useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
-import { useParams, Link, useNavigate } from "react-router-dom";
+import {
+  useParams,
+  Link,
+  useNavigate,
+  useSearchParams,
+} from "react-router-dom";
 
 import Breadcrumbs from "@/components/Breadcrumbs/Breadcrumbs";
 import Rating from "@/components/Rating/Rating";
@@ -19,8 +24,22 @@ const ProductReviewsPage = () => {
   const product = mockProducts.find((p) => p.id === productId);
   const reviews = product?.reviews ?? [];
 
-  const [page, setPage] = useState(1);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const initial = Number(searchParams.get("page")) || 1;
+  const [page, setPage] = useState(initial);
   const totalPages = Math.max(1, Math.ceil(reviews.length / PAGE_SIZE));
+
+  // синхронізуємо локальний стейт із URL
+  useEffect(() => {
+    const p = Number(searchParams.get("page")) || 1;
+    setPage(Math.min(totalPages, Math.max(1, p)));
+  }, [searchParams, totalPages]);
+
+  const goToPage = (n: number) => {
+    const clamped = Math.min(totalPages, Math.max(1, n));
+    setSearchParams({ page: String(clamped) });
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
 
   const avg = useMemo(() => {
     if (!reviews.length) return 0;
@@ -200,7 +219,7 @@ const ProductReviewsPage = () => {
                       className={`${styles.pageBtn} ${
                         page === n ? styles.active : ""
                       }`}
-                      onClick={() => setPage(n)}
+                      onClick={() => goToPage(n)}
                       aria-current={page === n ? "page" : undefined}
                     >
                       {n}

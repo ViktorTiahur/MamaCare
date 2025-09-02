@@ -380,7 +380,9 @@ const ProductPage = () => {
                     <button
                       type="button"
                       className={styles.showAllBtn}
-                      onClick={() => navigate(`/product/${product.id}/reviews`)}
+                      onClick={() =>
+                        navigate(`/product/${product.id}/reviews?page=1`)
+                      }
                     >
                       Show All Reviews
                     </button>

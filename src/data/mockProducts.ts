@@ -84,8 +84,8 @@ const mockProducts: ProductDetail[] = [
       },
       {
         id: "r6",
-        author: "Anna",
-        rating: 5,
+        author: "Паприпрапa",
+        rating: 4,
         text: {
         en: "We had a fantastic experience shopping at MamaCare's online store! The website was easy to navigate, and the product descriptions were detailed and helpful. Customer support was outstanding—Sarah promptly answered all our questions and provided expert guidance, making the process smooth and stress-free. Thanks to her help, we felt confident in our purchase. Highly recommend MamaCare for a seamless online shopping experience!",
         uk: "Ми мали чудовий досвід покупок в інтернет-магазині **MamaCare**! Сайт був простим у навігації, а описи товарів — детальними та корисними. Підтримка клієнтів була на найвищому рівні — Сара швидко відповіла на всі наші запитання та надала професійні поради, зробивши процес легким і безтурботним. Завдяки її допомозі ми почувались впевнено у своєму виборі. Дуже рекомендуємо **MamaCare** для бездоганного онлайн-шопінгу!",
@@ -96,7 +96,7 @@ const mockProducts: ProductDetail[] = [
       },
       {
         id: "r7",
-        author: "Oleh",
+        author: "Oleапрапрh",
         rating: 2,
           text: {
          en: "We had a fantastic experience shopping at MamaCare's online store! The website was easy to navigate, and the product descriptions were detailed and helpful. Customer support was outstanding—Sarah promptly answered all our questions and provided expert guidance, making the process smooth and stress-free. Thanks to her help, we felt confident in our purchase. Highly recommend MamaCare for a seamless online shopping experience!",
