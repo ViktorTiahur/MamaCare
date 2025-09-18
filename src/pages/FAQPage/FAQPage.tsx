@@ -1,7 +1,7 @@
 "use client";
 
 import type React from "react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 // import { useTranslation } from "react-i18next";
 
 import minusIcon from "@/assets/icons/icon-close-18.svg";
@@ -17,6 +17,15 @@ interface FAQItem {
 }
 
 const FAQPage: React.FC = () => {
+
+	useEffect(() => {
+		const timer = setTimeout(() => {
+			window.scrollTo({ top: 0, behavior: "smooth" });
+		}, 0);
+
+  	return () => clearTimeout(timer);
+	}, [])
+
   const [faqItems, setFaqItems] = useState<FAQItem[]>([
     {
       question: "What are boxes?",

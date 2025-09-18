@@ -2,6 +2,7 @@
 
 import React from "react";
 import { useTranslation } from "react-i18next";
+import { Link } from "react-router-dom";
 
 import arrow from "@/assets/icons/icon-arrow.svg";
 
@@ -34,7 +35,7 @@ const BabyBoxSection: React.FC<BabyBoxSectionProps> = ({
   showButton = true,
   buttonLabel = "View all Gift Boxes",
   buttonOnClick,
-  linkHref = "#",
+  linkHref = "/product",
   className,
   listClassName,
 }) => {
@@ -50,10 +51,10 @@ const BabyBoxSection: React.FC<BabyBoxSectionProps> = ({
 
   return (
     <div className={`${styles.containerBabyBoxed} ${className ?? ""}`}>
-      <a href={linkHref} className={styles.title}>
+      <Link to={linkHref} className={styles.title}>
         <h2>{title}</h2>
         <img src={arrow} className={styles.arrow} alt="arrow link" />
-      </a>
+      </Link>
 
       <ProductList
         customClass={`${styles.babyBoxedList} ${listClassName ?? ""}`}

@@ -19,6 +19,7 @@ import GlobalStyle from "./globalStyle";
 import "./App.css";
 
 const App: React.FC = () => {
+
   return (
     <Router>
       <GlobalStyle />
