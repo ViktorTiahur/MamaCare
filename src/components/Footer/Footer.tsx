@@ -1,12 +1,12 @@
 import { Link } from "react-router-dom";
 
-import face from "@/assets/icons/face.png";
-import insta from "@/assets/icons/insta.png";
-import link from "@/assets/icons/link.png";
+import face from "@/assets/icons/face.svg";
+import insta from "@/assets/icons/insta.svg";
+import link from "@/assets/icons/link.svg";
 import mail from "@/assets/icons/mail.svg";
 import map from "@/assets/icons/map.svg";
 import phone from "@/assets/icons/phone.svg";
-import youtube from "@/assets/icons/youtube.png";
+import youtube from "@/assets/icons/youtube.svg";
 import Button from "@/components/Button/Button";
 import NavLink from "@/components/NavLink/Navlink";
 

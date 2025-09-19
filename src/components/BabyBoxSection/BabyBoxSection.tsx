@@ -1,16 +1,20 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 
 import arrow from "@/assets/icons/icon-arrow.svg";
+import mockProducts from "@/data/mockProducts";
+import { ProductDetail } from "@/types/productInterface";
+
 
 import Button from "../Button/Button";
 import ProductList from "../ProductList/ProductList";
 
 import styles from "./BabyBoxSection.module.scss";
 import { useResponsiveItems, type ResponsiveRule } from "./useResponsiveItems";
+
 
 interface BabyBoxSectionProps {
   title: string;
@@ -34,7 +38,6 @@ const BabyBoxSection: React.FC<BabyBoxSectionProps> = ({
   lang,
   showButton = true,
   buttonLabel = "View all Gift Boxes",
-  buttonOnClick,
   linkHref = "/product",
   className,
   listClassName,
@@ -43,11 +46,22 @@ const BabyBoxSection: React.FC<BabyBoxSectionProps> = ({
   const resolvedLang: "en" | "uk" =
     lang ?? (i18n.language === "uk" ? "uk" : "en");
 
-  const itemsToShow = useResponsiveItems({
+  const defaultItemsToShow = useResponsiveItems({  // стандартні налаштування відображення
     fixed: items,
     responsive,
     fallback: 3,
   });
+
+  const data = mockProducts; // для зручності отримання продуктів
+
+  const [itemsToShow, setItemsToShow] = useState(defaultItemsToShow); // записуєм стандартне значення
+  const [buttonVisible, setButtonVisible] = useState(showButton);
+
+  function changeItemsCount(arg: ProductDetail[]) {  // відкриваємо весь список товарів і приховуєм кнопку
+    setItemsToShow(arg.length);
+    setButtonVisible(false);
+  }
+  
 
   return (
     <div className={`${styles.containerBabyBoxed} ${className ?? ""}`}>
@@ -62,9 +76,9 @@ const BabyBoxSection: React.FC<BabyBoxSectionProps> = ({
         lang={resolvedLang}
       />
 
-      {showButton && (
+      {buttonVisible && (
         <div className={styles.button}>
-          <Button onClick={buttonOnClick}>{buttonLabel}</Button>
+          <Button onClick={() => changeItemsCount(data)}>{buttonLabel}</Button>
         </div>
       )}
     </div>

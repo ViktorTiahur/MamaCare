@@ -1,4 +1,4 @@
-import React, {  useState } from "react";
+import React, {  useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 
@@ -19,6 +19,7 @@ import SearchModal from "../SearchModal/SearchModal";
 // import { useLocation } from "react-router-dom";
 
 import styles from "./Header.module.scss";
+import useResize from "@/hooks/useResize";
 
 const Header: React.FC = () => {
   const {i18n,t} = useTranslation();
@@ -65,8 +66,14 @@ const Header: React.FC = () => {
   function handleSetLaguage(lang : string) {
     setSelectedLang(lang);
     i18n.changeLanguage(lang);
-
   };
+
+  const width = useResize();
+
+  useEffect(() => {
+    if (width) {setIsSidebarOpen(false)} //якщо вікно збільшилось до моменту коли не має показуватись сайдбар, закриваєм його примусово
+  }, [width])
+  
 
   return (
     <header className={styles.header}>
