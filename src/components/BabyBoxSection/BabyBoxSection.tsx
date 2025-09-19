@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 
@@ -52,9 +52,14 @@ const BabyBoxSection: React.FC<BabyBoxSectionProps> = ({
     fallback: 3,
   });
 
+  useEffect(() => {
+    setItemsToShow(defaultItemsToShow)
+  }, [defaultItemsToShow])
+  
+
   const data = mockProducts; // для зручності отримання продуктів
 
-  const [itemsToShow, setItemsToShow] = useState(defaultItemsToShow); // записуєм стандартне значення
+  const [itemsToShow, setItemsToShow] = useState(0); // записуєм стандартне значення
   const [buttonVisible, setButtonVisible] = useState(showButton);
 
   function changeItemsCount(arg: ProductDetail[]) {  // відкриваємо весь список товарів і приховуєм кнопку
