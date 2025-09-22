@@ -193,10 +193,9 @@ const mockProducts: ProductDetail[] = [
       },
     ],
     price: 4.55,
-    brand: {
-      en: "EcoMama",
-      uk: "EcoMama"
-    },
+    brand: 
+      "EcoMama"
+    ,
     defaultSize: "One Size",
     maxQuantity: 20,
     age: 1,
@@ -240,10 +239,7 @@ const mockProducts: ProductDetail[] = [
       },
     ],
     price: 350,
-    brand: {
-      en: "MamaCare",
-      uk: "MamaCare",
-    },
+    brand: "MamaCare",
     availableColors: ["Blue", "Beige"],
     availableSizes: ["Box"],
     images: [
@@ -291,10 +287,7 @@ const mockProducts: ProductDetail[] = [
       },
     ],
     price: 29.99,
-    brand: {
-      en: "PureBaby",
-      uk: "PureBaby",
-    },
+    brand: "Graco",
     availableColors: ["White", "Pink", "Mint"],
     availableSizes: ["S", "M", "L"],
     defaultColor: "White",
