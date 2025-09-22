@@ -62,6 +62,7 @@
 
 .searchInput {
   height: 32px;
+  width: 100%;
   flex: 1;
   border: none;
   border-left: 1px solid #897a9a;
@@ -104,4 +105,13 @@
 .noResults {
   text-align: center;
   color: #888;
+}
+
+@media (max-width: 410px) {
+    .modalOverlay{
+        padding: 24px 10px;
+    }
+    .searchContainer {
+        padding: 5px;
+    }
 }

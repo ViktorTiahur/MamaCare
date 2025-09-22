@@ -149,6 +149,7 @@
       background-color: #fff;
       border-radius: 8px;
       font-size: 20px;
+      color: #000;
     }
 
     .addToCart {
@@ -381,6 +382,7 @@
   .clamp {
     display: -webkit-box;
     -webkit-box-orient: vertical;
+    line-clamp: 4;
     -webkit-line-clamp: 4;
     overflow: hidden;
   }

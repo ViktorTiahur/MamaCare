@@ -37,6 +37,7 @@ const SearchModal: React.FC<SearchModalProps> = ({ onClose }) => {
             <img src={searchIcon} alt="Search" />
           </div>
           <input
+            name="search"
             type="text"
             placeholder=""
             value={searchTerm}

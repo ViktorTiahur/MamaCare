@@ -1,4 +1,5 @@
 // import { useTranslation } from "react-i18next";
+import { useEffect } from "react";
 
 import heart from "@/assets/icons/icon-heart.svg";
 import matherPhoto from "@/assets/images/about-desktop.png";
@@ -6,7 +7,17 @@ import BabyBoxSection from "@/components/BabyBoxSection/BabyBoxSection";
 
 import styles from "./AboutUsPage.module.scss";
 
+
 const AboutUsPage = () => {
+
+	useEffect(() => {
+		const timer = setTimeout(() => {
+			window.scrollTo({ top: 0, behavior: "smooth" });
+		}, 0);
+
+  	return () => clearTimeout(timer);
+	}, [])
+
   return (
     <div className={styles.aboutUs}>
       <div className={styles.aboutUs__container}>

@@ -62,7 +62,11 @@ const ProductCatalog: React.FC<ProductCatalogProps> = ({
   }, [sort, activeId, filters]);
 
   useEffect(() => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    const timer = setTimeout(() => {
+			window.scrollTo({ top: 0, behavior: "smooth" });
+		}, 0);
+
+  	return () => clearTimeout(timer);
   }, [currentPage]);
 
   const filteredProducts = useMemo(() => {
