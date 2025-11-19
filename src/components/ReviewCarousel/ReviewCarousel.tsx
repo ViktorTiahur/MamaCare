@@ -30,7 +30,7 @@ const ReviewCarousel = () => {
   // Оновлюємо кількість карток в залежності від ширини екрану
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth < 400) {
+      if (window.innerWidth < 481) {
         setItemsPerPage(1);
       } else if (window.innerWidth < 800) {
         setItemsPerPage(2);
