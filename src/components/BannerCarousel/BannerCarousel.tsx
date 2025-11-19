@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
-
 import { slides } from "../../constants/slides";
 import Button from "../Button/Button";
 
 import styles from "./BannerCarousel.module.scss";
+import { Link } from "react-router-dom";
 
 const BannerCarousel: React.FC = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -50,13 +50,12 @@ const BannerCarousel: React.FC = () => {
           >
             <div className={styles.bannerText}>
               <p className={styles.legend}>{slide.legendText}</p>
-              <Button
-                as="a"
+              <Link
                 className={styles.bannerButton}
-                href={slide.buttonLink}
+                to={slide.buttonLink}
               >
                 {slide.buttonText}
-              </Button>
+              </Link>
             </div>
           </div>
         </div>

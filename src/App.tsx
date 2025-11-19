@@ -13,6 +13,8 @@ import PickAndBuy from "@/pages/PickAndChoosePage/PickAndChoosePage";
 import ProductPage from "@/pages/ProductPage/ProductPage";
 import ProductReviewsPage from "@/pages/ProductReviews/ProductReviewsPage";
 import SignUpPage from "@/pages/SignUpPage/SignUpPage";
+import GetStarted from "@/pages/GetStarted/GetStarted";
+
 // import ProductPage from "./pages/ProductPage/ProductPage";
 
 import GlobalStyle from "./globalStyle";
@@ -86,6 +88,14 @@ const App: React.FC = () => {
           element={
             <Layout>
               <PickAndBuy />
+            </Layout>
+          }
+        />
+        <Route
+          path="/getstarted"
+          element={
+            <Layout>
+              <GetStarted/>
             </Layout>
           }
         />
