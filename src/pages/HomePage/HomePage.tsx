@@ -66,7 +66,12 @@ const HomePage = () => {
           itemsToShow={itemsCount.pickItems}
         ></ProductList>
         <div className={styles.button}>
-          <Button>{t("HomePage.View all Products")}</Button>
+        <Link
+            to="/pickandbuy"
+            className={styles.linkBtn}
+            >
+            View all products
+        </Link>
         </div>
       </div>
 

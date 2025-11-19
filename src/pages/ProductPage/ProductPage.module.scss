@@ -61,6 +61,36 @@
       legend {
         margin-bottom: 16px;
       }
+        .legendRow {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      
+      .sizeGuide {
+        cursor: pointer;
+        font-weight: 300;
+        margin-bottom: 8px;
+        font-size: 20px;
+        transition: .3s ease-out;
+        position: relative;
+        display: inline-block;
+        &::after {
+          content: '';
+          position: absolute;
+          left: 0;
+          bottom: -3px;
+          height: 1px;
+          background-color: #876ab8;
+          width: 0;
+          transition: .3s ease-out;
+        }
+        &:hover {
+          &::after {
+            width: 100%;
+          }
+        }
+      }
 
       .colorOption {
         display: inline-block;
@@ -428,6 +458,15 @@
       .gallery {
         max-width: 100%;
         padding-bottom: 0;
+        img {
+          height: auto;
+        }
+      }
+      .buttons {
+        margin-bottom: 40px;
+      }
+      .info {
+        max-width: 100%;
       }
     }
   }

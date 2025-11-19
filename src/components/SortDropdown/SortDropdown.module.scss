@@ -1,136 +1,159 @@
+// контейнер вокруг всей логики 
+.dropdownContainer {
+  width: 100%;
+  position: relative;
+}
+
+// кнопка + меню 
 .relative {
   position: relative;
-  z-index: 5000;
-  animation: fadeIn 0.3s ease;
-  width: 100%;
+  width: max-content; 
+}
 
-  .sort_button {
-    display: flex;
-    gap: 8px;
-    border-radius: 100px;
-    border: 1px solid #65558f;
-    width: 132px;
-    height: 46px;
-    padding: 10px 20px;
-    justify-content: space-between;
-    align-items: center;
-    position: relative;
-    z-index: 9999;
-    background: #fff;
+// кнопка сортировки 
+.sort_button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
 
-    span {
-      font-size: 18px;
-      font-weight: 500;
-      line-height: 22px;
-      letter-spacing: 0.1px;
-      color: #65558f;
-    }
+  padding: 10px 20px;
+  height: 44px;
+
+  background: #fff;
+  border: 1px solid #65558f;
+  border-radius: 100px;
+
+  cursor: pointer;
+  transition: 0.25s ease;
+
+  img {
+    width: 20px;
+    height: 20px;
   }
 
-  input[type="radio"] {
-    accent-color: #65558f;
+  span {
+    font-size: 16px;
+    color: #65558f;
+    font-weight: 500;
   }
 
-  input[type="radio"]:checked {
-    background-color: #300864;
-  }
-  .sort_menu {
-    max-width: 334px;
-    width: 100%;
-    height: 392px;
-    padding: 28px 28px 34px;
-
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-
-    border-radius: 12px;
-    border: 1px solid #65558f;
-
-    position: absolute;
-    z-index: 9999;
-    top: 79px;
-    background-color: #ffffff;
-
-    animation: fadeIn 0.3s ease;
-
-    span {
-      font-weight: 500;
-      font-size: 18px;
-      letter-spacing: 0.1px;
-      line-height: 22px;
-    }
-
-    .option {
-      height: 56px;
-      display: flex;
-      align-items: center;
-
-      .radio {
-        display: none;
-      }
-      .radioWrapper {
-        position: relative;
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
-        background-color: transparent;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        transition: background-color 0.2s;
-        margin-right: 20px;
-      }
-
-      .customRadio {
-        width: 20px;
-        height: 20px;
-        border: 2px solid #6e4ca3;
-        border-radius: 50%;
-        position: relative;
-      }
-
-      .radio:checked + .radioWrapper {
-        background-color: #e5dfed;
-      }
-
-      .radio:checked + .radioWrapper .customRadio {
-        border-color: #6e4ca3;
-      }
-
-      .radio:checked + .radioWrapper .customRadio::after {
-        content: "";
-        position: absolute;
-        top: 4px;
-        left: 4px;
-        width: 8px;
-        height: 8px;
-        background-color: #6e4ca3;
-        border-radius: 50%;
-      }
-    }
+  &:hover {
+    background: #f3edff;
   }
 }
 
-@keyframes fadeIn {
+// меню выпадающее 
+.sort_menu {
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%);
+
+  min-width: 220px;
+  width: 260px;
+  max-width: calc(100vw - 32px);
+
+  padding: 20px;
+
+  background: #fff;
+  border: 1px solid #d7c9f3;
+  border-radius: 12px;
+
+  box-shadow: 0 6px 22px rgba(0, 0, 0, 0.12);
+
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+
+  z-index: 9999;
+
+  opacity: 0;
+  animation: dropdownFade 0.25s ease forwards;
+
+  span {
+    font-size: 16px;
+    font-weight: 600;
+    color: #4a3d6d;
+  }
+}
+
+// отдельная строка опции 
+.option {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 8px 0;
+
+  cursor: pointer;
+  transition: 0.2s ease;
+
+  &:hover {
+    background: #f6f1ff;
+    border-radius: 8px;
+  }
+}
+
+// скрытый radio 
+.radio {
+  display: none;
+}
+
+
+.radioWrapper {
+  width: 22px;
+  height: 22px;
+
+  border: 2px solid #6e4ca3;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transition: 0.2s ease;
+}
+
+// белая точка внутри 
+.customRadio {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: transparent;
+}
+
+// когда стоит галочка 
+.radio:checked + .radioWrapper {
+  background: #6e4ca3;
+  border-color: #6e4ca3;
+}
+
+.radio:checked + .radioWrapper .customRadio {
+  background: white;
+}
+
+
+.label {
+  font-size: 16px;
+  font-weight: 500;
+  color: #4a3d6d;
+}
+
+
+@keyframes dropdownFade {
   from {
     opacity: 0;
-    transform: scale(0.97);
+    transform: translateX(-50%) translateY(-6px);
   }
   to {
     opacity: 1;
-    transform: scale(1);
+    transform: translateX(-50%) translateY(0);
   }
 }
 
+
 @media (max-width: 480px) {
-  .relative {
-    width: 100%;
-    .sort_menu {
-      width: calc(100vw - 32px);
-      max-width: 100%;
-      left: 0;
-      right: 0;
-    }
+  .sort_menu {
+    width: calc(100% - 32px);
+    padding: 16px;
+    left: 0;
   }
 }

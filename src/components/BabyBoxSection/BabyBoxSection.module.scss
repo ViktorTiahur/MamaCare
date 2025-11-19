@@ -36,7 +36,8 @@
     }
   }
 
-  button {
+  button,
+  .linkBtn {
     display: flex;
     color: #fff;
     justify-content: center;
@@ -48,6 +49,10 @@
     margin: auto;
     font-family: "Roboto", sans-serif;
     font-size: 18px;
+    transition: .3s ease-out;
+    &:hover {
+      opacity: 0.9;
+    }
   }
 }
 
@@ -98,6 +103,9 @@
     .babyBoxedList,
     .pickList {
       gap: 15px;
+    }
+    .linkBtn {
+      display: none;
     }
   }
 }
