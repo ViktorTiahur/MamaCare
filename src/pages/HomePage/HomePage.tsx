@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 
 import arrow from "@/assets/icons/icon-arrow.svg";
 import BabyBoxSection from "@/components/BabyBoxSection/BabyBoxSection";
-import Button from "@/components/Button/Button";
 import ProductList from "@/components/ProductList/ProductList";
 import ReviewCarousel from "@/components/ReviewCarousel/ReviewCarousel";
 

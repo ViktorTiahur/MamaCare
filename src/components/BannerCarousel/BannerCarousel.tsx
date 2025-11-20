@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { slides } from "../../constants/slides";
-import Button from "../Button/Button";
-
 import styles from "./BannerCarousel.module.scss";
 import { Link } from "react-router-dom";
 
