@@ -72,6 +72,12 @@ const BabyBoxSection: React.FC<BabyBoxSectionProps> = ({
           <Button onClick={buttonOnClick}>{buttonLabel}</Button>
         </div>
       )}
+      <Link
+      to="/product"
+      className={styles.linkBtn}
+      >
+      View all baby Boxes
+      </Link>
     </div>
   );
 };

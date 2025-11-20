@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 
 import arrow from "@/assets/icons/icon-arrow.svg";
 import BabyBoxSection from "@/components/BabyBoxSection/BabyBoxSection";
-import Button from "@/components/Button/Button";
 import ProductList from "@/components/ProductList/ProductList";
 import ReviewCarousel from "@/components/ReviewCarousel/ReviewCarousel";
 
@@ -66,7 +65,12 @@ const HomePage = () => {
           itemsToShow={itemsCount.pickItems}
         ></ProductList>
         <div className={styles.button}>
-          <Button>{t("HomePage.View all Products")}</Button>
+        <Link
+            to="/pickandbuy"
+            className={styles.linkBtn}
+            >
+            View all products
+        </Link>
         </div>
       </div>
 

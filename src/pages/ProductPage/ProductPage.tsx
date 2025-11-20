@@ -139,7 +139,10 @@ const ProductPage = () => {
                 </fieldset>
 
                 <fieldset className={styles.fieldset}>
-                  <legend>Size:</legend>
+                  <div className={styles.legendRow}>
+                   <legend>Size:</legend>
+                    <a href="#" className={styles.sizeGuide}>Size Guide</a>
+                  </div>
                   {product.availableSizes.map((size) => (
                     <label key={size} className={styles.sizeOption}>
                       <input
