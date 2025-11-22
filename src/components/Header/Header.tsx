@@ -22,8 +22,13 @@ import SearchModal from "../SearchModal/SearchModal";
 
 import styles from "./Header.module.scss";
 
+interface HeaderProps { 
+  openSignUp: () => void; // пропс модалки
+}
 
-const Header: React.FC = () => {
+
+
+const Header: React.FC<HeaderProps> = ({openSignUp}) => {
   const {i18n,t} = useTranslation();
   const [selectedLang, setSelectedLang] = useState(i18n.language || "en"); // Встановлюємо мову за замовчуванням
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -61,6 +66,9 @@ const Header: React.FC = () => {
     } else if (item === "login") {
       // Логіка авторизації користувача
       setIsAuthenticated(true);
+      // Відкриваємо модалку 
+    } else if (item === "register") {
+      openSignUp();
     }
   };
 

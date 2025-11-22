@@ -2,6 +2,7 @@ import React, { ReactNode } from "react";
 
 import Footer from "../Footer/Footer";
 import Header from "../Header/Header";
+import SignUpModal from "../../components/SignUp/SignUpModal"
 
 import styles from "./Layout.module.scss";
 
@@ -10,9 +11,13 @@ interface LayoutProps {
 }
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
+
+  const [isSignUpOpen,setIsSignUpOpen] = React.useState(false);
+
   return (
     <div className={styles.container}>
-      <Header />
+      <Header openSignUp={() => setIsSignUpOpen(true)} />
+      <SignUpModal isOpen={true} onClose={() => setIsSignUpOpen(false)} />
       <main>{children}</main>
       <Footer />
     </div>
