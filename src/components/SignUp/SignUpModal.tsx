@@ -57,42 +57,77 @@ const SignUpModal: React.FC<SignUpModalProps> = ({ isOpen, onClose }) => {
         password: '',
         confirmPassword: ''
       };  
-
-        if (values.email.trim() === '') {
+        if (activeTab === 'email') {
+          if (values.email.trim() === '') {
           newErrors.email = 'The field must be filled'
         }
-        if (values.phone.trim() === '') {
-          newErrors.phone = 'The field must be filled'
         }
+        if (activeTab === 'phone') {
+          if (values.phone.trim() === '') {
+            newErrors.phone = 'The field must be filled'
+          }
+        }
+
         if (values.password.trim() === '') {
           newErrors.password = 'The field must be filled'
         }
+
         if (values.password.trim() !== '' && !/^[A-Za-z0-9_\/+%]+$/.test(values.password)) 
         {
           newErrors.password = 'Only A-Z, a-z, 0-9, _, /, +, % signs allowed';
         } 
-        if (values.password.trim() !== '' && 
-        values.confirmPassword.trim() !== '' && 
-        values.password !== values.confirmPassword)
-        {
-          newErrors.confirmPassword = 'Passwords are not the same'
+
+        //  пусте confirmPassword  показуємо помилку
+        if (values.confirmPassword.trim() === '') {
+          newErrors.confirmPassword = 'The field must be filled';
         }
+
+        //  якщо поле НЕ пусте  перевіряємо збіг
+        else if (values.password !== values.confirmPassword) {
+          newErrors.confirmPassword = 'Passwords are not the same';
+        }
+
           setErrors(newErrors);
           // якщо в newErrors ХОЧ ОДНА помилка  повертаємо = false
           // якщо всі порожні  форма валідна  = true
         return !Object.values(newErrors).some(error => error !== '');
       };
 
-      function handleSubmit(e: React.FormEvent) {
+     async function handleSubmit(e: React.FormEvent) {
         e.preventDefault();
           const isValid = validate(values);
+          if (!isValid) return;
 
-          if (!isValid) {
-            console.log('Form is invalid')
-            return;
+          const bodyReq: any = {password: values.password};
+          if (values.email.trim() !== '') bodyReq.email = values.email;
+          if (values.phone.trim() !== '') bodyReq.phone = values.phone;
+
+          try {
+            const res = await fetch('/auth/register', {
+              method: 'POST',
+              headers: {'Content-Type': 'application/json'},
+              body: JSON.stringify(bodyReq)
+            })
+
+            if (res.status === 201) {
+              console.log('User created')
+              return;
+            }
+            if (res.status === 422) {
+              console.log('Invalid validation')
+              return;
+            }
+            if (res.status === 500) {
+              console.log('Server error')
+            }
+            if (res.status === 401) {
+              console.log('Unauthorized')
+            }
+          } catch (error) {
+              console.error('Request failed', error)
           }
-          console.log('Form is valid');
-      }
+
+     }
 
   return (
     <div className={styles.overlay}>
