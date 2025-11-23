@@ -43,7 +43,7 @@
     letter-spacing: 0.1px;
     opacity: 0.5;
     &.active {
-      border-bottom: 2px solid #897A9A;
+      border-bottom: 2px solid #897a9a;
       opacity: 1;
     }
   }
@@ -55,7 +55,7 @@
     margin-bottom: 28px;
   }
 
-  .fields{
+  .fields {
     display: flex;
     flex-direction: column;
     gap: 28px;
@@ -81,10 +81,10 @@
       width: 100%;
       color: #1a1a1a;
       font-size: 18px;
-      transition: .3s ease-out;
+      transition: 0.3s ease-out;
       &:focus {
-      border-color: #65558f;
-      box-shadow: inset 0 0 0 1px #65558f;
+        border-color: #65558f;
+        box-shadow: inset 0 0 0 1px #65558f;
       }
     }
 
@@ -92,23 +92,23 @@
       position: relative;
       display: flex;
       align-items: center;
-        input {
-          width: 100%;
-          padding: 10px 50px 10px 24px;
-          border-radius: 47px;
-          border: 1px solid #65558f;
-          outline: none;
-          font-size: 16px;
-          color: #000;
-          background: transparent;
-        }
+      input {
+        width: 100%;
+        padding: 10px 50px 10px 24px;
+        border-radius: 47px;
+        border: 1px solid #65558f;
+        outline: none;
+        font-size: 16px;
+        color: #000;
+        background: transparent;
+      }
       &::after {
-        content: '';
+        content: "";
         position: absolute;
         right: 65px;
         height: 65%;
         width: 1px;
-        background: #897A9A;
+        background: #897a9a;
       }
     }
     .eyeBtn {
@@ -123,10 +123,10 @@
 
   .remember {
     label {
-    display: flex;
-    gap: 20px;
-    align-items: center;
-    cursor: pointer;
+      display: flex;
+      gap: 20px;
+      align-items: center;
+      cursor: pointer;
     }
     .checkbox {
       appearance: none;
@@ -236,8 +236,46 @@
     }
   }
   .error {
-    color: #A20404;
+    color: #a20404;
     margin-top: 8px;
     font-size: 14px;
+  }
+}
+
+.verification {
+  .content {
+    margin-bottom: 60px;
+    h4,
+    p {
+      font-size: 20px;
+      line-height: 26px;
+      b {
+        font-weight: 600;
+      }
+    }
+    .resend {
+      margin-top: 40px;
+      display: flex;
+      flex-direction: column;
+      span {
+        font-size: 14px;
+        line-height: 16px;
+        margin-bottom: 8px;
+      }
+      .btnChoice {
+        button {
+          color: #65558f;
+          font-size: 16px;
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+        span {
+          font-size: 16px;
+          display: inline-block;
+          margin: 0 7px;
+        }
+      }
+    }
   }
 }

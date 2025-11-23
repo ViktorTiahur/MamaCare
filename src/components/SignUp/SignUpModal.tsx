@@ -8,6 +8,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import EmailField from "./EmailField";
 import PhoneField from "./PhoneField";
 import PasswordField from "./PasswordField";
+import EmailVerification from "./EmailVerification";
 
 
 interface SignUpModalProps {
@@ -34,6 +35,8 @@ type Errors = {
 const SignUpModal: React.FC<SignUpModalProps> = ({ isOpen, onClose }) => {
   if (!isOpen) return null;
   const [activeTab, setActiveTab] = useState<'email' | 'phone'>('email');
+
+  const [showVerify, setShowVerify] = useState(false);
 
   const [values, setValues] = useState<Values>({
       email: '',
@@ -128,10 +131,43 @@ const SignUpModal: React.FC<SignUpModalProps> = ({ isOpen, onClose }) => {
           }
 
      }
+        async function handleResendEmail() {
+          try {
+            const res = await fetch("/auth/resend-email", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ email: values.email }),
+            });
+
+            if (res.ok) {
+              console.log("Email resent successfully");
+            } else {
+              console.log("Resend failed");
+            }
+          } catch (error) {
+            console.error("Error while resending email", error);
+          }
+        }
+
+        function handleSwitchToPhone() {
+          setActiveTab("phone");
+          setShowVerify(false); //  повертаємось назад у signup
+        }
+
+
 
   return (
     <div className={styles.overlay}>
       <div className={styles.modal}>
+        {showVerify ? (
+          <EmailVerification 
+        email={values.email}
+        onResend={handleResendEmail}
+        onSwitchToPhone={handleSwitchToPhone}
+        onClose={onClose}
+         />
+        ) : (
+          <>
         <button className={styles.btnClose} 
         onClick={onClose}
         aria-label="close sign up modal">
@@ -150,8 +186,12 @@ const SignUpModal: React.FC<SignUpModalProps> = ({ isOpen, onClose }) => {
           >Phone number
           </button>
         </div>
+          </>
+        )}
 
-        <form className={styles.form} onSubmit={handleSubmit} noValidate > 
+        {!showVerify && (
+          <>
+          <form className={styles.form} onSubmit={handleSubmit} noValidate > 
         <AnimatePresence mode="wait">
         {activeTab === "email" && (
           <motion.div
@@ -243,6 +283,9 @@ const SignUpModal: React.FC<SignUpModalProps> = ({ isOpen, onClose }) => {
           Log In
           </Link>
         </div>
+          </>
+        )}
+        
       </div>
     </div>
   );
