@@ -17,7 +17,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   return (
     <div className={styles.container}>
       <Header openSignUp={() => setIsSignUpOpen(true)} />
-      <SignUpModal isOpen={true} onClose={() => setIsSignUpOpen(false)} />
+      <SignUpModal isOpen={isSignUpOpen} onClose={() => setIsSignUpOpen(false)} />
       <main>{children}</main>
       <Footer />
     </div>

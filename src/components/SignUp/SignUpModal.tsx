@@ -11,13 +11,88 @@ import PasswordField from "./PasswordField";
 
 
 interface SignUpModalProps {
-  isOpen: boolean;
-  onClose: () => void;
+  isOpen: boolean,
+  onClose: () => void,
 }
+
+type Values = {
+  email: string,
+  phone: string,
+  password: string,
+  confirmPassword: string,
+}
+
+type Errors = {
+  email: string,
+  phone: string,
+  password: string,
+  confirmPassword: string,
+}
+
+
 
 const SignUpModal: React.FC<SignUpModalProps> = ({ isOpen, onClose }) => {
   if (!isOpen) return null;
   const [activeTab, setActiveTab] = useState<'email' | 'phone'>('email');
+
+  const [values, setValues] = useState<Values>({
+      email: '',
+      phone: '',
+      password: '',
+      confirmPassword: '',
+    });
+
+  const [errors, setErrors] = useState(
+    { email: '', 
+      phone: '', 
+      password: '', 
+      confirmPassword: '',
+    }
+    );
+
+    function validate(values: Values): boolean {
+      const newErrors: Errors = {
+        email: '',
+        phone: '',
+        password: '',
+        confirmPassword: ''
+      };  
+
+        if (values.email.trim() === '') {
+          newErrors.email = 'The field must be filled'
+        }
+        if (values.phone.trim() === '') {
+          newErrors.phone = 'The field must be filled'
+        }
+        if (values.password.trim() === '') {
+          newErrors.password = 'The field must be filled'
+        }
+        if (values.password.trim() !== '' && !/^[A-Za-z0-9_\/+%]+$/.test(values.password)) 
+        {
+          newErrors.password = 'Only A-Z, a-z, 0-9, _, /, +, % signs allowed';
+        } 
+        if (values.password.trim() !== '' && 
+        values.confirmPassword.trim() !== '' && 
+        values.password !== values.confirmPassword)
+        {
+          newErrors.confirmPassword = 'Passwords are not the same'
+        }
+          setErrors(newErrors);
+          // якщо в newErrors ХОЧ ОДНА помилка  повертаємо = false
+          // якщо всі порожні  форма валідна  = true
+        return !Object.values(newErrors).some(error => error !== '');
+      };
+
+      function handleSubmit(e: React.FormEvent) {
+        e.preventDefault();
+          const isValid = validate(values);
+
+          if (!isValid) {
+            console.log('Form is invalid')
+            return;
+          }
+          console.log('Form is valid');
+      }
 
   return (
     <div className={styles.overlay}>
@@ -41,7 +116,7 @@ const SignUpModal: React.FC<SignUpModalProps> = ({ isOpen, onClose }) => {
           </button>
         </div>
 
-        <form className={styles.form}> 
+        <form className={styles.form} onSubmit={handleSubmit} noValidate > 
         <AnimatePresence mode="wait">
         {activeTab === "email" && (
           <motion.div
@@ -50,8 +125,23 @@ const SignUpModal: React.FC<SignUpModalProps> = ({ isOpen, onClose }) => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.2, ease: "easeOut" }}>
-          <EmailField/> 
-          <PasswordField id="password" label="Password"/>
+          <EmailField 
+          value={values.email}
+          onChange={(val) => setValues({...values, email: val})}
+          error={errors.email}
+          /> 
+          <PasswordField 
+            id="password"
+            label="Password"
+
+            passwordValue={values.password}
+            onPasswordChange={(val) => setValues({...values, password: val})}
+            passwordError={errors.password}
+
+            confirmValue={values.confirmPassword}
+            onConfirmChange={(val) => setValues({...values, confirmPassword: val})}
+            confirmError={errors.confirmPassword}
+          />
           </motion.div>
         )}
 
@@ -63,8 +153,21 @@ const SignUpModal: React.FC<SignUpModalProps> = ({ isOpen, onClose }) => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.2, ease: "easeOut" }}>
-          <PhoneField/>
-          <PasswordField id="password" label="Password"/>
+          <PhoneField 
+          value={values.phone}
+          onChange={(val) => setValues({...values, phone: val})}
+          error={errors.phone}
+          />
+          <PasswordField 
+            id="password"
+            label="Password"
+            passwordValue={values.password}
+            onPasswordChange={(val) => setValues({...values, password: val})}
+            passwordError={errors.password}
+            confirmValue={values.confirmPassword}
+            onConfirmChange={(val) => setValues({...values, confirmPassword: val})}
+            confirmError={errors.confirmPassword}
+          />
           </motion.div>
         )}
         </AnimatePresence>
