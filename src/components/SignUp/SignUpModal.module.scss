@@ -41,6 +41,11 @@
     font-weight: 500;
     font-size: 18px;
     letter-spacing: 0.1px;
+    opacity: 0.5;
+    &.active {
+      border-bottom: 2px solid #897A9A;
+      opacity: 1;
+    }
   }
 
   .form {
@@ -48,6 +53,12 @@
     flex-direction: column;
     gap: 28px;
     margin-bottom: 28px;
+  }
+
+  .fields{
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
   }
 
   .field {
@@ -68,6 +79,8 @@
       border: 1px solid #65558f;
       padding: 10px 24px;
       width: 100%;
+      color: #1a1a1a;
+      font-size: 18px;
       transition: .3s ease-out;
       &:focus {
       border-color: #65558f;

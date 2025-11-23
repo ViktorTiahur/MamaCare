@@ -1,10 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./SignUpModal.module.scss";
 import { FcGoogle } from "react-icons/fc";
 import { FaFacebook, FaApple } from "react-icons/fa";
-import { BsEye } from "react-icons/bs";
 import { IoIosClose } from "react-icons/io";
 import { Link } from "react-router-dom";
+import { motion, AnimatePresence } from "framer-motion";
+import EmailField from "./EmailField";
+import PhoneField from "./PhoneField";
+import PasswordField from "./PasswordField";
+
+
 interface SignUpModalProps {
   isOpen: boolean;
   onClose: () => void;
@@ -12,6 +17,7 @@ interface SignUpModalProps {
 
 const SignUpModal: React.FC<SignUpModalProps> = ({ isOpen, onClose }) => {
   if (!isOpen) return null;
+  const [activeTab, setActiveTab] = useState<'email' | 'phone'>('email');
 
   return (
     <div className={styles.overlay}>
@@ -23,43 +29,46 @@ const SignUpModal: React.FC<SignUpModalProps> = ({ isOpen, onClose }) => {
         </button>
         <h3 className={styles.title}>Sign Up</h3>
         <div className={styles.tabs}>
-          <button type="button" className={styles.tab}>Email</button>
-          <button type="button" className={styles.tab}>Phone number</button>
+          <button type="button" 
+          className={`${styles.tab} ${activeTab === 'email' ? styles.active : ''}`}
+          onClick={() => setActiveTab('email')}
+          >Email
+          </button>
+          <button type="button" 
+          className={`${styles.tab} ${activeTab === 'phone' ? styles.active : ''}`}
+          onClick={() => setActiveTab('phone')}
+          >Phone number
+          </button>
         </div>
 
-        <form className={styles.form}>
-          <div className={styles.field}>
-            <label htmlFor="email">Email</label>
-            <input type="email" name="" id="email" 
-            aria-label="enter your e-mail" />
-            <p className={styles.error}></p>
-          </div>
+        <form className={styles.form}> 
+        <AnimatePresence mode="wait">
+        {activeTab === "email" && (
+          <motion.div
+            className={styles.fields}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.2, ease: "easeOut" }}>
+          <EmailField/> 
+          <PasswordField id="password" label="Password"/>
+          </motion.div>
+        )}
 
-          <div className={styles.field}>
-            <label htmlFor="password">Password</label>
-            <div className={styles.inputInner}>
-              <input type="password" name="" id="password" />
-              <button 
-              type="button" 
-              aria-label="enter your password"
-              className={styles.eyeBtn}> <BsEye size={22} color="#000" />
-              </button>
-            </div>
-            <p className={styles.error}></p>
-          </div>
+        {activeTab === 'phone' && (
+          <motion.div
+            className={styles.fields}
+            key="phone"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.2, ease: "easeOut" }}>
+          <PhoneField/>
+          <PasswordField id="password" label="Password"/>
+          </motion.div>
+        )}
+        </AnimatePresence>
 
-          <div className={styles.field}>
-            <label htmlFor="confirmPassword">Confirm password</label>
-            <div className={styles.inputInner}>
-              <input type="password" name="" id="confirmPassword" />
-              <button 
-              type="button"
-              aria-label="confirm password"
-              className={styles.eyeBtn}> <BsEye size={22} color="#000" />
-              </button>
-            </div>
-            <p className={styles.error}></p>
-          </div>
         <div className={styles.remember}>
           <label htmlFor="remember">
           <input type="checkbox" name="" id="remember" 
@@ -72,6 +81,7 @@ const SignUpModal: React.FC<SignUpModalProps> = ({ isOpen, onClose }) => {
           <button type="submit" className={styles.btnSubmit}>
             Confirm
           </button>
+          
         </form>
 
         <div className={styles.continueBlock}>
