@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import styles from "./SignUpModal.module.scss";
 import { Link } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
