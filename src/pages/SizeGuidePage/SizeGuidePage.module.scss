@@ -1,5 +1,9 @@
+.breadcrumbsInner {
+  margin: 32px 0 0 150px;
+}
+
 .size {
-  padding-top: 100px;
+  padding-top: 64px;
 
   font-family: "Roboto";
   &__inner {
@@ -179,6 +183,9 @@
 }
 
 @media (max-width: 1200px) {
+  .breadcrumbsInner {
+    margin: 32px 0 0 25px;
+  }
   .size {
     &__inner {
       margin: 0 25px;
@@ -244,14 +251,14 @@
     }
   }
 
-    .boxes__items {
+  .boxes__items {
     display: flex;
     overflow-x: auto;
     gap: 18px;
     padding-bottom: 10px;
     scroll-snap-type: x mandatory;
   }
-    .boxes__box {
+  .boxes__box {
     min-width: 320px;
     scroll-snap-align: start;
   }
@@ -290,7 +297,7 @@
     font-size: 13px;
     padding: 8px 4px;
   }
-  
+
   .content {
     &__measure,
     &__tips {

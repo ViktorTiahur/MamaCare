@@ -19,6 +19,7 @@ const SizeGuidePage = () => {
   const { productId, productName, category, subcategory } = location.state || {};
   return (
     <>
+    <div className={styles.breadcrumbsInner}>
       <Breadcrumbs // відображення сайз-гайд сторінки в навігації
         category={category}
         subcategory={subcategory}
@@ -26,7 +27,7 @@ const SizeGuidePage = () => {
         productId={productId} 
         current="Size Guide"
       />
-
+    </div>
     <section className={styles.size}>
       <div className={styles.size__inner}>
       <div className={styles.size__head}>
