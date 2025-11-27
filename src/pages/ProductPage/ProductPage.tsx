@@ -86,6 +86,7 @@ const ProductPage = () => {
               product.name,
               i18n.language as "en" | "uk"
             )}
+            productId={productId}
           />
 
           <section className={styles.details} aria-label="Product Details">
@@ -141,6 +142,12 @@ const ProductPage = () => {
                   <div className={styles.legendRow}>
                    <legend>Size:</legend>
                     <Link to="/size-guide" 
+                      state={{
+                      productId,
+                      productName: getStringInCurrentLanguage(product.name, i18n.language as "en" | "uk"),
+                      category: getStringInCurrentLanguage(product.category, i18n.language as "en" | "uk"),
+                      subcategory: getStringInCurrentLanguage(product.subcategory, i18n.language as "en" | "uk"),
+                        }}
                     className={styles.sizeGuide}>Size Guide</Link>
                   </div>
                   {product.availableSizes.map((size) => (

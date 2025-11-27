@@ -1,7 +1,9 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
+import { useLocation } from "react-router-dom";
 import styles from './SizeGuidePage.module.scss'
 import ClothingTable from './sizeComponents/ClothingTable'
 import BabyBoxes from './sizeComponents/BabyBoxes';
+import Breadcrumbs from '@/components/Breadcrumbs/Breadcrumbs';
 
 const shopForBabyBoxes = [
   { id: 1, name: 'Green NewBorn Box', price: 250, img: '../../../public/images/preview/1-2.png' },
@@ -12,8 +14,19 @@ const shopForBabyBoxes = [
 
 const SizeGuidePage = () => {
   const [activeTab, setActiveTab] = useState('clothing')
-
+  const location = useLocation();
+  // ловимо то, що передали з ProductPage
+  const { productId, productName, category, subcategory } = location.state || {};
   return (
+    <>
+      <Breadcrumbs // відображення сайз-гайд сторінки в навігації
+        category={category}
+        subcategory={subcategory}
+        productName={productName}
+        productId={productId} 
+        current="Size Guide"
+      />
+
     <section className={styles.size}>
       <div className={styles.size__inner}>
       <div className={styles.size__head}>
@@ -86,6 +99,7 @@ const SizeGuidePage = () => {
         <BabyBoxes items={shopForBabyBoxes}/>
         </div>
     </section>
+    </>
   )
 }
 
