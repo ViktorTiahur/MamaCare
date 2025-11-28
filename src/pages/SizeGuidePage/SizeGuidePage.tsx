@@ -2,8 +2,11 @@ import { useState } from 'react'
 import { useLocation } from "react-router-dom";
 import styles from './SizeGuidePage.module.scss'
 import ClothingTable from './sizeComponents/ClothingTable'
+import ShoesTable from './sizeComponents/ShoesTable';
 import BabyBoxes from './sizeComponents/BabyBoxes';
 import Breadcrumbs from '@/components/Breadcrumbs/Breadcrumbs';
+import DiaperTable from './sizeComponents/DiaperTable';
+import HatsTable from './sizeComponents/HatsTable';
 
 const shopForBabyBoxes = [
   { id: 1, name: 'Green NewBorn Box', price: 250, img: '../../../public/images/preview/1-2.png' },
@@ -64,6 +67,9 @@ const SizeGuidePage = () => {
       </div>
 
         {activeTab === 'clothing' && <ClothingTable/> }
+        {activeTab === 'Shoes' && <ShoesTable/>}
+        {activeTab === 'Diaper' && <DiaperTable/>}
+        {activeTab === 'Hats' && <HatsTable/>}
 
         <div className={styles.content}>
           <div className={styles.content__measure}>

@@ -8,7 +8,8 @@ interface SizeTableProps {
 
 const SizeTable: React.FC<SizeTableProps> = ({ columns, rows }) => {
   return (
-    <table className={styles.table}>
+    <table className={styles.table} style={{"--cols": columns.length}}>
+
       <thead>
         <tr>
           {columns.map((col, i) => <th key={i}>{col}</th>)}
