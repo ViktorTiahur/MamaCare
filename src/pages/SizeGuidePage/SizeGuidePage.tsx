@@ -14,12 +14,22 @@ const shopForBabyBoxes = [
   { id: 3, name: 'Starter Baby Kit', price: 250, img: '../../../public/images/preview/1-2.png' },
 ];
 
+const tabs = [
+  {id: 1, value: 'clothing', name: 'Clothing', component: ClothingTable},
+  {id: 2, value: 'Shoes', name: 'Shoes', component: ShoesTable},
+  {id: 3, value: 'Diaper', name: 'Diaper', component: DiaperTable},
+  {id: 4, value: 'Hats', name: 'Hats', component: HatsTable}
+]
+
+
 
 const SizeGuidePage = () => {
   const [activeTab, setActiveTab] = useState('clothing')
   const location = useLocation();
   // ловимо то, що передали з ProductPage
   const { productId, productName, category, subcategory } = location.state || {};
+  const ActiveComponent = tabs.find(tab => tab.value === activeTab)?.component;
+
   return (
     <>
     <div className={styles.breadcrumbsInner}>
@@ -40,36 +50,17 @@ const SizeGuidePage = () => {
         </p>
       </div>
       <div className={styles.size__tabs}>
-        <button type="button" 
-        className={`${styles.size__tab} ${activeTab === 'clothing' ? styles.active : ''}`}
-        onClick={() => setActiveTab('clothing')}
-        >
-          Clothing
-        </button>
-        <button type="button"
-        className={`${styles.size__tab} ${activeTab === 'Shoes' ? styles.active : ''}`}
-        onClick={() => setActiveTab('Shoes')}
-        >
-          Shoes
-        </button>
-        <button type="button" 
-        className={`${styles.size__tab} ${activeTab === 'Diaper' ? styles.active : ''}`}
-        onClick={() => setActiveTab('Diaper')}
-        >
-          Diaper
-        </button>
-        <button type="button" 
-        className={`${styles.size__tab} ${activeTab === 'Hats' ? styles.active : ''}`}
-        onClick={() => setActiveTab('Hats')}
-        >
-          Hats & Accessories
-        </button>
+        {tabs.map(tab => (
+          <button
+          type='button'
+          key={tab.id}
+          className={`${styles.size__tab} ${activeTab === tab.value ? styles.active : ''}`}
+          onClick={() => setActiveTab(tab.value)}
+          >{tab.name}</button>
+        ))}
       </div>
+      {ActiveComponent && <ActiveComponent />}
 
-        {activeTab === 'clothing' && <ClothingTable/> }
-        {activeTab === 'Shoes' && <ShoesTable/>}
-        {activeTab === 'Diaper' && <DiaperTable/>}
-        {activeTab === 'Hats' && <HatsTable/>}
 
         <div className={styles.content}>
           <div className={styles.content__measure}>
