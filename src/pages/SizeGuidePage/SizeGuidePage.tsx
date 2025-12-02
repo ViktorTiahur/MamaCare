@@ -9,9 +9,9 @@ import DiaperTable from './sizeComponents/DiaperTable';
 import HatsTable from './sizeComponents/HatsTable';
 
 const shopForBabyBoxes = [
-  { id: 1, name: 'Green NewBorn Box', price: 250, img: '../../../public/images/preview/1-2.png' },
-  { id: 2, name: 'First Months Box', price: 250, img: '../../../public/images/preview/1-2.png' },
-  { id: 3, name: 'Starter Baby Kit', price: 250, img: '../../../public/images/preview/1-2.png' },
+  { id: 1, name: 'Green NewBorn Box', price: 250, img: '/images/preview/1-2.png' },
+  { id: 2, name: 'First Months Box', price: 250, img: '/images/preview/1-2.png' },
+  { id: 3, name: 'Starter Baby Kit', price: 250, img: '/images/preview/1-2.png' },
 ];
 // оптимізація табів
 const tabs = [
