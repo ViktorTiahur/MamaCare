@@ -7,12 +7,16 @@ interface BreadcrumbsProps {
   category?: string; // Pick&Buy або BabyBox
   subcategory?: string; 
   productName?: string; // Назва товару
+  current?: string,
+  productId?: string,
 }
 
 const Breadcrumbs: React.FC<BreadcrumbsProps> = ({
   category,
   subcategory,
   productName,
+  productId,
+  current
 }) => {
   const categoryPath =
     category?.toLowerCase() === "babybox" ? "/product" : "/pickandbuy";
@@ -33,7 +37,13 @@ const Breadcrumbs: React.FC<BreadcrumbsProps> = ({
       {productName && (
         <>
           <span className={styles.separator}> / </span>
-          <span>{productName}</span>
+          <Link to={`/product/${productId}`}>{productName}</Link>
+        </>
+      )}
+      {current && (
+        <>
+          <span className={styles.separator}> / </span>
+          <span className={styles.current}>{current}</span>
         </>
       )}
     </nav>

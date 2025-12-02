@@ -14,6 +14,7 @@ import ProductPage from "@/pages/ProductPage/ProductPage";
 import ProductReviewsPage from "@/pages/ProductReviews/ProductReviewsPage";
 import SignUpPage from "@/pages/SignUpPage/SignUpPage";
 import GetStarted from "@/pages/GetStarted/GetStarted";
+import SizeGuidePage from "./pages/SizeGuidePage/SizeGuidePage";
 
 // import ProductPage from "./pages/ProductPage/ProductPage";
 
@@ -107,6 +108,15 @@ const App: React.FC = () => {
             </Layout>
           }
         />
+        <Route
+        path="/size-guide"
+        element={
+          <Layout>
+            <SizeGuidePage/>
+          </Layout>
+        }
+        >
+        </Route>
         <Route
           path="/product/:productId/reviews"
           element={<Layout><ProductReviewsPage /></Layout>}

@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { useNavigate, useParams } from "react-router-dom";
-
+import { Link, useNavigate, useParams } from "react-router-dom";
 import OpenReview from "@/assets/icons/arrow.svg?react";
 import MinusIcon from "@/assets/icons/minus.svg?react";
 import PlusIcon from "@/assets/icons/plus.svg?react";
@@ -87,6 +86,7 @@ const ProductPage = () => {
               product.name,
               i18n.language as "en" | "uk"
             )}
+            productId={productId}
           />
 
           <section className={styles.details} aria-label="Product Details">
@@ -141,7 +141,14 @@ const ProductPage = () => {
                 <fieldset className={styles.fieldset}>
                   <div className={styles.legendRow}>
                    <legend>Size:</legend>
-                    <a href="#" className={styles.sizeGuide}>Size Guide</a>
+                    <Link to="/size-guide" 
+                      state={{
+                      productId,
+                      productName: getStringInCurrentLanguage(product.name, i18n.language as "en" | "uk"),
+                      category: getStringInCurrentLanguage(product.category, i18n.language as "en" | "uk"),
+                      subcategory: getStringInCurrentLanguage(product.subcategory, i18n.language as "en" | "uk"),
+                        }}
+                    className={styles.sizeGuide}>Size Guide</Link>
                   </div>
                   {product.availableSizes.map((size) => (
                     <label key={size} className={styles.sizeOption}>
