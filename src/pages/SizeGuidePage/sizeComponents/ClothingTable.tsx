@@ -1,4 +1,3 @@
-import React from 'react'
 import SizeTable from './SizeTable'
 
 const clothingColumns = ["Size Label", "Age", "Height (cm)", "Width (kg)"];

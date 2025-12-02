@@ -1,4 +1,3 @@
-import React from 'react'
 import SizeTable from './SizeTable';
 
 const diaperColumns = ['Size', 'Baby Weight (kg)', 'Age Range (approx.)'];

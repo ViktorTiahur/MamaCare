@@ -1,4 +1,3 @@
-import React from 'react'
 import SizeTable from './SizeTable';
 
 const shoesColumns = ['EU Size', 'US Size', 'UK Size', 'Approx. Age', 'Foot length (cm)'];

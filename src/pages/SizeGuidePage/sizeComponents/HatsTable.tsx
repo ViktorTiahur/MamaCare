@@ -1,4 +1,3 @@
-import React from 'react'
 import SizeTable from './SizeTable';
 
 const hatsColumns = ['Age', 'Head Circumference (cm)'];

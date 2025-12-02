@@ -13,7 +13,7 @@ const shopForBabyBoxes = [
   { id: 2, name: 'First Months Box', price: 250, img: '../../../public/images/preview/1-2.png' },
   { id: 3, name: 'Starter Baby Kit', price: 250, img: '../../../public/images/preview/1-2.png' },
 ];
-
+// оптимізація табів
 const tabs = [
   {id: 1, value: 'clothing', name: 'Clothing', component: ClothingTable},
   {id: 2, value: 'Shoes', name: 'Shoes', component: ShoesTable},
@@ -59,6 +59,7 @@ const SizeGuidePage = () => {
           >{tab.name}</button>
         ))}
       </div>
+      {/* // оптимізація табів рендер */}
       {ActiveComponent && <ActiveComponent />}
 
 
