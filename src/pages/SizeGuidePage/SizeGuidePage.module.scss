@@ -40,14 +40,16 @@
   &__tab {
     color: #6c6c6c;
     font-size: 24px;
-    font-weight: 400;
+    font-weight: 300;
     padding: 0 10px;
-    // &:nth-child(1) {
-    //   padding-left: 8px;
-    // }
+    border-bottom: 3px solid transparent;
+    transition: .2s ease-out;
+    &:hover {
+    border-bottom: 3px solid #ad97df;
+    }
   }
   &__tab.active {
-    font-weight: 600;
+    font-weight: 500;
     color: #65558f;
     border-bottom: 3px solid #ad97df;
   }

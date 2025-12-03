@@ -52,6 +52,8 @@
         color: #65558f;
         display: flex;
         align-items: center;
+        border-bottom: 4px solid transparent;
+        transition: .3s ease-out;
         &:hover {
           border-bottom: 4px solid #a982e873;
         }
